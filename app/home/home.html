@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    <title>Ahahusichka</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+</head>
+
+<body>
+<div ng-controlle="HomeCtrl">
+<div ng-repeat="cat in cats | orderBy: 'name'" >
+    <div ng-click="chose(cat)"> {{ cat.name }} </div>
+    <p ng-bind-html="myHTML"></p>
+    <!--<p ng-bind-html="myHTML"></p>-->
+    <!--<img src="{{ cat.img }}" ng-click="increment(cat)">-->
+    <!--<span>Count: </span>-->
+    <!--<span> {{ cat.count }} </span>-->
+</div>
+
+</body>
+</html>
