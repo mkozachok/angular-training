@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
     //var_dump( $cats);
     
-    file_put_contents('catsdb.json', $cats);  //   return status from here
+    // file_put_contents('catsdb.json', $cats);  //   return status from here
 
 
 echo 'serverok';

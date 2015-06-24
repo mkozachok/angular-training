@@ -1,14 +1,20 @@
-angular.module("app").controller("CatListContoller", function ($scope, $filter, $http, $rootScope) {
+angular.module("app").controller("CatListContoller", function ($scope, $rootScope, $filter, CatsDataService) {
     
-    $http.get('/angular-training/backend/cats.php').
-        success(function(data, status, headers, config) {
-            $scope.cats = data;
-            $scope.catActivate($scope.cats[0]);
-        }); 
+    
+    
+    CatsDataService.getAllCats().
+        success(
+            function(data, status, headers, config) {
+                $scope.cats = data;
+                $scope.catActivate($scope.cats[0]);
+            }
+        ); 
+        
     
 
     $scope.catNameFilter = "";
     $scope.catSortReverce = 0;
+
 
     
     $scope.catActivate = function (newActiveCat) {
@@ -17,9 +23,11 @@ angular.module("app").controller("CatListContoller", function ($scope, $filter, 
     };
     
     
+    
     $scope.catFilterByName = function () {
         $scope.catNameFilter = $scope.catNameFilterRaw;
     };
+    
     
     
     $scope.$watch(
@@ -33,6 +41,7 @@ angular.module("app").controller("CatListContoller", function ($scope, $filter, 
     );
     
     
+    
     $scope.$on(
         'catInserted',
         function(event, newCat) {
@@ -40,6 +49,7 @@ angular.module("app").controller("CatListContoller", function ($scope, $filter, 
             $scope.cats.push(newCat);
         }
     );
+    
     
 
 });
