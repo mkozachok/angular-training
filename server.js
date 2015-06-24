@@ -12,13 +12,13 @@ app.listen(8000);
 // Session is automatically setup on initial request.
 app.get('/', function(req, res) {
     req.session.loginDate = new Date().toString();
-    res.sendfile(__dirname + '/build/index.html');
+    res.sendfile(__dirname + '/app/index.html');
 });
 app.use(expressIO.static(__dirname + '/'));
-app.use(expressIO.static(__dirname + '/build'));
+app.use(expressIO.static(__dirname + '/app'));
 
-app.get('/mentors', function(req, res) {
-    var result = require('./json/mentors.json');
+app.get('/cat', function(req, res) {
+    var result = require('./json/cat.json');
     res.json(result);
 });
 
