@@ -1,0 +1,38 @@
+
+ <div ng-controller="HomeViewCtrl">
+ 	<input ng-model="searchText"  />
+ 	<button ng-click="performSearch(searchText)">Search</button>
+	
+	<select ng-model="sortMethod" ng-change="change()">
+	  	<option ng-repeat="opt in myOptions" >{{opt}}</option>
+	</select>
+ 	<!-- <select ng-options="opt for opt in myOptions" ng-model="sortMethod" 
+ 	ng-change="change(sortMethod)"></select>   -->
+ 
+
+
+    <div ng-repeat="cat in catsFiltered "> 
+        <p ng-model="cat.viewed" ng-click="showCat(cat)">{{$index + 1}}. Name: 
+        	<a href="#/cat">{{ cat.name }}</a> / Clicks: {{ cat.clicks }} / Likes: {{ cat.likes }} /
+        	<span ng-show="{{cat.viewed}}"> + </span>
+        </p>
+    </div> 
+    
+   
+	
+	<div> 
+	    <p> Name: {{ selectedCat.name }} </p>
+	    <img src="{{selectedCat.img}}" ng-click="myCount(selectedCat)"> 
+	    <p> Clics: {{ selectedCat.clicks }}</p>
+	    
+	    <div>
+	    	
+	    		<p ng-click="likeCat(selectedCat)" style="color:green">Like! </p> 
+				<p ng-click="dislikeCat(selectedCat)" style="color:red"> Dislike!</p> 
+	    	
+	    	<p>Amount of Likes: {{ selectedCat.likes }}</p>
+	    </div>
+    </div>
+</div>
+    
+

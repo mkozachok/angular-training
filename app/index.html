@@ -7,15 +7,48 @@
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/angular/angular-csp.css" />
+    <!--
     <link rel="stylesheet" type="text/css" href="/build/app.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/angular-emoji-filter-hd/dist/emoji.min.css" />
+
+    <script src="/build/angular-training.js"></script>
+    -->
     <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-resource.js">
+     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="/build/angular-training.js"></script>
+
+    <script src="app.js"></script>
+    <script src="views/homeView/homeView.js"></script>
+    <script src="views/catView/catView.js"></script>
+    <script src="views/addCatView/addCatView.js"></script>
+    
+    
 </head>
-<body>
+
+<body ng-app="myApp">
     <div id="view" class="container-fluid">
+ 
+        <p><a href="#/home">Home </a></p>
+        <p><a href="#/addCat">Add Cat </a></p>
+
+      
+      <!--   <div ng-controller="CatsController"> --> 
+        <div ng-view></div>
+       <!--  </div> -->
+
+
     </div>
+    <!--
+    <script src="bower_components/angular/angular.js"></script>
+     <script src="bower_components/angular-route/angular-route.js"></script>
+    -->
+    
+    <!--
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+    -->
 </body>
 </html>
