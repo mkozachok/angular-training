@@ -1,0 +1,33 @@
+<div ng-controller="catsAdd">
+    <form name="catAdd" novalidate>
+        <div class="form-group">
+            <label for="name">Cat's Name:</label>
+            <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" />
+            <div ng-show="catAdd.name.$touched">
+                <div ng-show="catAdd.name.$error.required">
+                    <div class="alert alert-danger">
+                        <strong>Cat's Name is required.</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="path">Url of a Cat's Picture:</label>
+            <input type="url" class="form-control" ng-model="path" id="path" name="path" required="" />
+            <div ng-show="catAdd.path.$touched">
+                <div ng-show="catAdd.path.$error.required">
+                    <div class="alert alert-danger">
+                        <strong>Url of a Cat's Picture is required.</strong>
+                    </div>
+                </div>
+                <div ng-show="catAdd.path.$invalid && !catAdd.path.$error.required">
+                    <div class="alert alert-danger">
+                        <strong>Url of a Cat's Picture is invalid.</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success" ng-click="add()" ng-class="setClass()">Add new cat</button>
+        <button type="button" class="btn btn-warning" ng-click="cancel(addCat)">Cancel</button>
+    </form>
+</div>

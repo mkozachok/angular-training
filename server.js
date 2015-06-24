@@ -27,6 +27,11 @@ app.get('/mentees', function(req, res) {
     res.json(result);
 });
 
+app.get('/cats', function(req, res) {
+  var result = require('./json/cats.json');
+  res.json(result);
+});
+
 exports = module.exports = app;
 
 

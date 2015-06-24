@@ -1,21 +1,39 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Chat</title>
+    <title>Cats</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/angular/angular-csp.css" />
-    <link rel="stylesheet" type="text/css" href="/build/app.css" />
-    <link rel="stylesheet" type="text/css" href="/bower_components/angular-emoji-filter-hd/dist/emoji.min.css" />
     <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="/build/angular-training.js"></script>
+    <script src="app.js"></script>
+    <script src="cats/cats.js"></script>
 </head>
 <body>
-    <div id="view" class="container-fluid">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav navbar-nav" ng-init="selectedTab = 'view'">
+                    <li ng-class="{'active':selectedTab === 'view'}" ng-click="selectedTab = 'view'"><a href="#/view">View Cats</a></li>
+                    <li ng-class="{'active':selectedTab === 'add'}" ng-click="selectedTab = 'add'"><a href="#/add">Add New Cat</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin: 80px auto;">
+        <div class="row">
+            <div ng-view></div>
+        </div>
     </div>
 </body>
 </html>
