@@ -1,0 +1,10 @@
+<!--ng-pattern="/^*.*jpg$/"-->
+<div ng-controller="AddCatCtrl">
+    <form name="AddCat" ng-submit="addKitty()">
+        Name: <input ng-model="kittyName" ng-minlength="3" name="cat_name_field" required/>
+        Img: <input type="url"  ng-model="kittyImg"  ng-minlength="3"  name="img_field" />
+        <span  class="error" ng-show="AddCat.img_field.$error.url">Not a valid url!</span>
+        <span  class="error" ng-show="AddCat.cat_name_field.$error.url">Too short cat name!</span>
+        <button type="submit" id="save" value="Save">Save</button>
+    </form>
+</div>

@@ -1,20 +1,20 @@
 'use strict';
-angular.module('myApp.home', ['ngRoute', 'ngResource'])
+var app = angular.module('myApp.home', ['ngRoute', 'ngResource'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/home', {
             templateUrl: 'home/home.html',
             controller: 'HomeCtrl'
         });
-    }])
+    }]);
     // controller home
-    .controller('HomeCtrl', ['$scope','$resource', function($scope, $resource) {
+    app.controller('HomeCtrl', ['$scope', '$resource', 'KittyFactory', function($scope, $resource, KittyFactory) {
 
+        var resource = KittyFactory;
         // take cat from server
-        var Cats = $resource('/cat');
         var cats;
         $scope.cats = [];
 
-        Cats.get().$promise.then(function (response) {
+        resource.get().$promise.then(function (response) {
             cats = response;
             $scope.cats = cats.cats;
         });
@@ -22,16 +22,6 @@ angular.module('myApp.home', ['ngRoute', 'ngResource'])
         //work with cat data
         $scope.sort = 'name';
         $scope.find = '';
-
-        $scope.addKitty = function ()
-        {
-            var temp = {name: $scope.kittyName, img: $scope.kittyImg, count:0, v:0, votes: 0 };
-            Cats.save(temp);
-
-            $scope.cats.push(temp);
-            $scope.kittyName = '';
-            $scope.kittyImg = '';
-        };
 
         $scope.submit = function(){ // for search started after submit button down
             $scope.find = $scope.search

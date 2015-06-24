@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 app.post('/cat', function(req, res) {
     var cat = req.body;
-    console.log(req.body);
     cats.cats.push(cat);
     //res.json(cats);
 });
@@ -36,7 +35,6 @@ app.use(expressIO.static(__dirname + '/app'));
 
 app.get('/cat', function(req, res) {
    // var result = require('./json/cat.json'); //оскыльки память то перший раз треба выдкрити щоб з кетс записати котыв, потым коли вони вже будуть в памяты вын ен потрыбен
-    console.log(cats);
     res.json(cats); //cats
 });
 

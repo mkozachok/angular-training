@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="myApp">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-    <title>Ahahusichka</title>
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-</head>
-
-<body ng-cloak>
+<div >
     <div ng-controlle="HomeCtrl">
-
-        <!--ng-pattern="/^*.*jpg$/"-->
-        <div>
-            <form name="AddCat" ng-submit="addKitty()">
-                Name: <input ng-model="kittyName" ng-minlength="3" required/>
-                Img: <input type="url"  ng-model="kittyImg"  ng-minlength="3"  name="img_field" />
-                <span  class="error" ng-show="AddCat.img_field.$error.url">Not a valid url!</span>
-                <!--<span ng-show="myForm.img_field.$error.pattern">Not a valid number!</span>-->
-                <!--ng-pattern="/^[0-9]{1,7}$/"-->
-                <button type="submit" id="save" value="Save">Save</button>
-            </form>
-        </div>
-
-        <br />
 
         <div>
             <form ng-submit="submit()">
@@ -49,5 +25,4 @@
             <span>{{ currentCat.votes }} votes</span>
         </p>
     </div>
-</body>
-</html>
+</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="myApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,31 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-    <!--<link rel="stylesheet" href="app.css">-->
+    <link rel="stylesheet" href="app.css">
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="home/home.js"></script>
+    <script src="add_cat/add_cat.js"></script>
     <script src="app.js"></script>
 </head>
-<body ng-app="myApp">
+<body>
 
-<div ng-view></div>
+<ul class="menu">
+    <li><a href="#/home">home</a></li>
+    <li><a href="#/add_cat">add cat</a></li>
+</ul>
 
-<!--<div ng-controller="MyAppCtrl">-->
-<!--<div ng-repeat="cat in cats | orderBy: 'name'" >-->
-<!--<div ng-click="chose(cat)"> {{ cat.name }} </div>-->
-<!--&lt;!&ndash;<p ng-bind-html="myHTML"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<img src="{{ cat.img }}" ng-click="increment(cat)">&ndash;&gt;-->
-<!--&lt;!&ndash;<span>Count: </span>&ndash;&gt;-->
-<!--&lt;!&ndash;<span> {{ cat.count }} </span>&ndash;&gt;-->
-<!--</div>-->
-<!--&lt;!&ndash;<h1>Tom</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;<img src="http://hello-kitty.sanriotown.com/images/kitty.png" ng-click="increment(1)">&ndash;&gt;-->
-<!--&lt;!&ndash;<span>Count: </span>&ndash;&gt;-->
-<!--&lt;!&ndash;<span> {{ count[1] }} </span>&ndash;&gt;-->
-<!--</div>-->
+<div ng-cloak>
+    <div ng-view></div>
+</div>
 
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
