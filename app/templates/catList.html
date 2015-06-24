@@ -1,0 +1,50 @@
+<div ng-controller="CatListContoller">
+
+    <div class="input-group">
+        <input  type="text" class="form-control" ng-model="catNameFilterRaw" placeholder="Cat's nickname...">
+        <span class="input-group-btn">
+            <button
+                class="btn btn-default"
+                type="button"
+                ng-click="catFilterByName()"
+                >
+                    <span class=" glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
+    
+    <br />
+
+    <select class="form-control" ng-model="catSortReverce">
+        <option value="0">Ascending sorting</option>
+        <option value="1">Descending sorting</option>
+    </select>            
+
+    <div class="container-fluid">
+    
+        <div class="row">
+
+            <div class="col-md-6 catsthumbs" ng-repeat="cat in cats | filter: {name: catNameFilter}">
+                
+                <div>
+                    <img
+                        ng-src="{{ cat.url }}" 
+                        ng-click="catActivate(cat)"
+                        class="img-responsive img-thumbnail center-block"
+                        width="90"
+                        alt=""
+                        />
+                </div>
+                    
+                <div class="text-center">
+                    <span>{{ cat.name }}, {{ cat.rating }}</span>
+                    <span ng-show="cat.isViewed" class="glyphicon glyphicon-ok-sign" style="color: blue"></span>
+                </div>
+                
+            </div>   
+            
+        </div>
+        
+    </div>            
+    
+</div>

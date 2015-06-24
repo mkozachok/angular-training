@@ -1,0 +1,33 @@
+<div ng-controller="CatFormContoller">
+
+    <form name="newCatForm">
+    
+        <div class="form-group" ng-class="{ 'has-success': newCatForm.name.$valid, 'has-error': newCatForm.name.$dirty && newCatForm.name.$invalid }">
+            <label class="control-label" for="name">Cat's nickname</label>
+            <input ng-model="newCatName" name="name" ng-required="1" type="text" class="form-control" />
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-success': newCatPhotoPreviewVisibility, 'has-error': newCatForm.url.$dirty && !newCatPhotoPreviewVisibility }">
+            <label class="control-label" for="url">Cat's photo url</label>
+            <input ng-model="newCatUrl" name="url" type="text" class="form-control" />
+        </div>  
+        
+        <img
+            ng-src="{{ newCatPhotoPreviewUrl }}" 
+            ng-show="newCatPhotoPreviewVisibility"
+            class="img-responsive img-thumbnail center-block" a
+            id="newCatPhotoPreview" />  
+        
+        <label>&nbsp;</label>    
+        <button ng-click="newCatFormReset(newCatForm)" type="button" class="btn btn-default btn-block">Reset</button>
+        
+        <label>&nbsp;</label>    
+        <button ng-show="newCatForm.name.$valid && newCatPhotoPreviewVisibility" ng-click="newCatFormSubmit(newCatForm)" type="button" class="btn btn-primary btn-block">Submit</button>
+    
+    </form>
+    
+    <br /><br /><br /><br /><br /><br />
+    
+    {{ postResult }}
+
+</div>

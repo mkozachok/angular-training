@@ -1,0 +1,15 @@
+<div ng-controller="CatViewContoller">
+
+    <img
+        ng-src="{{ activeCat.url }}" 
+        width="540"
+        class="img-responsive img-thumbnail center-block"
+        alt="" />    
+        
+    <div class="text-center">
+        <span>{{ activeCat.name }}, {{ activeCat.rating }}</span><br/>
+        <span ng-click="catRateDown()" class="glyphicon glyphicon-minus-sign" style="color: red"></span>
+        <span ng-click="catRateUp()" class="glyphicon glyphicon-plus-sign" style="color: green"></span>
+    </div>   
+    
+</div>

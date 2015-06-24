@@ -1,21 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Chat</title>
+    <title>Cats...</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="/bower_components/angular/angular-csp.css" />
-    <link rel="stylesheet" type="text/css" href="/build/app.css" />
-    <link rel="stylesheet" type="text/css" href="/bower_components/angular-emoji-filter-hd/dist/emoji.min.css" />
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="/build/angular-training.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../bower_components/angular/angular-csp.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../build/app.css" />-->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="../build/angular-training.js"></script>
+    
+    <style>
+        .catsthumbs {
+            margin-bottom: 20px;
+        }
+        
+        .row {
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<body>
-    <div id="view" class="container-fluid">
+<body ng-app="app" ng-cloak>
+
+    <div class="container-fluid">
+        
+        <div class="row">
+        
+            <div
+                class="col-md-3"
+                ng-include="'templates/catList.html'">
+            </div>                            
+
+            <div
+                class="col-md-7"
+                ng-include="'templates/catView.html'">
+            </div>     
+
+            <div
+                class="col-md-2"
+                ng-include="'templates/catForm.html'">
+            </div>  
+
+        </div>
+
     </div>
+    
 </body>
 </html>
