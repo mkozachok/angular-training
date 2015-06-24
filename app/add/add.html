@@ -1,0 +1,16 @@
+<form name="addForm" novalidate>
+    Name:<br>
+    <input ng-keyup="validate()" type="text" name="name" ng-model="cat.name" required>
+    <span style="color:red" ng-show="addForm.name.$dirty && addForm.name.$invalid">
+  		<span ng-show="addForm.name.$error.required">Name is required.</span>
+  	</span><br>
+    Path:<br>
+    <input type="text" name="path" ng-model="cat.path" pattern="https?://[a-z0-9_-]+\.[\S]+" >
+    <span style="color:red" ng-show="addForm.path.$dirty && addForm.path.$invalid">
+  		<span ng-show="addForm.path.$error.required">Path is required.</span>
+  		<span ng-show="addForm.path.$error.pattern">Path is incorrect.</span>
+  	</span>
+    <br><br>
+    <button ng-click="submit()" ng-disabled="!addForm.name.$dirty || addForm.name.$invalid ||
+  !addForm.path.$dirty || addForm.path.$invalid">Add cat</button>
+ </form>

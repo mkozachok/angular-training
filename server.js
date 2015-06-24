@@ -22,8 +22,8 @@ app.get('/mentors', function(req, res) {
     res.json(result);
 });
 
-app.get('/mentees', function(req, res) {
-    var result = require('./json/mentees.json');
+app.get('/cats', function(req, res) {
+    var result = require('./json/cats.json');
     res.json(result);
 });
 
