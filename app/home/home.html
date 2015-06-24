@@ -13,10 +13,10 @@
 
         <!--ng-pattern="/^*.*jpg$/"-->
         <div>
-            <form name="myForm" ng-submit="addKitty()">
+            <form name="AddCat" ng-submit="addKitty()">
                 Name: <input ng-model="kittyName" ng-minlength="3" required/>
                 Img: <input type="url"  ng-model="kittyImg"  ng-minlength="3"  name="img_field" />
-                <span  class="error" ng-show="myForm.img_field.$error.url">Not a valid url!</span>
+                <span  class="error" ng-show="AddCat.img_field.$error.url">Not a valid url!</span>
                 <!--<span ng-show="myForm.img_field.$error.pattern">Not a valid number!</span>-->
                 <!--ng-pattern="/^[0-9]{1,7}$/"-->
                 <button type="submit" id="save" value="Save">Save</button>

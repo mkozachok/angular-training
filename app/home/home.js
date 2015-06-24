@@ -1,5 +1,5 @@
 'use strict';
-angular.module('myApp.home', ['ngRoute'])
+angular.module('myApp.home', ['ngRoute', 'ngResource'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/home', {
             templateUrl: 'home/home.html',
@@ -7,23 +7,27 @@ angular.module('myApp.home', ['ngRoute'])
         });
     }])
     // controller home
-    .controller('HomeCtrl', ['$scope', function($scope) {
-        $scope.cats = [
-            {name:'John', img:'http://www.cats.org.uk/uploads/images/pages/photo_latest14.jpg', count:0, v:1, votes: 0},
-            {name:'Jessie', img:'http://www.thetimes.co.uk/tto/multimedia/archive/00342/114240651_cat_342943c.jpg', count:0, v:0, votes: 0 },
-            {name:'Johanna', img:'http://exmoorpet.com/wp-content/uploads/2012/08/cat.png', count:0, v:0},
-            {name:'Joy', img:'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR3yjneZMSf86yi4ZnxQbYWTlqSbo8DDAneKpl3uOMu49eJJy8h', count:0, v:0, votes: 0},
-            {name:'Mary', img:'http://ak8.picdn.net/shutterstock/videos/1119358/preview/stock-footage-close-up-of-adult-tabby-cat-face-on-white-background.jpg', count:0, v:0, votes: 0},
-            {name:'Peter', img:'http://thumbs.dreamstime.com/z/adult-tabby-cat-white-27198962.jpg', count:0, v:0, votes: 0},
-        ];
+    .controller('HomeCtrl', ['$scope','$resource', function($scope, $resource) {
 
-        $scope.currentCat = $scope.cats[0];
+        // take cat from server
+        var Cats = $resource('/cat');
+        var cats;
+        $scope.cats = [];
+
+        Cats.get().$promise.then(function (response) {
+            cats = response;
+            $scope.cats = cats.cats;
+        });
+
+        //work with cat data
         $scope.sort = 'name';
         $scope.find = '';
 
         $scope.addKitty = function ()
         {
             var temp = {name: $scope.kittyName, img: $scope.kittyImg, count:0, v:0, votes: 0 };
+            Cats.save(temp);
+
             $scope.cats.push(temp);
             $scope.kittyName = '';
             $scope.kittyImg = '';

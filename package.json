@@ -34,5 +34,8 @@
     "grunt-contrib-less": "~0.11.x",
     "grunt-cli": "~0.1.13",
     "grunt": "~0.4.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.1"
   }
 }
