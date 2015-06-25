@@ -1,4 +1,4 @@
-angular.module("app").controller("CatAddFormContoller", function ($scope, $rootScope, CatsDataService) {
+angular.module("app").controller("CatAddFormContoller", function ($scope, $rootScope, CatDataService) {
     
     $scope.newCat = {};
     
@@ -44,12 +44,12 @@ angular.module("app").controller("CatAddFormContoller", function ($scope, $rootS
 
 
     $scope.newCatFormSubmit = function (form) {
-        CatsDataService.insertCat($scope.newCatName, $scope.newCatUrl).
+        CatDataService.insertCat($scope.newCatName, $scope.newCatUrl).
             success(function(data, status, headers, config) {
                 $scope.postResult = data;
                 $scope.newCatFormReset(form);
-                $rootScope.$broadcast('catInserted', newCat);
                 console.log('catInserted brodcasted from CatFormContoller');
+                $rootScope.$broadcast('catInserted', newCat);
             });       
     };    
     
