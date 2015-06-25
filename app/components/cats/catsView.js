@@ -53,7 +53,7 @@ angular.module('myApp.catsView', [
 
   .directive('modal', function () {
     return {
-      templateUrl: 'components/cats/templates/modal.html',
+      templateUrl: 'components/cats/templates/catsModal.html',
       restrict: 'E',
       transclude: true,
       replace: true,

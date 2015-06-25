@@ -41,13 +41,13 @@
 
 
     <modal title="selected_cat.name" visible="visible">
-        <img ng-src="{{selected_cat.path}}" ng-click="incCount()" style="width:565px;" class="img-rounded" />
+        <img ng-src="{{selected_cat.path}}" ng-click="incCount()" style="width:565px;" class="img-rounded" title="{{selected_cat.name}}" />
         <h4>
             <ng-pluralize count="selected_cat.count"
-                          when="{'0': 'No clicks on the image.',
-                     'one': '1 click on the image.',
-                     'other': '{} clicks on the image.'}">
-            </ng-pluralize>
+                          when="{'0': 'No clicks',
+                     'one': '1 click',
+                     'other': '{} clicks'}">
+            </ng-pluralize> on the image
         </h4>
         <h5>
             <ng-pluralize count="selected_cat.votes"
