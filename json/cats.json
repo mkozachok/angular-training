@@ -1,0 +1,6 @@
+{"cats": [{ "id": 1, "name": "Cat1", "image": "Assets\\img\\Cat1.jpg", "age": 5, "gender": "Male" },
+          { "id": 2, "name": "Cat2", "image": "Assets\\img\\Cat2.jpg", "age": 15, "gender": "Female"},
+          { "id": 3, "name": "Cat3", "image": "Assets\\img\\Cat3.jpg", "age": 1, "gender": "Female"},
+          { "id": 4, "name": "Cat4", "image": "Assets\\img\\Cat4.jpg", "age": 3, "gender": "Male"},
+          { "id": 5, "name": "Cat5", "image": "Assets\\img\\Cat5.jpg", "age": 7, "gender": "Male"}
+      ]}

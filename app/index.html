@@ -12,10 +12,14 @@
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="/build/angular-training.js"></script>
 </head>
-<body>
-    <div id="view" class="container-fluid">
-    </div>
+<body ng-app="app">
+    <ul class="menu">
+        <li><a href="#/cats">Cats</a></li>
+        <li><a href="#/cat">Cat</a></li>
+    </ul>
+    <div ui-view></div>
 </body>
 </html>
