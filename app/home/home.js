@@ -6,8 +6,8 @@ var app = angular.module('myApp.home', ['ngRoute', 'ngResource'])
             controller: 'HomeCtrl'
         });
     }]);
-    // controller home
-    app.controller('HomeCtrl', ['$scope', '$resource', 'KittyFactory', function($scope, $resource, KittyFactory) {
+
+    app.controller('HomeCtrl', ['$scope','$resource', 'KittyFactory', function($scope, $resource, KittyFactory) {
 
         var resource = KittyFactory;
         // take cat from server
@@ -19,30 +19,61 @@ var app = angular.module('myApp.home', ['ngRoute', 'ngResource'])
             $scope.cats = cats.cats;
         });
 
-        //work with cat data
-        $scope.sort = 'name';
-        $scope.find = '';
-
-        $scope.submit = function(){ // for search started after submit button down
-            $scope.find = $scope.search
+        $scope.broadcast = function() {
+            $scope.$broadcast('broadToChild', $scope.toChild);
         };
 
-        $scope.chose = function(cat){
-            $scope.currentCat = cat;
-            $scope.currentCat.v = 1;
+        $scope.$on('emitFromChild', function(event, fromChild) {
+            $scope.cats = fromChild;
+
+        });
+    }]);
+
+    app.controller('SearchCatCtrl', ['$rootScope','$scope', function($rootScope, $scope) {
+
+        $rootScope.find = '';
+
+        $rootScope.submit = function(){ // for search started after submit button down
+            $rootScope.find = $scope.search;
         };
 
-        $scope.like = function()
+        $rootScope.$on('broadToChild', function(event, fromParent) {
+            $rootScope.cats = fromParent;
+        });
+
+        $rootScope.emit = function() {
+            $rootScope.$emit('emitFromChild', $rootScope.toParent); // вверх!
+        };
+    }]);
+
+    app.controller('ChoseCatCtrl', ['$rootScope', function($rootScope) {
+
+        $rootScope.sort = 'name';
+
+        $rootScope.$on('broadToChild', function(event, fromParent) {
+            $rootScope.cats = fromParent;
+        });
+
+        $rootScope.chose = function(cat){
+            $rootScope.currentCat = cat;
+            $rootScope.currentCat.v = 1;
+        };
+
+        $rootScope.like = function()
         {
-            $scope.currentCat.votes ++;
+            $rootScope.currentCat.votes ++;
         };
 
-        $scope.disLike = function()
+        $rootScope.disLike = function()
         {
-            if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
+            if($rootScope.currentCat.votes > 0) $rootScope.currentCat.votes --;
         };
 
-        $scope.increment = function(){
-            $scope.currentCat.count += 1;
+        $rootScope.increment = function(){
+            $rootScope.currentCat.count += 1;
+        };
+
+        $rootScope.emit = function() {
+            $rootScope.$emit('emitFromChild', $rootScope.toParent); // вверх!
         };
     }]);
