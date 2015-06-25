@@ -1,6 +1,6 @@
 <form name="addForm" novalidate>
     Name:<br>
-    <input ng-keyup="validate()" type="text" name="name" ng-model="cat.name" required>
+    <input type="text" name="name" ng-model="cat.name" required>
     <span style="color:red" ng-show="addForm.name.$dirty && addForm.name.$invalid">
   		<span ng-show="addForm.name.$error.required">Name is required.</span>
   	</span><br>

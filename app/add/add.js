@@ -9,16 +9,14 @@ angular.module('myApp.add', ['ngRoute'])
   });
 }])
 
-.controller('AddCtrl', function($scope, testFactory, $location) {
+.controller('AddCtrl', function($scope, catsFactory, $location) {
+	var Cats = catsFactory;
 	$scope.submit = function(){
 		$scope.cat.count = 0;
-		testFactory.cats.push($scope.cat);
-		// $scope.cat = undefined;
-		// $location.path('/view');
+		Cats.save($scope.cat);
+		$scope.cat = undefined;
+		$location.path('/view');
 
-		console.log($scope);
 	}
-	$scope.validate = function(){
-		console.log($scope);
-	}
+
 });

@@ -9,6 +9,13 @@ app.use(expressIO.session({secret: 'monkey'}));
 app.http().io();
 app.listen(8000);
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+app.use(expressIO.json());
+
 // Session is automatically setup on initial request.
 app.get('/', function(req, res) {
     req.session.loginDate = new Date().toString();
@@ -22,11 +29,17 @@ app.get('/mentors', function(req, res) {
     res.json(result);
 });
 
+var cats = require('./json/cats.json');
 app.get('/cats', function(req, res) {
-    var result = require('./json/cats.json');
-    res.json(result);
+    res.json(cats);
 });
 
+//
+app.post('/cats', function(req, res) {
+	var cat = req.body;
+	cats.cats.push(cat);
+});
+//
 exports = module.exports = app;
 
 

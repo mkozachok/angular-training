@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.view', ['ngRoute'])
+angular.module('myApp.view', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view', {
@@ -10,9 +10,15 @@ angular.module('myApp.view', ['ngRoute'])
 }])
 
 
-.controller('ViewCtrl', function($scope, testFactory) {
-	$scope.cats = testFactory.cats;
-	$scope.selected = $scope.cats[0];
+.controller('ViewCtrl', function($scope, $filter, $resource, catsFactory) {
+	var Cats = catsFactory;
+
+    Cats.get(function (response) {
+    	$scope.cats = response.cats;
+    	$scope.filteredCats = $scope.cats;
+    	$scope.selected = $scope.cats[0];
+    });
+
 	$scope.select = function(cat){
 		$scope.selected = cat;
 		$scope.selected.viewed = true;
@@ -23,7 +29,6 @@ angular.module('myApp.view', ['ngRoute'])
 	$scope.increment = function(cat){
 		cat.count++;
 	};
-	$scope.selected.voteCount = 0;
 	$scope.voteIncrement = function(cat){
 		cat.voteCount++;
 	};
@@ -39,13 +44,14 @@ angular.module('myApp.view', ['ngRoute'])
 		}
 	};
 	$scope.search = function(substr){
-		$scope.neededCat = substr;
+		$scope.filteredCats = $filter('filter')($scope.cats, { name: substr });
 	};
 	$scope.startSearch = function(substr){
 		if(substr.length > 2){
 			$scope.search(substr);
 		}
+		else {
+			$scope.filteredCats = $scope.cats;
+		}
 	};
-
-	// console.log($scope);
 });
