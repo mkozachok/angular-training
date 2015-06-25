@@ -114,10 +114,25 @@ module.exports = function (grunt) {
                 background: true,
                 singleRun: false
             }
+        },
+
+        concurrent: {
+            server: {
+                tasks: ["server"],
+                options: {
+                    logConcurrentOutput: true
+                }
+            },
+            watch: {
+                tasks: ["watch:debug"],
+                options: {
+                    logConcurrentOutput: true
+                }
+            }
         }
     });
 
-    grunt.loadNpmTasks('grunt-parallel');
+    grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-express');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -131,7 +146,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('run', [ 'build', "express:app", "parallel:server"]);
+    grunt.registerTask('run', [ 'build', "express:app", "serverAndWatch"]);
+    grunt.registerTask('serverAndWatch', [ 'concurrent:server', "concurrent:watch"]);
     grunt.registerTask('build', [
         'jshint', 'copy:main', 'ngtemplates', 'concat:app',
         'ngAnnotate', 'concat:appAndTpl', "less:app"

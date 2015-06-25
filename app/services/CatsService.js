@@ -34,6 +34,7 @@ catApp.factory('catsService', function (catsResource, filterFilter, orderByFilte
 	
 	var click = function (cat){
 		cat.count++;
+		catsResource.update(cat);
 	};
 
 	return {

@@ -23,9 +23,5 @@ catApp.controller('CatsController', function($scope, catsService) {
 
 		vm.click = function(cat) {
 			catsService.click(cat);
-		};	
-		
-		vm.updateVote = function (cat, direction){
-			catsService.vote(cat, direction);
-		};	
+		};		
 	});

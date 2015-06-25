@@ -8,6 +8,6 @@
 		<button class="btn btn-primary"  ng-click="catsCtrl.filter(catsCtrl.CatFilter)">Find</button>
 
 		<div class="row" ng-repeat="cat in catsCtrl.filteredCats">
-			<cat-item></cat-item>
-		</div>		
+			<cat-item item="cat"></cat-item>
+		</div>
 </div>
