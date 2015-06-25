@@ -1,0 +1,9 @@
+<ng-form name="loginForm" ng-controller="ProfileController as profileCtrl">
+	<span>Login:</span>
+	<input type="text" ng-model="profileData.Name"/>
+	<span>Email:</span>
+	<input type="text"  ng-model="profileData.Email"/>
+	<span>Password:</span>
+	<input type="text"  ng-model="profileData.Password"/>	
+	<button ng-click="profileCtrl.create(profileData)">Enter</button>
+</ng-form>

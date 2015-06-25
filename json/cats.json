@@ -1,0 +1,25 @@
+[				{
+					"id" : 3, 
+					"name":"cat #3", 
+					"src":"http://media4.popsugar-assets.com/files/2014/08/08/878/n/1922507/caef16ec354ca23b_thumb_temp_cover_file32304521407524949.xxxlarge/i/Funny-Cat-GIFs.jpg", 
+					"count":0,
+					"is_viewed":0,
+					"votes":0
+				 },
+				{
+					"id" : 2, 
+					"name":"cat #2", 
+					"src":"http://www.wallpapersnewhd.com/wp-content/uploads/2014/09/White-Cat-Hd-Wallpapers-Free-Download-12-1024x682.jpg", 
+					"count":0,
+					"is_viewed":0,
+					"votes":0
+				},
+				{
+					"id" : 1, 
+					"name":"cat #1", 
+					"src":"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTTJAYw95sf7jMpVRYccm33OxuU6-txAUWdlYEWtxzjVOgkUsmVDA", 
+					"count":0,
+					"is_viewed":0,
+					"votes":0
+				}
+]

@@ -1,0 +1,11 @@
+<ng-form name="addCatForm" ng-controller="CatAddController">
+	Please enter cat name <input type="text" ng-model="newCat.Name" ng-required="true"/>
+	Please enter cat image url
+	<input type="text" ng-model="newCat.Src" 
+		ng-required="true"
+		ng-pattern="/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/"
+	/>
+	</br>
+	<a ng-click="addCat(newCat)" ng-show="addCatForm.$valid" ui-sref="/">Add</button>
+	<a href="#/">Cancel</button>
+</ng-form>
