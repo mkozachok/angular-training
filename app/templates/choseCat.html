@@ -1,0 +1,11 @@
+<div  ng-controller="ChoseCatCtrl">
+
+    <select ng-model="sort">
+        <option value="name">ASC</option>
+        <option value="-name">DESC</option>
+    </select>
+
+    <div ng-repeat="cat in cats | orderBy: sort | filter: find">
+        <span ng-click="chose(cat)"> {{ cat.name }} </span><span ng-show="cat.v">&hearts;</span>
+    </div>
+</div>
