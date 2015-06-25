@@ -1,0 +1,74 @@
+[
+    {
+        "click": 0,
+        "name": "Cat 1",
+        "image": "http://t1.gstatic.com/images?q=tbn:ANd9GcROrNWBHtmytaxKHu8XnoORStBwqxmtFi_UyT6uHe9U5L5jCRa2mg",
+        "isViewed": false,
+        "isActive": true,
+        "votes": 5
+    },
+    {
+        "click": 0,
+        "name": "Cat 5",
+        "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSQD8IWVrEw68NSpOj-9pwFA9LIO-3WXNfIXbG8oF6JwlgBhi-d",
+        "isViewed": false,
+        "isActive": true,
+        "votes": 9
+    },
+    {
+        "click": 0,
+        "name": "Cat 3",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuPLnnp9jeUNhGVayXbnxyvE6GRUmvya5ytySi0tIGCjLzIVV3dA",
+        "isViewed": false,
+        "isActive": true,
+        "votes": 8
+    },
+    {
+        "click": 0,
+        "name": "Cat 6",
+        "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRVVvsGpb_KPL9uhycOOtLUADAaWB1YLWCA6cWiACKZPco77N1g",
+        "isViewed": false,
+        "isActive": true,
+        "votes": 2
+    },
+    {
+        "click": 0,
+        "name": "Cat 4",
+        "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSxQSC0TPaA5LVFE9e5kY9vBKR6_2WfIJrKHqS41zwbcTyCjxjC",
+        "isViewed": false,
+        "isActive": true,
+        "votes": 8
+    },
+    {
+        "click": 0,
+        "name": "Cat 0",
+        "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSLQN8xx_sR4ujBrAzUGe4eOBvxdEnk24YtbDEwsZ02I1lqx62HxA",
+        "isViewed": false,
+        "isActive": true,
+        "votes": 7
+    },
+    {
+        "click": 0,
+        "name": "Catty",
+        "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkL…7lzn4jE3T9K7fXy3UVPk1D9k7Wa00gJOjIzSM4VhggGpmg60NaQpSs0GKUoKBSlKBSlKD/2Q==",
+        "isViewed": true,
+        "isActive": true,
+        "votes": 5
+    },
+    {
+        "click": 0,
+        "name": "Doggy",
+        "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkL…ZRvw6dw59Obx+bP+Csuxn/ALhqnvZw5w4qowCbFsl9d/CtsFObM88qsb2bMurgXV0jln//2Q==",
+        "isViewed": false,
+        "isActive": true,
+        "votes": 10
+    },
+    {
+        "click": 0,
+        "name": "Cops are Bastards",
+        "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkL…wy+Cilt0uLzcvqd/eHXfqajaQlTjaSE/rW/fOUEnXTWOk6UlFX8hs9+UwyTmQjaQOwooooS//Z",
+        "isViewed": false,
+        "isActive": true,
+        "votes": 2
+    }
+]

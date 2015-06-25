@@ -2,20 +2,37 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Chat</title>
+    <title>Cat0clikcer</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/angular/angular-csp.css" />
     <link rel="stylesheet" type="text/css" href="/build/app.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/angular-emoji-filter-hd/dist/emoji.min.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/font-awesome-4.3.0/css/font-awesome.css" />
+
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="/build/angular-training.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+
+    <script type="text/javascript" src="/build/angular-training.js"></script>
+
+
 </head>
-<body>
+<body ng-app="app" ng-cloak>
     <div id="view" class="container-fluid">
+    <ul class="menu">
+        <li><a href="#/view1">List Cats</a></li>
+        <li><a href="#/view2">Append Cat</a></li>
+    </ul>
     </div>
+
+    <div ng-view></div>
+
+<p/>
+
 </body>
 </html>
