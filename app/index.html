@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/angular/angular-csp.css" />
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -29,7 +31,10 @@
                 <ul class="nav navbar-nav" ng-init="selectedTab = 'view'">
                     <li ng-class="{'active':selectedTab === 'view'}" ng-click="selectedTab = 'view'"><a href="#/view">View Cats</a></li>
                     <li ng-class="{'active':selectedTab === 'add'}" ng-click="selectedTab = 'add'"><a href="#/add">Add New Cat</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li ng-class="{'active':selectedTab === 'profile/register'}" ng-click="selectedTab = 'profile/register'"><a href="#/profile/register">Register</a></li>
+                    <li ng-class="{'active':selectedTab === 'profile/login'}" ng-click="selectedTab = 'profile/login'"><a href="#/profile/login">Log in</a></li>
                 </ul>
             </div>
         </div>

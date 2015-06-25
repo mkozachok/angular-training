@@ -12,7 +12,7 @@ angular.module('myApp.profileRegister', [
     });
   }])
 
-  .controller('profileRegister', function ($scope, catsService, $location) {
+  .controller('profileRegister', function ($rootScope, $scope, catsService, $location) {
     $scope.register = function() {
       if ($scope.profileRegister.name.$valid && $scope.profileRegister.email.$valid) {
 
@@ -21,6 +21,7 @@ angular.module('myApp.profileRegister', [
         $scope.profileRegister.$setPristine();
         $scope.profileRegister.$setUntouched();
         $location.path('/view');
+        $rootScope.selectedTab = 'view';
       }
     };
 

@@ -33,15 +33,15 @@
             </td>
             <td>{{cat.votes}}</td>
             <td>
-                <button class="btn" ng-click="changeCat($index)">View</button>
+                <button type="button"  class="btn" ng-click="changeCat($index)" data-toggle="modal" data-target="#catModal">View</button>
             </td>
         </tr>
         </tbody>
     </table>
 
-    <div>
-        <h3>{{selected_cat.name}}</h3>
-        <img src="{{selected_cat.path}}" ng-click="incCount()" style="width:480px;" class="img-rounded" />
+
+    <modal title="selected_cat.name" visible="visible">
+        <img ng-src="{{selected_cat.path}}" ng-click="incCount()" style="width:565px;" class="img-rounded" />
         <h4>
             <ng-pluralize count="selected_cat.count"
                           when="{'0': 'No clicks on the image.',
@@ -61,5 +61,6 @@
             <button type="button" class="btn btn-success glyphicon glyphicon-thumbs-up" ng-click="vote()"></button>
             <button type="button" class="btn btn-danger glyphicon glyphicon-thumbs-down" ng-click="disvote()"></button>
         </div>
-    </div>
+    </modal>
+
 </div>

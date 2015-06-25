@@ -13,7 +13,7 @@ angular.module('myApp.catsAdd', [
     });
   }])
 
-  .controller('catsAdd', function ($scope, catsService, $location) {
+  .controller('catsAdd', function ($rootScope, $scope, catsService, $location) {
     $scope.add = function() {
       if ($scope.catAdd.name.$valid && $scope.catAdd.path.$valid) {
         catsService.insertCat({
@@ -29,6 +29,7 @@ angular.module('myApp.catsAdd', [
         $scope.catAdd.$setPristine();
         $scope.catAdd.$setUntouched();
         $location.path('/view');
+        $rootScope.selectedTab = 'view';
       }
     };
 
