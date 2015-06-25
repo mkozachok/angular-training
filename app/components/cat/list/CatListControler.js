@@ -18,8 +18,8 @@ angular.module("app").controller("CatListContoller", function ($scope, $rootScop
 
     
     $scope.catActivate = function (newActiveCat) {
-        $rootScope.$broadcast('activeCatChanged', newActiveCat);
         console.log('activeCatChanged brodcasted from CatViewContoller'); 
+        $rootScope.$broadcast('activeCatChanged', newActiveCat);
     };
     
     

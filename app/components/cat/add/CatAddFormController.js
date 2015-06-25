@@ -1,4 +1,4 @@
-angular.module("app").controller("CatFormContoller", function ($scope, $rootScope, CatsDataService) {
+angular.module("app").controller("CatAddFormContoller", function ($scope, $rootScope, CatsDataService) {
     
     $scope.newCat = {};
     

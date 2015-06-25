@@ -1,4 +1,4 @@
-<div ng-controller="CatFormContoller">
+<div>
 
     <form name="newCatForm">
     
@@ -23,11 +23,11 @@
         
         <label>&nbsp;</label>    
         <button ng-show="newCatForm.name.$valid && newCatPhotoPreviewVisibility" ng-click="newCatFormSubmit(newCatForm)" type="button" class="btn btn-primary btn-block">Submit</button>
-    
+
     </form>
     
     <br /><br /><br /><br /><br /><br />
     
-    {{ postResult }}
-
+    {{ postResult }}    
+    
 </div>
