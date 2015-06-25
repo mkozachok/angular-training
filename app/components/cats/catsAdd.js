@@ -1,15 +1,19 @@
 'use strict';
 
-angular.module('myApp.profile_register', [
-    'ngRoute'
-  ]).config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/profile/register', {
-      templateUrl: 'components/profile/profile_register.html',
-      controller: 'profileRegister'
+angular.module('myApp.catsAdd', [
+    'ngRoute',
+    'ngResource',
+    'myApp.catsServices'
+  ])
+
+  .config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/add', {
+      templateUrl: 'components/cats/templates/catsAdd.html',
+      controller: 'catsAdd'
     });
   }])
 
-  .controller('profileRegister', function ($scope, catsService, $location) {
+  .controller('catsAdd', function ($scope, catsService, $location) {
     $scope.add = function() {
       if ($scope.catAdd.name.$valid && $scope.catAdd.path.$valid) {
         catsService.insertCat({

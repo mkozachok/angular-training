@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('myApp.cats_view', [
+angular.module('myApp.catsView', [
     'ngRoute',
     'ngResource',
-    'myApp.cats_services'
+    'myApp.catsServices'
   ])
 
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/view', {
-      templateUrl: 'components/cats/cats_view.html',
+      templateUrl: 'components/cats/templates/catsView.html',
       controller: 'catsView'
     });
   }])

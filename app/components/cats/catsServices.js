@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.cats_services', [
+angular.module('myApp.catsServices', [
     'ngResource'
   ])
 

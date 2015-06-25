@@ -12,7 +12,7 @@
                 <label for="order">Order By:</label>
                 <select class="form-control" id="order" ng-model="order" ng-init="order = 'name'" ng-change="catsFilter()">
                     <option value="name">Name</option>
-                    <option value="-likes">Likes</option>
+                    <option value="-votes">Votes</option>
                 </select>
             </div>
         </div>
@@ -23,14 +23,18 @@
         <tr>
             <th>Name</th>
             <th>Votes</th>
-            <th></th>
+            <th>Operations</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="cat in cats">
-            <td><a href="#view" ng-click="changeCat($index)">{{cat.name}}</a> <span class="glyphicon" ng-class="{'glyphicon-ok':cat.viewed > 0}"></td>
+            <td>
+                <a href="#view" ng-click="changeCat($index)">{{cat.name}}</a> <span class="glyphicon" ng-class="{'glyphicon-ok':cat.viewed > 0}"></span>
+            </td>
             <td>{{cat.votes}}</td>
-            <td><button class="btn" ng-click="changeCat($index)">View</button>
+            <td>
+                <button class="btn" ng-click="changeCat($index)">View</button>
+            </td>
         </tr>
         </tbody>
     </table>
