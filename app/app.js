@@ -6,7 +6,7 @@ catApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvid
 			.state('/', 
 				{
 					url: "/",
-					templateUrl: "templates/cats.html"
+					templateUrl: "templates/CatsView.html"
 				})
 			.state('catDetail', 
 				{

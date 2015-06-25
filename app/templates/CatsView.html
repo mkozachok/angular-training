@@ -1,0 +1,13 @@
+<div ng-controller="CatsController as catsCtrl"> 
+		<input type="text" ng-model="catsCtrl.CatFilter.Value"/>
+		<select ng-model="catsCtrl.CatFilter.OrderBy">
+		  <option value="name">Name</option>
+		  <option value="votes">Votes</option>
+		  <option value="count">Clicks</option>
+		</select>
+		<button class="btn btn-primary"  ng-click="catsCtrl.filter(catsCtrl.CatFilter)">Find</button>
+
+		<div class="row" ng-repeat="cat in catsCtrl.filteredCats">
+			<cat-item></cat-item>
+		</div>		
+</div>

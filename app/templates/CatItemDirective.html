@@ -1,0 +1,23 @@
+<div>
+	<div class="col-md-4">			  
+	  	{{cat.name}}
+	</div>
+	<div class="col-md-2">			  
+	  	<img ng-src="{{cat.src}}" height="50" width="50"/>	
+	</div>			
+	<div class="col-md-1">
+		<i class="glyphicon glyphicon-thumbs-up" ng-click="catsCtrl.updateVote(cat, 1)"></i>				
+	</div>							
+	<div class="col-md-1">
+		<span class="badge">{{cat.votes}}</span>
+	</div>
+	<div class="col-md-1">
+		<i class="glyphicon glyphicon-thumbs-down" ng-click="catsCtrl.updateVote(cat, -1)"></i>				
+	</div>				
+	<div class="col-md-2">
+		<a class="btn btn-default" href="#" role="button" ui-sref="catDetail({id: cat.id})">View details &raquo;</a>
+	</div>						  				 
+	<div class="col-md-2">
+		<span ng-show="cat.is_viewed === 1">&#10003;</span>
+	</div>						  				 		  	
+</div>
