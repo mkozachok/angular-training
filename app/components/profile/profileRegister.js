@@ -12,30 +12,67 @@ angular.module('myApp.profileRegister', [
     });
   }])
 
-  .controller('profileRegister', function ($rootScope, $scope, catsService, $location) {
-    $scope.register = function() {
-      if ($scope.profileRegister.name.$valid && $scope.profileRegister.email.$valid) {
+  .controller('profileRegister', function ($rootScope, $scope, catsService, $location, profileService) {
+    $scope.registerProfile = function() {
+      var form = $scope.profileRegister;
 
+      if (form.name.$valid && form.password_repeat.$valid && form.email.$valid) {
+        // Store new user to localStorage.
+        profileService.registerUser({
+          name: $scope.name,
+          password: $scope.password_repeat,
+          email: $scope.email
+        });
+
+        // Clear form values.
         $scope.name = '';
+        $scope.password = '';
+        $scope.password_repeat = '';
         $scope.email = '';
-        $scope.profileRegister.$setPristine();
-        $scope.profileRegister.$setUntouched();
+
+        // Clear form states.
+        form.$setPristine();
+        form.$setUntouched();
+
+        // Redirect to main page.
         $location.path('/view');
         $rootScope.selectedTab = 'view';
       }
     };
 
-    $scope.cancel = function() {
+    $scope.registerCancel = function() {
       $scope.name = '';
+      $scope.password = '';
+      $scope.password_repeat = '';
       $scope.email = '';
       $scope.profileRegister.$setPristine();
       $scope.profileRegister.$setUntouched();
     };
 
-    $scope.setClass = function() {
-      if ($scope.profileRegister.name.$invalid || $scope.profileRegister.email.$invalid) {
+    $scope.registerFormSubmitClass = function() {
+      var form = $scope.profileRegister;
+      if (form.name.$invalid || form.email.$invalid || form.password_repeat.$invalid) {
         return 'disabled';
       }
       return '';
+    };
+  })
+
+  .directive("compareTo", function() {
+    return {
+      require: "ngModel",
+      scope: {
+        otherModelValue: "=compareTo"
+      },
+      link: function(scope, element, attributes, ngModel) {
+
+        ngModel.$validators.compareTo = function(modelValue) {
+          return modelValue == scope.otherModelValue;
+        };
+
+        scope.$watch("otherModelValue", function() {
+          ngModel.$validate();
+        });
+      }
     };
   });

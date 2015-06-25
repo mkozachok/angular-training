@@ -7,6 +7,7 @@
     'myApp.catsAdd',
     'myApp.catsServices',
     'myApp.profileRegister',
+    'myApp.profileLogin',
     'myApp.profileServices'
   ]).
   config(['$routeProvider', function($routeProvider) {
