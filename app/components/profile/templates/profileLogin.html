@@ -1,5 +1,9 @@
 <h2>Log in</h2>
 <div ng-controller="profileLogin">
+    <div class="alert alert-danger" ng-show="loginError">
+        <strong>Username or Password is incorrect.</strong>
+    </div>
+
     <form name="profileLogin" novalidate>
         <div class="form-group">
             <label for="name">User Name:</label>

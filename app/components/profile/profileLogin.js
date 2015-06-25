@@ -13,30 +13,33 @@ angular.module('myApp.profileLogin', [
   }])
 
   .controller('profileLogin', function ($rootScope, $scope, catsService, $location, profileService) {
+    $scope.loginError = false;
+
     $scope.loginProfile = function() {
       var form = $scope.profileLogin;
 
-      if (form.name.$valid && form.email.$valid) {
+      if (form.name.$valid && form.password.$valid) {
+        // Try to get user data.
+        var user = profileService.loginUser($scope.name, $scope.password);
 
-        profileService.getUser({
-          name: $scope.name,
-          password: $scope.password,
-          email: $scope.email
-        });
+        if (!user) {
+          $scope.loginError = true;
+        }
+        else {
+          // Clear form values.
+          $scope.name = '';
+          $scope.password = '';
+          $scope.password_repeat = '';
+          $scope.email = '';
 
-        // Clear form values.
-        $scope.name = '';
-        $scope.password = '';
-        $scope.password_repeat = '';
-        $scope.email = '';
+          // Clear form states.
+          form.$setPristine();
+          form.$setUntouched();
 
-        // Clear form states.
-        form.$setPristine();
-        form.$setUntouched();
-
-        // Redirect to main page.
-        $location.path('/view');
-        $rootScope.selectedTab = 'view';
+          // Redirect to main page.
+          $location.path('/view');
+          $rootScope.selectedTab = 'view';
+        }
       }
     };
 

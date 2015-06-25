@@ -9,8 +9,13 @@ angular.module('myApp.profileServices', [
       return localStorageService.set(user.name, user);
     };
 
-    this.getUser = function (username) {
+    this.loginUser = function (username, password) {
       var user = localStorageService.get(username);
-      return user;
+      if (angular.isObject(user) && user.password == password) {
+        return user;
+      }
+      else {
+        return false;
+      }
     };
   });
