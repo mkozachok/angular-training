@@ -1,5 +1,5 @@
-<div ng-controller="addCatViewCtrl">
-	<form name="myForm" novalidate>
+<div>
+	<form name="myForm" novalidate ng-submit="addCat(addcat.name, addcat.url)">
 		<p>Add new cat:</p>
 		<label for="cat">Cat Name: 
 			<input type="text" name="catName" ng-model="addcat.name" required />
@@ -17,7 +17,7 @@
 			</span>
 		</label>
 		<br/><br/>
-		<input type="submit" value="Save" ng-click="addCat(addcat.name, addcat.url)" 
+		<input type="submit" value="Save"  
 			ng-disabled="!myForm.catName.$dirty || myForm.catName.$invalid ||  
 			!myForm.catUrl.$dirty || myForm.catUrl.$invalid" />
 	</form>

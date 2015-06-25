@@ -1,17 +1,16 @@
-(function () {
-	'use strict';
 
-	var app = angular.module('myApp.catView', ['ngRoute']);
+	//'use strict';
 
-	app.config(['$routeProvider', function($routeProvider) {
+	//var app = angular.module('myApp.catView', ['ngRoute']);
+
+	angular.module('app').config(['$routeProvider', function($routeProvider) {
 	  $routeProvider.when('/cat', {
 	    templateUrl: 'views/catView/cat.html',
 	    controller: 'View1Ctrl'
 	  });
 	}]);
 
-	app.controller('View1Ctrl', [function() {
+	angular.module('app').controller('View1Ctrl', [function() {
 
 	}]);
 
-})();

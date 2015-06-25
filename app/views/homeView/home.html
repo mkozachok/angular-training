@@ -1,10 +1,10 @@
 
- <div ng-controller="HomeViewCtrl">
+ <div>
  	<input ng-model="searchText"  />
- 	<button ng-click="performSearch(searchText)">Search</button>
+ 	<button ng-click="performSearch()">Search</button>
 	
 	<select ng-model="sortMethod" ng-change="change()">
-	  	<option ng-repeat="opt in myOptions" >{{opt}}</option>
+	  	<option ng-repeat="opt in myOptions" >{{opt.value}}</option>
 	</select>
  	<!-- <select ng-options="opt for opt in myOptions" ng-model="sortMethod" 
  	ng-change="change(sortMethod)"></select>   -->
@@ -13,7 +13,7 @@
 
     <div ng-repeat="cat in catsFiltered "> 
         <p ng-model="cat.viewed" ng-click="showCat(cat)">{{$index + 1}}. Name: 
-        	<a href="#/cat">{{ cat.name }}</a> / Clicks: {{ cat.clicks }} / Likes: {{ cat.likes }} /
+        	{{ cat.name }} / Clicks: {{ cat.clicks }} / Likes: {{ cat.likes }} /
         	<span ng-show="{{cat.viewed}}"> + </span>
         </p>
     </div> 
