@@ -1,0 +1,26 @@
+﻿<form name="addForm" ng-controller="CatAddCtrl" novalidate>
+
+    Cat name: <input type="text" ng-model="newCat.Name" name="catName" required>
+    <span style="color:red" ng-show="addForm.catName.$dirty && addForm.catName.$invalid">
+        <span ng-show="addForm.catName.$error.required">Kotik-name is required.</span>
+    </span>
+
+    <br />
+
+    Cat pic: <input type="url" ng-model="newCat.Pic" name="catPic" required>
+    <span style="color:red" ng-show="addForm.catPic.$dirty && addForm.catPic.$invalid">
+        <span ng-show="addForm.catPic.$error.required">Url is required.</span>
+        <span ng-show="addForm.catPic.$error.url">Invalid url detected.</span>
+    </span>
+
+    <br />
+
+    <img ng-src="{{newCat.Pic}}">
+
+    <br />
+
+    <input type="submit" ng-click="addCat()" value="Add cat!"
+           ng-disabled="addForm.catName.$dirty && addForm.catName.$invalid || 
+           addForm.catPic.$dirty && addForm.catPic.$invalid" />
+
+</form>

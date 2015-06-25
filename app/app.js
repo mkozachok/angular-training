@@ -18,6 +18,26 @@ app.config(['$resourceProvider', function ($resourceProvider) {
     $resourceProvider.defaults.stripTrailingSlashes = false;
 }]);
 
+app.directive('catAdder', function () {
+    return {
+        restrict: 'A',
+        templateUrl: 'directives/catAdder.html'
+    };
+});
+
+app.directive('catDetails', function () {
+    return {
+        restrict: 'A',
+        templateUrl: 'directives/catDetails.html',
+        controller: 'CatDetailsCtrl',
+        controllerAs: '$CatDetailsCtrl',
+        bindToController: true,
+        scope: {
+            catInfo: '=info'
+        } 
+    };
+});
+
 app.factory('catFactory', function () {
     //Not used so fat
 
@@ -46,6 +66,8 @@ app.service('catService',['$resource', function ($resource) {
         }
     });
 
+    this.selectedCat = "";
+
 }]);
 
 app.controller('CatMainCtrl', function ($scope, catService, filterFilter) {
@@ -53,8 +75,11 @@ app.controller('CatMainCtrl', function ($scope, catService, filterFilter) {
     //REST GET cats
     $scope.getCatList = function () {
         $scope.cats = catService.res.query();
-        $scope.cats.$promise.then(function () { $scope.selectedCat = $scope.cats[0]; });
-        
+        $scope.cats.$promise.then(function () {
+            catService.selectedCat = $scope.cats[0];
+            $scope.selectedCat = catService.selectedCat;
+            console.log(catService.selectedCat);
+        });        
     };
     
     //REST GET cat by id
@@ -81,28 +106,14 @@ app.controller('CatMainCtrl', function ($scope, catService, filterFilter) {
         });
     };
 
-
-
-
     $scope.getCatList();
 
     $scope.orderProp='name';
 
-    $scope.Click = function () {
-        $scope.selectedCat.clicks++;
-    };
-
-    $scope.Like = function () {
-        $scope.selectedCat.likes++;
-    };
-
-    $scope.Dislike = function () {
-        $scope.selectedCat.likes--;
-    };
-
     $scope.SelectCat = function (cat) {
+        catService.selectedCat = cat;
+        catService.selectedCat.checked = true;
         $scope.selectedCat = cat;
-        $scope.selectedCat.checked = true;
     };
 
     $scope.filterCats = function (element) {
@@ -125,3 +136,4 @@ app.controller('CatAddCtrl', function ($scope, catService, $location) {
     };
 
 });
+    
