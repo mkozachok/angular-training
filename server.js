@@ -3,6 +3,8 @@ var expressIO = require('express.io'),
 
 var app = expressIO();
 
+var catFile = './json/cats.json';
+
 app.use(expressIO.cookieParser());
 app.use(expressIO.session({secret: 'monkey'}));
 app.use(expressIO.bodyParser());
@@ -29,15 +31,20 @@ app.get('/mentees', function(req, res) {
 });
 
 app.get('/cats', function(req, res) {
-  var result = require('./json/cats.json');
+  var result = require(catFile);
   res.json(result);
 });
 
 app.post('/cats', function(req, res) {
-  var result = require('./json/cats.json');
+  // Read Cat file.
+  var result = require(catFile);
+
+  // Add new item.
   result.push(req.body);
+
+  // Write the file.
   var fs = require('fs');
-  fs.writeFile('./json/cats.json', JSON.stringify(result), function (err) {});
+  fs.writeFile(catFile, JSON.stringify(result), function (err) {});
 });
 
 exports = module.exports = app;
