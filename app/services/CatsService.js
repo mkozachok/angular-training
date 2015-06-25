@@ -1,0 +1,47 @@
+catApp.factory('catsService', function (catsResource, filterFilter, orderByFilter, votesService) {
+	
+	var get = function(){
+		return catsResource.query().$promise;
+	};
+
+	var update = function(cat){
+		catsResource.update(cat);
+	};
+
+	var save = function(cat){
+		catsResource.save({
+					"id" : 4, 
+					"name": cat.name, 
+					"src": cat.src, 
+					"count":0,
+					"is_viewed":0,
+					"votes":0
+				 });
+	};
+
+	var filter = function(cats, flt){
+		return filterFilter(orderByFilter(cats, flt.OrderBy), flt.Value);
+	};
+
+	var vote = function (cat, dir){		
+		if (dir === 1) {
+			votesService.upvote(cat);
+		}
+		else {
+			votesService.downvote(cat);
+		}
+	};
+	
+	var click = function (cat){
+		cat.count++;
+	};
+
+	return {
+		get : get,
+		update : update,
+		save : save,
+		filter : filter,
+		vote : vote,
+		click : click
+	};
+});

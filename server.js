@@ -3,7 +3,7 @@ var expressIO = require('express.io'),
 
 var app = expressIO();
 
-var cats = [];
+var cats = null;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -33,9 +33,8 @@ app.get('/mentees', function(req, res) {
 });
 
 app.get('/cats/:id?', function(req, res) {
-    if (cats.length === 0){
-        var result = require('./json/cats.json');
-        cats = result;
+    if (!cats){
+        cats = require('./json/cats.json');
     }
 
     var catsOutput = null;

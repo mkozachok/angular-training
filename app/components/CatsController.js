@@ -1,11 +1,11 @@
-catApp.controller('CatsController', function($scope, catsStorage) {							  				
+catApp.controller('CatsController', function($scope, catsService) {							  				
 		var vm = this;		
 
 		vm.CatFilter = {Value :'', OrderBy:'name'};		
 		
 		vm.filter = function (flt) {
-			catsStorage.get().then(function (cats) {
-				vm.filteredCats = catsStorage.filter(cats, flt);
+			catsService.get().then(function (cats) {
+				vm.filteredCats = catsService.filter(cats, flt);
 			});
 		};
 		
@@ -22,10 +22,10 @@ catApp.controller('CatsController', function($scope, catsStorage) {
 		);
 
 		vm.click = function(cat) {
-			catsStorage.click(cat);
+			catsService.click(cat);
 		};	
 		
 		vm.updateVote = function (cat, direction){
-			catsStorage.vote(cat, direction);
+			catsService.vote(cat, direction);
 		};	
 	});

@@ -1,17 +1,16 @@
-catApp.controller('CatDetailController', ['$scope', '$stateParams', 'catsFactory',
-	  function($scope, $stateParams, catsFactory) {
+catApp.controller('CatDetailController', function($scope, $stateParams, catsResource) {
 	  	onCreate();
 				
 		$scope.click = function (cat){
 			cat.count++;
-			catsFactory.update(cat);
+			catsResource.update(cat);
 		};		
 
 		function onCreate(){
 			// select cat by id
 			var catId = parseInt($stateParams.id);		
 
-			$scope.current = catsFactory.get({id : catId});
+			$scope.current = catsResource.get({id : catId});
 		}
-	}]);
+	});
 	

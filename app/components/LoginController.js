@@ -1,10 +1,10 @@
-catApp.controller('LoginController', function($scope, indetityStorage) {							  				
+catApp.controller('LoginController', function($scope, indetityService) {							  				
 		var vm = this;		
 	
 		vm.authenticated = false;
 
 		vm.login = function (user){
-			indetityStorage.check(user);
-			vm.authenticated = indetityStorage.currentUser !== null;	
+			indetityService.check(user);
+			vm.authenticated = indetityService.currentUser !== null;	
 		};	
 	});

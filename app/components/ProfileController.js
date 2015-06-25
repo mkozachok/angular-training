@@ -1,7 +1,7 @@
-catApp.controller('ProfileController', function($scope, indetityStorage) {							  				
+catApp.controller('ProfileController', function($scope, indetityService) {							  				
 		var vm = this;				
 
 		vm.create = function (profileData){
-			indetityStorage.toLocalStorage(profileData);
+			indetityService.toLocalStorage(profileData);
 		};	
 	});
