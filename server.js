@@ -5,6 +5,7 @@ var app = expressIO();
 
 app.use(expressIO.cookieParser());
 app.use(expressIO.session({secret: 'monkey'}));
+app.use(expressIO.bodyParser());
 
 app.http().io();
 app.listen(8000);
@@ -30,6 +31,13 @@ app.get('/mentees', function(req, res) {
 app.get('/cats', function(req, res) {
   var result = require('./json/cats.json');
   res.json(result);
+});
+
+app.post('/cats', function(req, res) {
+  var result = require('./json/cats.json');
+  result.push(req.body);
+  var fs = require('fs');
+  fs.writeFile('./json/cats.json', JSON.stringify(result), function (err) {});
 });
 
 exports = module.exports = app;

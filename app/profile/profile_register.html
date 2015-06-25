@@ -1,0 +1,18 @@
+<h2>Register a New User</h2>
+<div ng-controller="profileRegister">
+    <form name="profileRegister" novalidate>
+        <div class="form-group">
+            <label for="name">User Name:</label>
+            <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" />
+            <div ng-show="profileRegister.name.$touched">
+                <div ng-show="catAdd.name.$error.required">
+                    <div class="alert alert-danger">
+                        <strong>UserName is required.</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success" ng-click="create()" ng-class="setClass()">Create</button>
+        <button type="button" class="btn btn-warning" ng-click="cancel(addCat)">Cancel</button>
+    </form>
+</div>

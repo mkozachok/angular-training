@@ -16,7 +16,10 @@
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="app.js"></script>
-    <script src="cats/cats.js"></script>
+    <script src="cats/cats_services.js"></script>
+    <script src="cats/cats_view.js"></script>
+    <script src="cats/cats_add.js"></script>
+    <script src="profile/profile_register.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -25,6 +28,7 @@
                 <ul class="nav navbar-nav" ng-init="selectedTab = 'view'">
                     <li ng-class="{'active':selectedTab === 'view'}" ng-click="selectedTab = 'view'"><a href="#/view">View Cats</a></li>
                     <li ng-class="{'active':selectedTab === 'add'}" ng-click="selectedTab = 'add'"><a href="#/add">Add New Cat</a></li>
+                    <li ng-class="{'active':selectedTab === 'profile/register'}" ng-click="selectedTab = 'profile/register'"><a href="#/profile/register">Register</a></li>
                 </ul>
             </div>
         </div>
