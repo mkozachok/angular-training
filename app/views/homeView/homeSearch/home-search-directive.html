@@ -1,0 +1,5 @@
+<input ng-model="search.searchText" />
+<button ng-click="search.performSearch()">Search</button>
+<select ng-model="search.sortMethod" ng-change="search.change()">
+  	<option ng-repeat="opt in search.myOptions" >{{opt.value}}</option>
+</select>

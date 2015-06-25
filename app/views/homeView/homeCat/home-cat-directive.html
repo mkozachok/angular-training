@@ -1,0 +1,10 @@
+<div> 
+    <p> Name: {{ oneCat.selectedCat.name }} </p>
+    <img src="{{ oneCat.selectedCat.img }}" ng-click="oneCat.myCount(oneCat.selectedCat)"/> 
+    <p> Clics: {{ oneCat.selectedCat.clicks }}</p>
+    <div>
+    	<p ng-click="oneCat.likeCat(oneCat.selectedCat)" style="color:green">Like! </p> 
+		<p ng-click="oneCat.dislikeCat(oneCat.selectedCat)" style="color:red"> Dislike!</p> 
+    	<p>Amount of Likes: {{ oneCat.selectedCat.likes }}</p>
+    </div>
+</div>

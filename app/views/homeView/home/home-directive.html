@@ -1,0 +1,6 @@
+<div ng-repeat="cat in home.catsFiltered "> 
+    <p ng-model="cat.viewed" ng-click="home.showCat(cat)">{{$index + 1}}. Name: 
+    	{{ cat.name }} / Clicks: {{ cat.clicks }} / Likes: {{ cat.likes }} /
+    	<span ng-show="{{cat.viewed}}"> + </span>
+    </p>
+</div> 
