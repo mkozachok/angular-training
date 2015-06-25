@@ -1,0 +1,61 @@
+<h2>View All Cats</h2>
+<div ng-controller="catsView">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label for="search">Search:</label>
+                <input ng-change="catsFilter()" type="text" class="form-control" placeholder="Enter the name of the cat..." id="search" ng-model="name" autocomplete="off" ng-minlength="3" />
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="order">Order By:</label>
+                <select class="form-control" id="order" ng-model="order" ng-init="order = 'name'" ng-change="catsFilter()">
+                    <option value="name">Name</option>
+                    <option value="-likes">Likes</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Votes</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="cat in cats">
+            <td><a href="#view" ng-click="changeCat($index)">{{cat.name}}</a> <span class="glyphicon" ng-class="{'glyphicon-ok':cat.viewed > 0}"></td>
+            <td>{{cat.votes}}</td>
+            <td><button class="btn" ng-click="changeCat($index)">View</button>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <h3>{{selected_cat.name}}</h3>
+        <img src="{{selected_cat.path}}" ng-click="incCount()" style="width:480px;" class="img-rounded" />
+        <h4>
+            <ng-pluralize count="selected_cat.count"
+                          when="{'0': 'No clicks on the image.',
+                     'one': '1 click on the image.',
+                     'other': '{} clicks on the image.'}">
+            </ng-pluralize>
+        </h4>
+        <h5>
+            <ng-pluralize count="selected_cat.votes"
+                          when="{'0': '{} votes',
+                     '1': '{} vote',
+                     '-1': '{} vote',
+                     'other': '{} votes'}">
+            </ng-pluralize>
+        </h5>
+        <div class="btn-group">
+            <button type="button" class="btn btn-success glyphicon glyphicon-thumbs-up" ng-click="vote()"></button>
+            <button type="button" class="btn btn-danger glyphicon glyphicon-thumbs-down" ng-click="disvote()"></button>
+        </div>
+    </div>
+</div>

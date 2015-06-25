@@ -4,34 +4,34 @@
     "path":"assets/images/test1.jpg",
     "count":0,
     "viewed":1,
-    "likes":4
+    "votes":4
   },
   {
     "name":"Alex",
     "path":"assets/images/test2.jpg",
     "count":0,
     "viewed":0,
-    "likes":7
+    "votes":7
   },
   {
     "name":"Pavel",
     "path":"assets/images/test3.jpg",
     "count":0,
     "viewed":0,
-    "likes":12
+    "votes":12
   },
   {
     "name":"Dmitriy",
     "path":"assets/images/test4.jpg",
     "count":0,
     "viewed":0,
-    "likes":15
+    "votes":15
   },
   {
     "name":"Andrew",
     "path":"assets/images/test5.jpg",
     "count":0,
     "viewed":0,
-    "likes":2
+    "votes":2
   }
 ]
