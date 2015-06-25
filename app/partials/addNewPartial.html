@@ -1,0 +1,29 @@
+<html>
+<head>
+
+<body>
+	<h1>Add new cat </h1>
+	<form name="myForm" novalidate>
+	   <p>Cats name:<br>
+		  <input type="text" name="name" ng-model="name" required>
+		  <span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+		  <span ng-show="myForm.name.$error.required">Cats name is required.</span>
+		  </span>
+	   </p>
+
+	   <p>Cats img:<br>
+		  <input type="text" name="img" ng-model="img" required>
+		  <span style="color:red" ng-show="myForm.img.$dirty && myForm.img.$invalid">
+		  <span ng-show="myForm.img.$error.required">Cats img is required.</span>
+		  </span>
+	   </p>
+
+
+	    
+	    	   
+	    <input type="submit" ng-click="add(name,img)" value="Save" ng-disabled="myForm.name.$invalid || myForm.img.$invalid"   />
+  </form>
+</body>
+
+</head>
+</html>

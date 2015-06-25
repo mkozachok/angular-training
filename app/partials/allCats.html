@@ -1,0 +1,27 @@
+<html>
+<head>
+
+<body>
+	<h1>all cats view</h1>
+        <label>Search: <input name="name" ng-model="name"></label>
+
+        <div ng-repeat="x in cats | wordsFilter:name" ng-click="catClicked(x)" class="box2" >
+    		<h1>{{x.name}} : {{x.clicks}}</h1> 
+            
+                <img  src="http://icons.iconseeker.com/png/128/vistoon/checked.png" ng-hide="x.checked" width="50" style=""/>
+        </div>
+
+        
+        <div class="col-md-2">
+            <img src="{{currentObj.img}}" width="300">
+            <h2>{{currentObj.name}}</h2>
+            <h2 ng-click="like(currentObj)">Like</h2>
+            <h2>Like count : {{currentObj.likes}}<h2> 
+            <h2 ng-click="disLike(currentObj)">DisLike</h2>
+        </div>
+
+
+</body>
+
+</head>
+</html>
