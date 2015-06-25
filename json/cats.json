@@ -1,0 +1,7 @@
+[
+  { "id": "0", "name": "Merin", "clicks": "0", "likes": "0", "pic": "Res/pic1.png", "checked": "true" },
+  { "id": "1", "name": "Linda", "clicks": "0", "likes": "0", "pic": "Res/pic2.png", "checked": "false" },
+  { "id": "2", "name": "Jenny", "clicks": "0", "likes": "0", "pic": "Res/pic3.png", "checked": "false" },
+  { "id": "3", "name": "Bobby", "clicks": "0", "likes": "0", "pic": "Res/pic4.png", "checked": "false" },
+  { "id": "4", "name": "Dendy", "clicks": "0", "likes": "0", "pic": "Res/pic5.png", "checked": "false" }
+]

@@ -1,0 +1,28 @@
+<input type="text" ng-model="searchName" placeholder="Search by" autofocus />
+<select ng-model="orderProp">
+    <option value="name" ng-selected="true">Asc</option>
+    <option value="-name">Desc</option>
+</select>
+
+<ul>
+    <li ng-repeat="cat in cats | filter:filterCats | orderBy:orderProp " ng-click="SelectCat(cat)">
+        <input type="text" ng-model="cat.name" name="catName">
+        
+        : {{cat.clicks}} : {{cat.checked}} ({{cat.likes}} likes)
+        <span ng-if="cat.checked == true">&#10004;</span>
+        <a href="" ng-click="updateCat(cat)">Edit</a>
+        <a href="" ng-click="deleteCat(cat.id)">Delete</a>
+    </li>
+</ul>
+<a href="#/add">Add new cat</a>
+
+<hr /><br />
+
+Selected cat: {{selectedCat.name}} - {{selectedCat.clicks}}
+
+<br />
+
+<img ng-click="Click()" ng-src="{{selectedCat.pic}}" height="200" width="250" />
+<img ng-click="Like()" ng-src="Res/like.png" />
+<img ng-click="Dislike()" ng-src="Res/dislike.png" />
+
