@@ -2,110 +2,103 @@
  * Created by Oleksandr_Zobov on 6/22/15.
  */
 
-__mainApp.CatsService = function(_provider)
-{
-    var provider = _provider;
-    var selectedCat = null;
-    var cats = [];
+ __mainApp.factory('myCatsService', ['$resource', 'shareService', 'Cat', function(provider, share, CatProps)
+ {
 
-    var isCatsObtained = false;
-    var isCatsObtaining = false;
-    this.addCat = function (name, image)
+    var CatsService = function(provider)
     {
-        var seed = Math.floor((Math.random() * 255) + 1);
-        console.log('addCat isCatsObtained '+isCatsObtained +' isCatsObtaining '+isCatsObtaining + ' ' +seed);
+    /**
+     * @var _provider ngResource
+     */
+     var _provider = provider;
+     var _selectedCat = null;
 
-        var cat = Object.create(__mainApp.Cat);
-        cat.Cat(name, image);
-        //this.cats.push(cat);
-         var catsCollection = provider('/addCat', null, {
-                'put':{isArray:false, method:'PUT'}
-            });
+     //var cats - is now held by the shareService to share amongst controllers instances
+    
 
-         var self = this;
+     var _isCatsObtained = false;
+     var _isCatsObtaining = false;
 
-         var result = catsCollection.put(cat, function(response) {
-                console.log('Cat putted!  '+self.isCatsObtained +' isCatsObtaining '+self.isCatsObtaining + ' ' +seed);
-                console.log( JSON.stringify(response) );
-                result = response;
-                self.isCatsObtained = false;
-                self.getCats();
-
-            } )  ;
-
-        console.log('addCat Return isCatsObtained '+isCatsObtained +' isCatsObtaining '+isCatsObtaining + ' ' +seed);
-        console.log(JSON.stringify(result) );
-
-        return {'cat':cat, 'result':result };
+     this.addCat = function (name, image, refreshCallback)
+     {
+        var catNew = Object.create( Object.prototype , CatProps  );
+        catNew.init(name, image);
+        var catsCollection = _provider('/addCat', null, {
+            'put':{isArray:false, method:'PUT'}
+        });
+        var self = this;
+        var result = catsCollection.put(catNew)
+        .$promise
+        .then(
+         function(response) 
+         {          
+            _isCatsObtained = false;
+            self.getCats(null);
+            refreshCallback({'cat': catNew, 'result':response});
+        } )  ;
     }
-   this.getCats = function(__refreshValue)
+    this.getCats = function(refreshCallback)
     { 
-        var seed = Math.floor((Math.random() * 255) + 1);
-        console.log('getCats isCatsObtained '+isCatsObtained +' isCatsObtaining '+isCatsObtaining + ' ' +seed);
-        if(!isCatsObtained && !isCatsObtaining) 
+        if(!_isCatsObtained && !_isCatsObtaining) 
         {
-            console.log('Requesting provider '+ ' ' +seed);
-
-            var catsCollection = provider('/getCats', null, {
+            var catsCollection = _provider('/getCats', null, {
                 'get':{isArray:true, method:'GET'}
             });
-            isCatsObtaining = true;
-  
+            _isCatsObtaining = true;
             var self = this;
-            cats = catsCollection
+            catsCollection
             .get({})
             .$promise
             .then(function(response)
-                  {
-                    console.dir(response);
-                    self.cats = response;
-                    self.isCatsObtained = true;
-                    self.isCatsObtaining = false;
-                     console.log('Cats obtained! isCatsObtained '+isCatsObtained +' isCatsObtaining '+ isCatsObtaining + ' ' +seed);
-                     var catsResponse = [];
-                     for (var obj of response)
-                     {
-                        if (obj.name && obj.click && obj.votes)
-                        {
-                            catsResponse.push(obj);    
-                        }
-                     }
-                    __refreshValue = catsResponse;
-                  });
-
+            {
+                _isCatsObtained = true;
+                _isCatsObtaining = false;
+                share.cats.splice(0, share.cats.length); // share.cats = [] will create a new object instead of updating already in memory
+                for (var obj of response)
+                {
+                    if (obj.hasOwnProperty('name') && obj.hasOwnProperty('click') && obj.hasOwnProperty('votes') )
+                    {
+                        share.cats.push(obj);    
+                    }
+                }
+                if(refreshCallback != null) refreshCallback(share.cats);
+            });
         }
-        console.log('getCats Return isCatsObtained '+isCatsObtained +' isCatsObtaining '+isCatsObtaining + ' ' +seed);
-        return this.cats;
+        else
+            if(refreshCallback != null) refreshCallback(share.cats);
     }
     this.countCats = function()
     {
-        return cats.length;
+        //return share.cats.length;
+        return -1;
     }
 
     this.selectCat = function(cat)
     {
-        selectedCat = cat;
-        return selectedCat;
+        _selectedCat = cat;
+        return _selectedCat;
     }
     this.displayCat = function()
     {
-        if(typeof selectedCat == 'object' && selectedCat )
-            selectedCat.isViewed = true;
+        if(typeof _selectedCat == 'object' && _selectedCat )
+            _selectedCat.isViewed = true;
     }
     this.voteCatUp = function()
     {
-        if(typeof selectedCat == 'object' && selectedCat )
-            selectedCat.votes++;
+        if(typeof _selectedCat == 'object' && _selectedCat )
+            _selectedCat.votes++;
     }
     this.voteCatDown = function()
     {
-        if(typeof selectedCat == 'object' && selectedCat && selectedCat.votes > 0 )
-            selectedCat.votes--;
+        if(typeof _selectedCat == 'object' && _selectedCat && _selectedCat.votes > 0 )
+            _selectedCat.votes--;
     }
 
 }
 
-__mainApp.factory('myCatsService', ['$resource', function($resource) {
-    return new __mainApp.CatsService($resource);
+return new CatsService(provider);
 
-} ] );
+}
+]
+)
+

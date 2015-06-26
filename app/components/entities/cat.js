@@ -1,14 +1,50 @@
-__mainApp.Cat = 
-{
-    click: 0
-    ,name: ''
-    ,image: ''
-    ,isViewed: false
-    ,isActive: true
-    ,votes: Math.floor((Math.random() * 10) + 1)
-    , Cat: function(_name, _image)
-    {
-        this.name = _name;
-        this.image = _image;
-    }
+
+__mainApp.factory('Cat', function() {
+	var Cat = 
+	{
+    	"click": {
+    		value: 0,
+    		writable: true,
+    		enumerable: true
+    	}
+    	,"name": {
+        	value: '',
+        	writable: true,
+    		enumerable: true
+    	}
+    	,"image": {
+    		value: '',
+    		writable: true,
+    		enumerable: true
+  		}
+    	,"isViewed": {
+    		value: false,
+    		writable: true,
+    		enumerable: true
+  		}
+    	,"isActive": {
+    		value: true,
+    		writable: true,
+    		enumerable: true
+  		}
+    	,"votes": {
+    		value: 0,
+    		writable: true,
+    		enumerable: true
+  		},
+  		"init" : {
+			value: 
+  			function(name, image)
+  			{
+  				this.name = name;
+  				this.image = image;
+  				this.votes = Math.floor((Math.random() * 10) + 1);
+  			},
+  			writable: true,
+    		enumerable: true
+    	}
+	}
+
+	return Cat;
 }
+)

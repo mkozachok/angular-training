@@ -1,6 +1,6 @@
 //'use strict';
 
-angular.module('app')
+__mainApp
 
 .config(['$routeProvider', function($routeProvider) {
     console.log('route view 2');
@@ -13,18 +13,16 @@ angular.module('app')
 .controller('AddCatListCtrl', ['$scope', 'myCatsService', function($scope, mcs) {
         $scope.catName = '';
         $scope.catImage='http://';
-        $scope.addCatResultMessage = '';
+        $scope.result = [];
+        
+        $scope.refreshAddResult = function(result)
+        {
+            $scope.result = result.result;
+        }
 
         $scope.addCat = function()
         {
-            var result = mcs.addCat($scope.catName, $scope.catImage);
-            console.log('AddCatListCtrl result');
-            console.log(JSON.stringify(result) );
-
-            $scope.selectedCat = result.cat;
-
-             $scope.addCatResultMessage = result.result.Message;
-
+            mcs.addCat($scope.catName, $scope.catImage, $scope.refreshAddResult);
         }
 
 }]);

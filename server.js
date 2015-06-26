@@ -43,6 +43,7 @@ app.get('/getCats', function(req, res) {
 
 app.put('/addCat', function(req,res)
 {
+    console.log('/addCat');
 	console.log(req.body);
 	function foobar(el) { setTimeout(function() { console.log('Pause continued');  res.json(catsData); }, 5000); }
   foobar(5000);

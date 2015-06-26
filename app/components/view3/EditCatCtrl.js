@@ -1,5 +1,5 @@
 
-angular.module('app')
+__mainApp
 
 .config(['$routeProvider', function($routeProvider) {
     console.log('route view 3');

@@ -1,16 +1,16 @@
 <p>This is the partial for view 1.</p>
 <div ng-controller="ViewCatsListCtrl">
     Filter by: <input type="text" ng-model="filterBy"/><button ng-click="doFilter();">FILTER</button><p/>
-    
+
     <hr/>
     <span ng-if="tooltip.length>0">Suggestions:</span> 
     <div ng-repeat = "x in tooltip ">
     {{ x }}
     </div>
 
-</div>
+
 <hr/>
-<div  ng-controller="ViewCatsListCtrl">
+
     <div style="float: left; width:25%; border:1px; border-style:dotted;">
 
         <div ng-repeat = "x	in cats | filter:filterExpression | orderBy:'name'">
