@@ -38,6 +38,11 @@ app.get('/cat', function(req, res) {
     res.json(cats); //cats
 });
 
+app.delete('/cat', function(req, res) {
+    var cat = req.body;
+    cats.cats.pop(cat.name);
+});
+
 //app.get('/mentees', function(req, res) {
 //    var result = require('./json/mentees.json');
 //    res.json(result);

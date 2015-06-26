@@ -11,12 +11,9 @@ app.service('addOrDeleteCatService',['KittyFactory', function (KittyFactory) {
         },
         deleteCat : function (name) {
             var resource = KittyFactory;
-            var temp = {name: scope.name};
-            resource.save(temp);
-            scope.kittyName = '';
-            scope.kittyImg = '';
+            var temp = {name: name};
+            resource.delete(temp);
         }
-
     };
     return service;
 }]);

@@ -1,9 +1,7 @@
 var app = angular.module('app');
 
-    app.controller('HomeCtrl', ['$scope','$resource', 'KittyFactory', 'promiseObj', function($scope, $resource, KittyFactory, promiseObj) {
+    app.controller('HomeCtrl', ['$scope','$resource', 'promiseObj', function($scope, $resource, promiseObj) {
         'use strict';
-        var resource = KittyFactory;
-        // take cat from server
         $scope.cats = [];
 
         //resource.get().$promise.then(function (response) {

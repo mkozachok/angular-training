@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('ChoseCatCtrl', ['$scope', function($scope) {
+app.controller('ChoseCatCtrl', ['$scope', 'addOrDeleteCatService', function($scope, addOrDeleteCatService) {
     'use strict';
     $scope.sort = 'name';
     $scope.find = '';
@@ -15,6 +15,10 @@ app.controller('ChoseCatCtrl', ['$scope', function($scope) {
     $scope.chose = function(cat){
         $scope.currentCat = cat;
         $scope.currentCat.v = 1;
+    };
+
+    $scope.deleteCat = function(catName){
+        addOrDeleteCatService.deleteCat(catName);
     };
 
     $scope.like = function()
