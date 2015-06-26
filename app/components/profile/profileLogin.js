@@ -20,6 +20,10 @@ angular.module('myApp.profileLogin', [
       $rootScope.registeredSuccess = false;
     }
 
+    $scope.loginErrorClear = function() {
+      $scope.loginError = false;
+    };
+
     $scope.loginProfile = function() {
       var form = $scope.profileLogin;
 

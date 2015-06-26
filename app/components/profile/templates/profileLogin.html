@@ -1,36 +1,26 @@
 <h2>Log in</h2>
 <div ng-controller="profileLogin">
-    <div class="alert alert-danger" ng-show="loginError">
-        <strong>Username or Password is incorrect.</strong>
-    </div>
-
     <div class="alert alert alert-success" ng-show="registeredMessage">
         <strong>Congratulations, you are registered! Now you can log-in using your username and password.</strong>
     </div>
 
     <form name="profileLogin" novalidate>
+        <div class="alert alert-danger" ng-show="loginError || profileLogin.name.$touched && profileLogin.name.$error.required || profileLogin.password.$touched && profileLogin.password.$error.required">
+            <ul>
+                <li ng-show="loginError">Username or Password is incorrect.</li>
+                <li ng-show="profileLogin.name.$touched && profileLogin.name.$error.required">User Name is required.</li>
+                <li ng-show="profileLogin.password.$touched && profileLogin.password.$error.required">Password is required.</li>
+            </ul>
+        </div>
+
         <div class="form-group">
             <label for="name">User Name:</label>
-            <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" />
-            <div ng-show="profileLogin.name.$touched">
-                <div ng-show="profileLogin.name.$error.required">
-                    <div class="alert alert-danger">
-                        <strong>User Name is required.</strong>
-                    </div>
-                </div>
-            </div>
+            <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" ng-keydown="loginErrorClear()" />
         </div>
 
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" ng-model="password" id="password" name="password" required="" />
-            <div ng-show="profileLogin.password.$touched">
-                <div ng-show="profileLogin.password.$error.required">
-                    <div class="alert alert-danger">
-                        <strong>Password is required.</strong>
-                    </div>
-                </div>
-            </div>
+            <input type="password" class="form-control" ng-model="password" id="password" name="password" required="" ng-keydown="loginErrorClear()" />
         </div>
 
         <button type="button" class="btn btn-lg btn-success" ng-click="loginProfile()" ng-class="loginFormSubmitClass()">Log in</button>
