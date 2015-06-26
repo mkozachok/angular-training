@@ -19,6 +19,11 @@ catApp.factory('catsService', function (catsResource, filterFilter, orderByFilte
 				 });
 	};
 
+	var remove = function(cat){
+		catsResource.remove({id : cat.id});
+	};
+
+
 	var filter = function(cats, flt){
 		return filterFilter(orderByFilter(cats, flt.OrderBy), flt.Value);
 	};
@@ -41,6 +46,7 @@ catApp.factory('catsService', function (catsResource, filterFilter, orderByFilte
 		get : get,
 		update : update,
 		save : save,
+		remove : remove,
 		filter : filter,
 		vote : vote,
 		click : click

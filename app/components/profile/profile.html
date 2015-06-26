@@ -1,9 +1,16 @@
-<ng-form name="loginForm" ng-controller="ProfileController as profileCtrl">
-	<span>Login:</span>
-	<input type="text" ng-model="profileData.Name"/>
-	<span>Email:</span>
-	<input type="text"  ng-model="profileData.Email"/>
-	<span>Password:</span>
-	<input type="text"  ng-model="profileData.Password"/>	
-	<button ng-click="profileCtrl.create(profileData)">Enter</button>
+<ng-form name="loginForm" ng-controller="ProfileController as profileCtrl" role="form">
+	<div class="form-group">
+	    <label for="login">Login:</label>
+	    <input type="text" class="form-control" id="login" ng-model="profileCtrl.profileData.Name" ng-required="true">
+	 </div>	
+	<div class="form-group">
+	    <label for="email">Email address:</label>
+	    <input type="text" class="form-control" id="email" ng-model="profileCtrl.profileData.Email" ng-required="true">
+	 </div>
+	<div class="form-group">
+		<label for="pwd">Password:</label>
+		<input type="password" class="form-control" id="pwd" ng-model="profileCtrl.profileData.Password" ng-required="true">
+	</div>	 
+	<a href="#/" class="btn btn-success" ng-click="profileCtrl.create(profileCtrl.profileData)" ng-show="loginForm.$valid">Create</a>
+	<a href="#/" class="btn btn-primary">Cancel</a>
 </ng-form>

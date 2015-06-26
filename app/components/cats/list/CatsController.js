@@ -9,7 +9,8 @@ catApp.controller('CatsController', function($scope, catsService) {
 			});
 		};
 		
-		vm.filter(vm.CatFilter);
+		//vm.filter(vm.CatFilter);
+		vm.filteredCats = catsService.filter($scope.readyCats, vm.CatFilter);
 			
 		$scope.$watch(
 			function() { 

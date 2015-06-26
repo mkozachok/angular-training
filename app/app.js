@@ -1,4 +1,4 @@
-var catApp = angular.module('app', ['ui.router', 'ngResource', 'LocalStorageModule', 'ngCookies']);
+var catApp = angular.module('app', ['about', 'ui.router', 'ngResource', 'LocalStorageModule', 'ngCookies']);
 
 catApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.otherwise("/");
@@ -6,7 +6,15 @@ catApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvid
 			.state('/', 
 				{
 					url: "/",
-					templateUrl: "components/cats/list/catsList.html"
+					templateUrl: "components/cats/list/catsList.html",
+					resolve: {
+						catsPromise : function(catsService){
+							return catsService.get();
+						}
+					},
+					controller : function($scope, catsPromise){
+						$scope.readyCats = catsPromise;
+					}
 				})
 			.state('catDetail', 
 				{
@@ -22,5 +30,20 @@ catApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvid
 				{
 					url: "/createProfile",
 					templateUrl: 'components/profile/profile.html'
-				});			
+				})
+			.state('about', 
+				{
+					url: "/about",
+					views: {
+						'' : {
+							templateUrl: 'components/about/about.html'
+						},
+						'about-dev@about' : {
+							templateUrl: 'components/about/about-dev.html'	
+						},
+						'about-tasks@about' : {
+							templateUrl: 'components/about/about-tasks.html'	
+						}
+					}
+				});
 	}]);

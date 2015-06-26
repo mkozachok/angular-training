@@ -85,4 +85,18 @@ app.put('/cats/:id', function(req, res) {
     res.send('<p>Thank you</p>');
 });
 
+app.delete('/cats/:id', function(req, res) {
+    var catIndex = -1;
+    var catId = parseInt(req.params.id);
+
+    cats.forEach(function(catItem, index) {
+        if (catItem.id === catId)
+            catIndex = index;
+    });
+
+    cats.splice(catIndex, 1);
+
+    res.send('<p>Ok</p>');
+});
+
 exports = module.exports = app;

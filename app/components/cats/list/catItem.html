@@ -3,7 +3,7 @@
 	  	{{catCtrl.model.name}}
 	</div>
 	<div class="col-md-2">			  
-	  	<img ng-src="{{catCtrl.model.src}}" ng-click="catCtrl.click(catCtrl.model)" alt="{{catCtrl.model.count}}" title="{{catCtrl.model.count}}" height="50" width="50"/>
+	  	<img style="margin-top:5px" ng-src="{{catCtrl.model.src}}" ng-click="catCtrl.click(catCtrl.model)" alt="{{catCtrl.model.count}}" title="{{catCtrl.model.count}}" height="50" width="50"/>
 	</div>			
 	<div class="col-md-1">
 		<i class="glyphicon glyphicon-thumbs-up" ng-click="catCtrl.updateVote(catCtrl.model, 1)"></i>				
@@ -14,10 +14,13 @@
 	<div class="col-md-1">
 		<i class="glyphicon glyphicon-thumbs-down" ng-click="catCtrl.updateVote(catCtrl.model, -1)"></i>				
 	</div>				
-	<div class="col-md-2">
+	<div class="col-md-1">
+		<button class="btn btn-danger" role="button" ng-click="catCtrl.remove(catCtrl.model)">Remove</button>
+	</div>						  				 	
+	<div class="col-md-1">
 		<a class="btn btn-default" role="button" href="#/cat/{{catCtrl.model.id}}">View details &raquo;</a>
 	</div>						  				 
-	<div class="col-md-2">
+	<div class="col-md-1">
 		<span ng-show="cat.is_viewed === 1">&#10003;</span>
 	</div>						  				 		  	
 </div>

@@ -1,4 +1,4 @@
-catApp.controller('CatItemDirectiveController', function($scope, catsService) {							  				
+catApp.controller('CatItemDirectiveController', function($scope, $state, catsService) {							  				
 		var vm = this;		
 	
 		vm.updateVote = function(cat, direction){
@@ -7,5 +7,10 @@ catApp.controller('CatItemDirectiveController', function($scope, catsService) {
 
 		vm.click = function(cat){
 			catsService.click(cat);
+		};
+
+		vm.remove = function(cat) {
+			catsService.remove(cat);
+			$state.reload();
 		};
 	});
