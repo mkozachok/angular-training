@@ -32,26 +32,31 @@ app.get('/mentees', function(req, res) {
     res.json(result);
 });
 
-app.get('/cats/:id?', function(req, res) {
+app.get('/cats', function(req, res) {
     if (!cats){
         cats = require('./json/cats.json');
     }
 
-    var catsOutput = null;
+    res.json(cats);
+});
+
+app.get('/cats/:id', function(req, res) {
+    if (!cats){
+        cats = require('./json/cats.json');
+    }
+
+    var cat = {};
     var catId = parseInt(req.params.id) || 0;
 
     if (catId > 0)
     {
         cats.forEach(function(catItem, index) {
         if (catItem.id === catId)
-            catsOutput = catItem;
+            cat = catItem;
         });
     }
-    else {
-        catsOutput = cats;
-    }
 
-    res.json(catsOutput);
+    res.json(cat);
 });
 
 app.post('/cats/:id', function(req, res) {

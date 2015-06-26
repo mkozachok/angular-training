@@ -1,6 +1,6 @@
 catApp.directive('catItem', function() {
 	return {
-		templateUrl: 'templates/catItemDirective.html',
+		templateUrl: 'components/cats/list/catItem.html',
 		controller: 'CatItemDirectiveController',
 		controllerAs: 'catCtrl',
 		bindToController: true,

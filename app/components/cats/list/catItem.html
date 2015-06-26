@@ -15,7 +15,7 @@
 		<i class="glyphicon glyphicon-thumbs-down" ng-click="catCtrl.updateVote(catCtrl.model, -1)"></i>				
 	</div>				
 	<div class="col-md-2">
-		<a class="btn btn-default" href="#" role="button" ui-sref="catDetail({id: catCtrl.model.id})">View details &raquo;</a>
+		<a class="btn btn-default" role="button" href="#/cat/{{catCtrl.model.id}}">View details &raquo;</a>
 	</div>						  				 
 	<div class="col-md-2">
 		<span ng-show="cat.is_viewed === 1">&#10003;</span>

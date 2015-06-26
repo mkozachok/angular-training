@@ -6,21 +6,21 @@ catApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvid
 			.state('/', 
 				{
 					url: "/",
-					templateUrl: "templates/CatsView.html"
+					templateUrl: "components/cats/list/catsList.html"
 				})
 			.state('catDetail', 
 				{
 					url: "/cat/:id",
-					templateUrl: "templates/detail.html"
+					templateUrl: "components/cats/detail/catDetail.html"
 				})
 			.state('catAdd', 
 				{
 					url: "/add",
-					templateUrl: 'templates/add.html'
+					templateUrl: 'components/cats/add/catAdd.html'
 				})
 			.state('profileAdd', 
 				{
 					url: "/createProfile",
-					templateUrl: 'templates/profile.html'
+					templateUrl: 'components/profile/profile.html'
 				});			
 	}]);

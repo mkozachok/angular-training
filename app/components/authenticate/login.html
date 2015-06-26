@@ -1,6 +1,6 @@
 <ng-form name="loginForm" class="navbar-form navbar-right" role="form" ng-controller="LoginController as loginCtrl">			
 			<div ng-show="loginCtrl.authenticated">
-				<a class="navbar-brand" ui-sref="/" ng-click="loginCtrl.logout()">Hello, {{loginCtrl.userTitle}} </a>
+				<a class="navbar-brand" href="#/" ng-click="loginCtrl.logout()">Hello, {{loginCtrl.userTitle}} </a>
 			</div>
 			<div ng-hide="loginCtrl.authenticated">
 	            <div class="form-group">
@@ -10,6 +10,6 @@
 	              <input type="password" placeholder="Password" class="form-control" ng-model="loginCtrl.userData.Password">
 	            </div>
 	            <button class="btn btn-success" ng-click="loginCtrl.login(loginCtrl.userData)">Sign in</button>
-	            <button class="btn btn-primary" ui-sref="profileAdd">Sign up</button>
+	            <a class="btn btn-primary" href="#/createProfile">Sign up</a>
 	        </div>    
 </ng-form>
