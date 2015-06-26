@@ -36,7 +36,7 @@ module.exports = function (grunt) {
                     sourceMapName: "build/sourcemap.map",
                     sourceMapStyle: "link"
                 },
-                src: ['app/**/*.js'],
+                src: ['app/app.js','app/**/*.js'],
                 dest: 'build/<%= pkg.name %>.js'
             },
             appAndTpl: {

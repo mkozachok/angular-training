@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="app.css">
     <script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <!--<script src="/bower_components/angular-route/angular-route.js"></script>-->
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/build/angular-training.js"></script>
 </head>
@@ -22,17 +23,17 @@
     <li><a href="#/add_cat">add cat</a></li>
 </ul>
 
-<!--<div ng-cloak>-->
-    <!--<div ng-view></div>-->
+<div ng-cloak>
+    <div ui-view></div>
+</div>
+
+<!--<div>-->
+    <!--<home type="cats"></home>-->
 <!--</div>-->
-
-<div>
-    <home type="cats"></home>
-</div>
-
-<div>
-    <add-cat></add-cat>
-</div>
+<!--<br>-->
+<!--<div>-->
+    <!--<add-cat></add-cat>-->
+<!--</div>-->
 
 <!--<div>-->
     <!--<list type="add-cat">-->
