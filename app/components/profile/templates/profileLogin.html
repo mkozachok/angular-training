@@ -4,6 +4,10 @@
         <strong>Username or Password is incorrect.</strong>
     </div>
 
+    <div class="alert alert alert-success" ng-show="registeredMessage">
+        <strong>Congratulations, you are registered! Please use your username and password to login.</strong>
+    </div>
+
     <form name="profileLogin" novalidate>
         <div class="form-group">
             <label for="name">User Name:</label>
@@ -29,7 +33,7 @@
             </div>
         </div>
 
-        <button type="button" class="btn btn-lg btn-success" ng-click="loginProfile()" ng-class="loginFormSubmitClass()">Login</button>
+        <button type="button" class="btn btn-lg btn-success" ng-click="loginProfile()" ng-class="loginFormSubmitClass()">Log in</button>
         <button type="button" class="btn btn-lg btn-warning" ng-click="loginCancel()">Cancel</button>
     </form>
 </div>

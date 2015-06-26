@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('myApp.profileLogin', [
-    'ngRoute',
-    'myApp.profileServices'
-  ])
+  'ngRoute',
+  'myApp.profileServices'
+])
 
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/profile/login', {
@@ -14,6 +14,11 @@ angular.module('myApp.profileLogin', [
 
   .controller('profileLogin', function ($rootScope, $scope, catsService, $location, profileService) {
     $scope.loginError = false;
+
+    if ($rootScope.registeredSuccess) {
+      $scope.registeredMessage = true;
+      $rootScope.registeredSuccess = false;
+    }
 
     $scope.loginProfile = function() {
       var form = $scope.profileLogin;

@@ -34,9 +34,10 @@ angular.module('myApp.profileRegister', [
         form.$setPristine();
         form.$setUntouched();
 
-        // Redirect to main page.
-        $location.path('/view');
-        $rootScope.selectedTab = 'view';
+        // Redirect to login page.
+        $location.path('/profile/login');
+        $rootScope.selectedTab = 'profile/login';
+        $rootScope.registeredSuccess = true;
       }
     };
 
