@@ -3,11 +3,11 @@ var expressIO = require('express.io'),
     bodyParser = require('body-parser');
 
 var app = expressIO();
-var data = {"cats": [{ "id": 1, "name": "Cat1", "image": "Assets\\img\\Cat1.jpg", "age": 5, "gender": "Male" },
-          { "id": 2, "name": "Cat2", "image": "Assets\\img\\Cat2.jpg", "age": 15, "gender": "Female"},
-          { "id": 3, "name": "Cat3", "image": "Assets\\img\\Cat3.jpg", "age": 1, "gender": "Female"},
-          { "id": 4, "name": "Cat4", "image": "Assets\\img\\Cat4.jpg", "age": 3, "gender": "Male"},
-          { "id": 5, "name": "Cat5", "image": "Assets\\img\\Cat5.jpg", "age": 7, "gender": "Male"}
+var data = {"cats": [{ "id": "1", "name": "Cat1", "image": "Assets/img/Cat1.jpg", "age": "5", "gender": "Male" },
+          { "id": "2", "name": "Cat2", "image": "Assets/img/Cat2.jpg", "age": "15", "gender": "Female"},
+          { "id": "3", "name": "Cat3", "image": "Assets/img/Cat3.jpg", "age": "1", "gender": "Female"},
+          { "id": "4", "name": "Cat4", "image": "Assets/img/Cat4.jpg", "age": "3", "gender": "Male"},
+          { "id": "5", "name": "Cat5", "image": "Assets/img/Cat5.jpg", "age": "7", "gender": "Male"}
       ]};
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -50,12 +50,27 @@ app.post('/cats', function(req, res) {
 });
 
 app.delete('/cats/:id', function(req, res) {
-	  var indexToDelete = data.cats.map(function (cat) { return cat.id; }).indexOf(parseInt(req.params.id, 10));
+	  var indexToDelete = data.cats.map(function (cat) { return parseInt(cat.id, 10); }).indexOf(parseInt(req.params.id, 10));
 	  if (indexToDelete > -1) {
 		    data.cats.splice(indexToDelete, 1);
 	  }	
    
     res.json({});
+});
+
+app.put('/cats/:id', function(req, res) {
+    var index = data.cats.map(function (cat) { return parseInt(cat.id, 10); }).indexOf(parseInt(req.params.id, 10)),
+      cat = {};
+    if (index > -1) {
+        data.cats[index]["name"] = req.body.name;
+        data.cats[index]["age"] = req.body.age;
+        data.cats[index]["gendre"] = req.body.gendre;
+
+        res.json({ "success": "true" });
+    } 
+    else {
+      res.json({ "success": "false", error: "Cat with Id: " + req.params.id + " was not found" });
+    }   
 });
 
 exports = module.exports = app;
