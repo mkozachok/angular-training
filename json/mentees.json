@@ -1,1 +1,14 @@
-[{"name": "ppp"}]
+{
+  "responses": [
+    {"name": "Alex", "level": "D1", "id": 1},
+    {"name": "Liuba", "level": "D1", "id": 2},
+    {"name": "Viktor", "level": "D1", "id": 3},
+    {"name": "Albert", "level": "D1", "id": 4},
+    {"name": "Yaroslav", "level": "D1", "id": 5},
+    {"name": "Ivan", "level": "D1", "id": 6},
+    {"name": "Pavel", "level": "D1", "id": 7},
+    {"name": "Petro", "level": "D1", "id": 8},
+    {"name": "Roman", "level": "D1", "id": 9},
+    {"name": "Tania", "level": "D1", "id": 10}
+  ]
+}

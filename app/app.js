@@ -1,4 +1,4 @@
-﻿var app = angular.module('app', ['ngResource', /*'ngRoute',*/ 'ui.router']);
+﻿﻿var app = angular.module('app', ['ngResource', /*'ngRoute',*/ 'ui.router']);
 
 app.config(['$resourceProvider', function ($resourceProvider) {
     // Don't strip trailing slashes from calculated URLs
