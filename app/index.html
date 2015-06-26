@@ -21,8 +21,15 @@
 
 </head>
 
-<body>
+<!--<body>
     <div data-ng-view />
+</body>-->
+
+<body>
+    <section ui-view>
+        <section ui-view="catList"></section>
+        <section ui-view="catDetails"></section>
+    </section>
 </body>
 
 </html>
