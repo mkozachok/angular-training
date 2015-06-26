@@ -1,0 +1,24 @@
+<div>
+	<form name="myForm" novalidate ng-submit="addOne.addCat(addOne.addcat.name, addOne.addcat.url)">
+		<p>Add new cat:</p>
+		<label for="catName">Cat Name: 
+			<input type="text" name="catName" ng-model="addOne.addcat.name" required />
+			<span style="color:red" ng-show="myForm.catName.$dirty && myForm.catName.$invalid">
+				<span ng-show="myForm.catName.$error.required">Cat name is required.</span>
+			</span>
+		</label>
+	
+		<br/><br/>
+		<label for="catUrl">Cat img url: 
+			<input type="url" name="catUrl" ng-model="addOne.addcat.url" required />
+			<span style="color:red" ng-show="myForm.catUrl.$dirty && myForm.catUrl.$invalid">
+				<span ng-show="myForm.catUrl.$error.required">Img url is required.</span>
+				<span ng-show="myForm.catUrl.$invalid">Img url not correct.</span>
+			</span>
+		</label>
+		<br/><br/>
+		<input type="submit" value="Save"  
+			ng-disabled="!myForm.catName.$dirty || myForm.catName.$invalid ||  
+			!myForm.catUrl.$dirty || myForm.catUrl.$invalid" />
+	</form>
+</div>

@@ -1,4 +1,4 @@
-angular.module('app').service( 'catService', ['catsFactory', function(catsFactory) {
+angular.module('app').service( 'addCatService', ['catsFactory', function(catsFactory) {
 	'use strict';
 
     var service = {

@@ -5,7 +5,7 @@ angular.module('app').config(['$routeProvider', function($routeProvider) {
     'use strict';
 	  $routeProvider.when('/addCat', {
 	      templateUrl: 'views/addCatView/addCat.html',
-	      controller: 'addCatViewCtrl'
+	      controller: 'addCatCtrl'
   	});
   	$routeProvider.when('/home', {
         templateUrl: 'views/homeView/home.html',
