@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('ChoseCatCtrl', ['$rootScope','$scope', function($rootScope, $scope) {
+app.controller('ChoseCatCtrl', ['$scope', function($scope) {
     'use strict';
     $scope.sort = 'name';
     $scope.find = '';
@@ -8,8 +8,7 @@ app.controller('ChoseCatCtrl', ['$rootScope','$scope', function($rootScope, $sco
         $scope.find = args; //now we've registered!
     });
 
-
-    $rootScope.$on('broadToChild', function(event, fromParent) {
+    $scope.$on('broadToChild', function(event, fromParent) {
         $scope.cats = fromParent;
     });
 

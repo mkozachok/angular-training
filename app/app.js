@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngResource', 'myApp.add_cat']).
+var app = angular.module('app', ['ngRoute', 'ngResource']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/home'});
     }]);
