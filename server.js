@@ -81,6 +81,7 @@ app.put('/cats/:id', function(req, res) {
 
     cat.count = req.body.count;
     cat.votes = req.body.votes;
+    cat.is_viewed = req.body.is_viewed;    
 
     res.send('<p>Thank you</p>');
 });

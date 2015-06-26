@@ -4,6 +4,10 @@ catApp.factory('catsService', function (catsResource, filterFilter, orderByFilte
 		return catsResource.query().$promise;
 	};
 
+	var one = function(id) {
+		return catsResource.get({id : id}).$promise;
+	};
+
 	var update = function(cat){
 		catsResource.update(cat);
 	};
@@ -14,7 +18,7 @@ catApp.factory('catsService', function (catsResource, filterFilter, orderByFilte
 					"name": cat.name, 
 					"src": cat.src, 
 					"count":0,
-					"is_viewed":0,
+					"is_viewed": cat.is_viewed,
 					"votes":0
 				 });
 	};
@@ -44,6 +48,7 @@ catApp.factory('catsService', function (catsResource, filterFilter, orderByFilte
 
 	return {
 		get : get,
+		one : one,
 		update : update,
 		save : save,
 		remove : remove,
