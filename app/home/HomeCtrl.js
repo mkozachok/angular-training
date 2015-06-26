@@ -1,12 +1,4 @@
-var app = angular.module('app')
-    .config(['$routeProvider', function($routeProvider) {
-            $routeProvider.when('/home', {
-                    controller: 'HomeCtrl',
-                    templateUrl: 'templates/home.html'
-            }
-            );
-    }
-    ]);
+var app = angular.module('app');
 
     app.controller('HomeCtrl', ['$scope','$resource', 'KittyFactory', function($scope, $resource, KittyFactory) {
         'use strict';
@@ -26,6 +18,5 @@ var app = angular.module('app')
 
         $scope.$on('emitFromChild', function(event, fromChild) {
             $scope.cats = fromChild;
-
         });
     }]);

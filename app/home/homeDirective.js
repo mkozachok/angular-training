@@ -1,15 +1,11 @@
-angular.module("app").directive("list", function () {
+angular.module("app").directive("home", function () {
     return {
-        restrict: "AE",
-        templateUrl: "templates/list.html",
+        templateUrl: "templates/home.html",
         replace: true,
-        controller: 'ListControlle',
-        controllerAs: 'list',
-        bindToController: true,
+        controller: 'HomeCtrl',
+        //bindToController: true,
         scope: {
-            type: "=masterType"
-        },
-        transclude: true,
-        require: "^?ngApp"
+            type: "="
+        }
     };
 });

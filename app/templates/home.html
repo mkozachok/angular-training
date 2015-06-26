@@ -1,30 +1,14 @@
-<div ng-controller="HomeCtrl">
+<div>
 
-        <div ng-controller="SearchCatCtrl">
-            <form ng-submit="submit()">
-                <input ng-model="search">
-                <button type="submit" id="submit" value="Submit">Search</button>
-            </form>
-        </div>
+    <search></search>
 
+    <chose></chose>
 
-        <div  ng-controller="ChoseCatCtrl">
-
-            <select ng-model="sort">
-                <option value="name">ASC</option>
-                <option value="-name">DESC</option>
-            </select>
-
-            <div ng-repeat="cat in cats | orderBy: sort | filter: find">
-                <span ng-click="chose(cat)"> {{ cat.name }} </span><span ng-show="cat.v">&hearts;</span>
-            </div>
-        </div>
-
-        <p ng-show="currentCat">
-            <img src="{{currentCat.img }}" ng-click="increment()">
-            <span> Count: {{ currentCat.count }} </span>
-            <button ng-click="like(currentCat)">&uarr;</button>
-            <button ng-click="disLike(currentCat)">&darr;</button>
-            <span>{{ currentCat.votes }} votes</span>
-        </p>
+    <p ng-show="currentCat">
+        <img src="{{ currentCat.img }}" ng-click="increment()">
+        <span> Count: {{ currentCat.count }} </span>
+        <button ng-click="like(currentCat)">&uarr;</button>
+        <button ng-click="disLike(currentCat)">&darr;</button>
+        <span>{{ currentCat.votes }} votes</span>
+    </p>
 </div>
