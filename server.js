@@ -40,13 +40,37 @@ app.post('/cats', function(req, res) {
   var result = require(catFile);
 
   // Add new item.
+  var max = 0;
+  for (var i=0 ; i<result.length ; i++) {
+    if (!max || parseInt(result[i].id) > parseInt(max))
+      max = result[i].id;
+  }
+  req.body.id = max + 1;
+
   result.push(req.body);
 
   // Write the file.
   var fs = require('fs');
   fs.writeFile(catFile, JSON.stringify(result), function (err) {});
+  res.send('OK');
+});
+
+app.post('/delete', function(req, res) {
+  // Read Cat file.
+  var result = require(catFile);
+
+  var data = [];
+  // Delete element item.
+  for (var i=0 ; i <result.length; i++) {
+    if (result[i].id != req.body.id) {
+      data.push(result[i]);
+    }
+  }
+
+  // Write the file.
+  var fs = require('fs');
+  fs.writeFile(catFile, JSON.stringify(data), function (err) {});
+  res.send('OK');
 });
 
 exports = module.exports = app;
-
-

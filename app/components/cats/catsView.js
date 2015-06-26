@@ -17,12 +17,14 @@ angular.module('myApp.catsView', [
     });
   }])
 
-  .controller('catsView', function ($scope, $filter, filterFilter, orderByFilter, cats, profileService) {
+  .controller('catsView', function ($scope, $filter, filterFilter, orderByFilter, cats, profileService, catsService) {
     'use strict';
 
     $scope.visible = false;
     $scope.cats = cats;
-    $scope.allCats = $scope.cats;
+    $scope.allCats = cats;
+
+    console.dir($scope.cats);
 
     $scope.changeCat = function(index) {
       $scope.selected_cat = $scope.cats[index];
@@ -52,6 +54,10 @@ angular.module('myApp.catsView', [
         return true;
       }
       return false;
+    };
+
+    $scope.deleteCat = function(id) {
+      catsService.deleteCat(id);
     };
   })
 

@@ -30,6 +30,7 @@ angular.module('myApp.catsAdd', [
         $scope.path = '';
         $scope.catAdd.$setPristine();
         $scope.catAdd.$setUntouched();
+
         $location.path('/view');
         $rootScope.selectedTab = 'view';
       }

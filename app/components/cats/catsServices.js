@@ -7,14 +7,21 @@ angular.module('myApp.catsServices', [
   .service('catsService', function ($resource) {
     'use strict';
 
-    var urlBase = '/cats';
-
-    var request = $resource(urlBase, {}, {
+    var request = $resource('/cats', {}, {
       'getData': {
         method: 'GET',
         isArray: true
       },
       'newData': {
+        method: 'POST'
+      },
+      'deleteData': {
+        method: 'DELETE'
+      }
+    });
+
+    var requestDelete = $resource('/delete', {}, {
+      'deleteData': {
         method: 'POST'
       }
     });
@@ -25,5 +32,9 @@ angular.module('myApp.catsServices', [
 
     this.insertCat = function (cat) {
       return request.newData(cat);
+    };
+
+    this.deleteCat = function (id) {
+      return requestDelete.deleteData({id: id});
     };
   });
