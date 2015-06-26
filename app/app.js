@@ -3,6 +3,7 @@
   angular.module('myApp', [
     'ui.router',
     'ngResource',
+    'myApp.navigation',
     'myApp.loading',
     'myApp.catsView',
     'myApp.catsAdd',

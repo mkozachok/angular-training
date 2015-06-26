@@ -21,20 +21,7 @@
     <script src="/build/angular-training.js"></script>
 </head>
 <body loading-status-class>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div>
-                <ul class="nav navbar-nav" ng-init="selectedTab = 'view'">
-                    <li ng-class="{'active':selectedTab === 'view'}" ng-click="selectedTab = 'view'"><a href="#/view">View Cats</a></li>
-                    <li ng-class="{'active':selectedTab === 'add'}" ng-click="selectedTab = 'add'"><a href="#/add">Add New Cat</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li ng-class="{'active':selectedTab === 'profile/register'}" ng-click="selectedTab = 'profile/register'"><a href="#/profile/register">Register</a></li>
-                    <li ng-class="{'active':selectedTab === 'profile/login'}" ng-click="selectedTab = 'profile/login'"><a href="#/profile/login">Log in</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div navigation-main></div>
 
     <div class="container" style="margin: 80px auto;">
         <div class="row">

@@ -14,15 +14,16 @@ angular.module('myApp.catsAdd', [
     });
   }])
 
-  .controller('catsAdd', function ($rootScope, $scope, catsService, $location) {
+  .controller('catsAdd', function ($rootScope, $scope, catsService, $location, profileService) {
     $scope.add = function() {
       if ($scope.catAdd.name.$valid && $scope.catAdd.path.$valid) {
+        var author = profileService.getLoggedUser();
         catsService.insertCat({
           name: $scope.name,
           path: $scope.path,
-          count: 0,
           viewed: 0,
-          likes: 0
+          likes: 0,
+          author: author
         });
 
         $scope.name = '';

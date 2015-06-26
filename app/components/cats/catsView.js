@@ -17,7 +17,7 @@ angular.module('myApp.catsView', [
     });
   }])
 
-  .controller('catsView', function ($scope, $filter, filterFilter, orderByFilter, cats) {
+  .controller('catsView', function ($scope, $filter, filterFilter, orderByFilter, cats, profileService) {
     'use strict';
 
     $scope.visible = false;
@@ -28,10 +28,6 @@ angular.module('myApp.catsView', [
       $scope.selected_cat = $scope.cats[index];
       $scope.selected_cat.viewed = 1;
       $scope.visible = true;
-    };
-
-    $scope.incCount = function() {
-      $scope.selected_cat.count++;
     };
 
     $scope.vote = function() {
@@ -45,6 +41,17 @@ angular.module('myApp.catsView', [
     $scope.catsFilter = function() {
       $scope.cats = filterFilter($scope.allCats, {"name": $scope.name});
       $scope.cats = orderByFilter($scope.cats, $scope.order);
+    };
+
+    $scope.catAccess = function(cat) {
+      if (!profileService.getLoggedUser()) {
+        return false;
+      }
+
+      if (cat.author === profileService.getLoggedUser()) {
+        return true;
+      }
+      return false;
     };
   })
 

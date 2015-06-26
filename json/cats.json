@@ -2,36 +2,36 @@
   {
     "name":"John",
     "path":"assets/images/test1.jpg",
-    "count":0,
     "viewed":0,
-    "votes":4
+    "votes":4,
+    "author":"pavel"
   },
   {
     "name":"Alex",
     "path":"assets/images/test2.jpg",
-    "count":0,
     "viewed":0,
-    "votes":7
+    "votes":7,
+    "author":"pavel"
   },
   {
     "name":"Pavel",
     "path":"assets/images/test3.jpg",
-    "count":0,
     "viewed":0,
-    "votes":12
+    "votes":12,
+    "author":"test"
   },
   {
     "name":"Dmitriy",
     "path":"assets/images/test4.jpg",
-    "count":0,
     "viewed":0,
-    "votes":15
+    "votes":15,
+    "author":"test"
   },
   {
     "name":"Andrew",
     "path":"assets/images/test5.jpg",
-    "count":0,
     "viewed":0,
-    "votes":2
+    "votes":2,
+    "author":"andrew"
   }
 ]

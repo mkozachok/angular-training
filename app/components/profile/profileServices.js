@@ -12,10 +12,26 @@ angular.module('myApp.profileServices', [
     this.loginUser = function (username, password) {
       var user = localStorageService.get(username);
       if (angular.isObject(user) && user.password == password) {
-        return user;
+        localStorageService.cookie.set('loggedUser', user);
+        return true;
       }
       else {
         return false;
       }
+    };
+
+    this.getLoggedUser = function () {
+      var user = localStorageService.cookie.get('loggedUser');
+
+      if (angular.isObject(user)) {
+        return user.name;
+      }
+      else {
+        return false;
+      }
+    };
+
+    this.logoutUser = function () {
+      localStorageService.cookie.remove('loggedUser');
     };
   });
