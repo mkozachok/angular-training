@@ -1,31 +1,28 @@
-'use strict';
+
 
 angular.module('myApp.catsView', [
-    'ngRoute',
-    'ngResource',
-    'myApp.catsServices'
+    'myApp.catsServices', 'ui.router'
   ])
 
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/view', {
+  .config(['$stateProvider', function($stateProvider) {
+    $stateProvider.state('catspage', {
+      url: '/view',
       templateUrl: 'components/cats/templates/catsView.html',
-      controller: 'catsView'
+      controller: 'catsView',
+      resolve: {
+        cats: function(catsService) {
+          return catsService.getCats();
+        }
+      }
     });
   }])
 
-  .controller('catsView', function ($scope, $filter, catsService, filterFilter, orderByFilter) {
-    $scope.visible = false;
+  .controller('catsView', function ($scope, $filter, filterFilter, orderByFilter, cats) {
+    'use strict';
 
-    catsService.getCats().then(
-      function (data) {
-        $scope.cats = data;
-        $scope.allCats = $scope.cats;
-        $scope.selected_cat = $scope.cats[0];
-      },
-      function(error) {
-        alert(error);
-      }
-    );
+    $scope.visible = false;
+    $scope.cats = cats;
+    $scope.allCats = $scope.cats;
 
     $scope.changeCat = function(index) {
       $scope.selected_cat = $scope.cats[index];
@@ -67,7 +64,7 @@ angular.module('myApp.catsView', [
         });
 
         scope.$watch('visible', function(value){
-          if (value == true){
+          if (value === true){
             $(element).modal('show');
           }
           else{

@@ -1,18 +1,18 @@
-'use strict';
-
 angular.module('myApp.profileRegister', [
-    'ngRoute',
     'myApp.profileServices'
   ])
 
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/profile/register', {
+  .config(['$stateProvider', function($stateProvider) {
+    $stateProvider.state('profileRegister', {
+      url: '/profile/register',
       templateUrl: 'components/profile/templates/profileRegister.html',
       controller: 'profileRegister'
     });
   }])
 
   .controller('profileRegister', function ($rootScope, $scope, catsService, $location, profileService) {
+    'use strict';
+
     $scope.registerProfile = function() {
       var form = $scope.profileRegister;
 

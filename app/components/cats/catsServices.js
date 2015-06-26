@@ -1,10 +1,12 @@
-'use strict';
+
 
 angular.module('myApp.catsServices', [
     'ngResource'
   ])
 
   .service('catsService', function ($resource) {
+    'use strict';
+
     var urlBase = '/cats';
 
     var request = $resource(urlBase, {}, {

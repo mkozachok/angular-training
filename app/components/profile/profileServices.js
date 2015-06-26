@@ -1,10 +1,10 @@
-'use strict';
-
 angular.module('myApp.profileServices', [
     'LocalStorageModule'
   ])
 
   .service('profileService', function (localStorageService) {
+    'use strict';
+
     this.registerUser = function (user) {
       return localStorageService.set(user.name, user);
     };

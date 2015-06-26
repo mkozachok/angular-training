@@ -1,18 +1,18 @@
-'use strict';
-
 angular.module('myApp.profileLogin', [
-  'ngRoute',
-  'myApp.profileServices'
-])
+    'myApp.profileServices'
+  ])
 
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/profile/login', {
+  .config(['$stateProvider', function($stateProvider) {
+    $stateProvider.state('profileLogin', {
+      url: '/profile/login',
       templateUrl: 'components/profile/templates/profileLogin.html',
       controller: 'profileLogin'
     });
   }])
 
   .controller('profileLogin', function ($rootScope, $scope, catsService, $location, profileService) {
+    'use strict';
+
     $scope.loginError = false;
 
     if ($rootScope.registeredSuccess) {

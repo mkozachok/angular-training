@@ -1,13 +1,14 @@
-'use strict';
+
 
 angular.module('myApp.catsAdd', [
-    'ngRoute',
-    'ngResource',
     'myApp.catsServices'
   ])
 
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/add', {
+  .config(['$stateProvider', function($stateProvider) {
+    'use strict';
+
+    $stateProvider.state('catsAdd', {
+      url: '/add',
       templateUrl: 'components/cats/templates/catsAdd.html',
       controller: 'catsAdd'
     });

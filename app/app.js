@@ -1,8 +1,9 @@
 (function () {
   "use strict";
   angular.module('myApp', [
-    'ngRoute',
+    'ui.router',
     'ngResource',
+    'myApp.loading',
     'myApp.catsView',
     'myApp.catsAdd',
     'myApp.catsServices',
@@ -10,8 +11,8 @@
     'myApp.profileLogin',
     'myApp.profileServices'
   ]).
-  config(['$routeProvider', function($routeProvider) {
-    $routeProvider.otherwise({redirectTo: '/view'});
+  config(['$urlRouterProvider', function($urlRouterProvider) {
+      $urlRouterProvider.otherwise('/view');
   }]);
 
 })();

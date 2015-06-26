@@ -10,23 +10,17 @@
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/angular/angular-csp.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-    <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="app.js"></script>
-    <script src="components/cats/catsView.js"></script>
-    <script src="components/cats/catsAdd.js"></script>
-    <script src="components/cats/catsServices.js"></script>
-    <script src="components/profile/profileRegister.js"></script>
-    <script src="components/profile/profileLogin.js"></script>
-    <script src="components/profile/profileServices.js"></script>
+    <script src="/build/angular-training.js"></script>
 </head>
-<body>
+<body loading-status-class>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div>
@@ -44,7 +38,14 @@
 
     <div class="container" style="margin: 80px auto;">
         <div class="row">
-            <div ng-view></div>
+            <div class="loading-message">
+                <div class="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+            </div>
+            <div ui-view class="loading-content"></div>
         </div>
     </div>
 </body>
