@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.service('addCatService',['KittyFactory', function (KittyFactory) {
+app.service('addOrDeleteCatService',['KittyFactory', function (KittyFactory) {
     var service = {
         addCat : function (scope) {
             var resource = KittyFactory;
@@ -8,7 +8,15 @@ app.service('addCatService',['KittyFactory', function (KittyFactory) {
             resource.save(temp);
             scope.kittyName = '';
             scope.kittyImg = '';
+        },
+        deleteCat : function (name) {
+            var resource = KittyFactory;
+            var temp = {name: scope.name};
+            resource.save(temp);
+            scope.kittyName = '';
+            scope.kittyImg = '';
         }
+
     };
     return service;
 }]);
