@@ -1,13 +1,13 @@
 angular.module('app')
-.controller('ViewCtrl', function($scope, $filter, $resource, catsFactory) {
-	var Cats = catsFactory;
-	$scope.selected = null;
-    Cats.get(function (response) {
-    	$scope.cats = response.cats;
-    	$scope.filteredCats = $scope.cats;
-    	$scope.select($scope.cats[0]);
-    });
-
+.controller('ViewCtrl', function($scope, $filter, catsResource) {
+	// var Cats = catsResource;
+	//$scope.selected = null;
+    // Cats.get(function (response) {
+    // 	$scope.cats = response.cats;
+    // 	$scope.filteredCats = $scope.cats;
+    // 	$scope.select($scope.cats[0]);
+    // });
+// console.log($scope);
 	$scope.select = function(cat){
 		$scope.selected = cat;
 		$scope.selected.viewed = true;
@@ -33,14 +33,15 @@ angular.module('app')
 		}
 	};
 	$scope.search = function(substr){
-		$scope.filteredCats = $filter('filter')($scope.cats, { name: substr });
+		console.log($scope);
+		$scope.list.filteredCats = $filter('filter')($scope.list.cats, { name: substr });
 	};
 	$scope.startSearch = function(substr){
 		if(substr.length > 2){
 			$scope.search(substr);
 		}
 		else {
-			$scope.filteredCats = $scope.cats;
+			$scope.list.filteredCats = $scope.list.cats;
 		}
 	};
 });

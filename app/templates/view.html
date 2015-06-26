@@ -1,11 +1,7 @@
-<div ng-show="selected" class="container-fluid">
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-8">
-			<ul>
-				<li ng-repeat="cat in filteredCats | orderBy:'name':reverse" ng-click="select(cat)">
-				<a href=''>{{cat.name}}</a> <span ng-show="cat.viewed">&#10004;</span>
-				</li>
-			</ul>
+			<list></list>
 			<img src="{{selected.path}}" ng-click="increment(selected)"  width="300px"/>
 			<p>{{selected.name}} ({{ selected.count }})</p>
 			<button ng-click="voteIncrement(selected)">&#x2191;</button> <button ng-click="voteDecrement(selected)">&#x2193;</button>

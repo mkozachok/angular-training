@@ -3,13 +3,13 @@ angular.module("app").directive("list", function () {
         restrict: "AE",
         templateUrl: "templates/list.html",
         replace: true,
-        controller: 'ListControlle',
+        controller: 'ListController',
         controllerAs: 'list',
         bindToController: true,
-        scope: {
-            type: "=masterType"
-        },
+        // scope: {
+        //     type: "=masterType"
+        // },
         transclude: true,
-        require: "^?ngApp"
+        // require: "^?ngApp"
     };
 });

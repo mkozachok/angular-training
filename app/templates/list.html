@@ -1,0 +1,8 @@
+<div>
+    <div style="color:red" ng-transclude></div>
+    <ul>
+        <li ng-repeat="cat in list.filteredCats | orderBy:'name':reverse" ng-click="select(cat)">
+        	<list-item></list-item>
+        </li>
+    </ul>
+</div>
