@@ -2,14 +2,16 @@ __mainApp
 
 .controller("TruthfulCtrl",
             function ($scope) {
-                console.log(this);
-                console.log($scope);
-                $scope.truthfulMessage ='';                 
-                $scope.$watch('data', function(newVal, oldVal)
+
+                this.truthfulMessage =''; 
+                this.truthfulClass = '';
+
+                var self = this;
+                $scope.$watch('thruthful.data', function(newVal, oldVal)
                                 {
-                                    console.log(newVal);
-                                    if (typeof newVal  == 'object' && newVal.hasOwnProperty('result') ) {
-                                       $scope.truthfulMessage = newVal.Message;
+                                    if (typeof newVal  === 'object' && newVal.hasOwnProperty('Result') ) {
+                                       self.truthfulMessage = newVal.Message;
+                                       self.truthfulClass = (newVal.Result?'text-success':'text-danger');
                                     }
                                    
                                 })

@@ -19,7 +19,7 @@ __mainApp
     return {
         restrict: "AE",
         templateUrl: "templates/truthfulTpl.html",
-        replace: false,
+        replace: true,
         controller: 'TruthfulCtrl',
         controllerAs: 'thruthful',
         bindToController: true,
