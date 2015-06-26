@@ -1,0 +1,56 @@
+<form name="addCatForm" novalidate ng-submit="addCat()" ng-controller="AddCatController" style="margin-left: 50px;">
+  <fieldset>
+    <legend>Add Cat</legend>
+	<div>
+		<span>Name:</span>
+		<span><input type="text" name="name" style="width: 150px" ng-model="cat.name" ng-maxlength="20" required /></span>
+	</div>
+	<div class="error" style="color: red" 
+	    ng-show="!addCatForm.name.$pristine && addCatForm.name.$invalid">
+		<small class="error" 
+		    ng-show="addCatForm.name.$error.required">
+		    Cat name is required.
+		</small>
+		<small class="error" 
+		        ng-show="addCatForm.name.$error.maxlength">
+		        Cat's name should be no more than 20 characters
+		</small>
+	</div>	
+	<br/>
+	<div>
+		<span>Age:</span>
+		<span><input type="number" name="age" style="width: 150px" ng-model="cat.age" min="1" max="25" required /></span>
+	</div>
+	<div class="error" style="color: red" 
+	    ng-show="!addCatForm.age.$pristine && addCatForm.age.$invalid">
+		<small class="error" 
+		    ng-show="addCatForm.age.$error.required">
+		    Age is required.
+		</small>
+		<small class="error" 
+		        ng-show="addCatForm.age.$error.min">
+		        Age should be greater or equal than 1
+		</small>		
+		<small class="error" 
+		        ng-show="addCatForm.age.$error.max">
+		        Age should be less than 25
+		</small>
+		<small class="error" 
+		        ng-show="addCatForm.age.$error.number">
+		        Not valid number!
+		</small>		
+	</div>	
+	<br/>
+	<div>
+		<span>Gender:</span>
+		<span>
+			<select ng-model="cat.gender" style="width: 150px">
+			  <option value="Male" selected="selected">Male</option>
+			  <option value="Female">Female</option>
+			</select>
+		</span>
+	</div>	
+	<br/>
+    <button type="submit" ng-disabled="addCatForm.$invalid">Add</button>
+  </fieldset>
+</form>

@@ -1,7 +1,7 @@
 angular.module("app").directive("catDirective", function () {
     return {
     	restrict: 'EA',
-        templateUrl: "templates/Cat.html",
+        templateUrl: "templates/CatDirective.html",
         scope: {
         	cat: '='
         }

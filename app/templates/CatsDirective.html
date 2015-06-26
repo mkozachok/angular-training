@@ -1,0 +1,8 @@
+<div>
+    <ul>
+        <li ng-repeat="cat in vm.cats">                    
+            <img ng-src="Assets/img2/delete.png" ng-click="vm.deleteCat(cat.id)" />                   
+            <cat-directive cat="cat" />           
+        </li>
+    </ul>
+</div>

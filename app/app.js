@@ -10,8 +10,8 @@
 			      templateUrl: "templates/Cats.html"
 			    })
 		        .state('catState', {
-			      url: "/cat",
-			      templateUrl: "templates/CatDetails.html"
+			      url: "/addCat",
+			      templateUrl: "templates/AddCat.html"
 			    });			    
 		  }]);
 })();

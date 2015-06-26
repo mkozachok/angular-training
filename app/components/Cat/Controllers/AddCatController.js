@@ -1,4 +1,4 @@
-angular.module("app").controller("CatController", function ($scope, $window, CatsService) {
+angular.module("app").controller("AddCatController", function ($scope, $window, CatsService) {
 	$scope.cat = {};
 
     $scope.addCat = function () {
