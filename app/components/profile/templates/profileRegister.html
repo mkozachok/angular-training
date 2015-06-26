@@ -1,46 +1,16 @@
 <h2>Register a New User</h2>
 <div ng-controller="profileRegister">
     <form name="profileRegister" novalidate>
-        <div ng-show="profileRegister.name.$touched">
-            <div ng-show="profileRegister.name.$error.required">
-                <div class="alert alert-danger">
-                    <strong>User Name is required.</strong>
-                </div>
-            </div>
-        </div>
 
-        <div ng-show="profileRegister.password.$touched">
-            <div ng-show="profileRegister.password.$error.required">
-                <div class="alert alert-danger">
-                    <strong>Password is required.</strong>
-                </div>
-            </div>
-        </div>
-
-        <div ng-show="profileRegister.password_repeat.$touched">
-            <div ng-show="profileRegister.password_repeat.$error.required">
-                <div class="alert alert-danger">
-                    <strong>Repeat Password is required.</strong>
-                </div>
-            </div>
-            <div ng-show="!profileRegister.password_repeat.$error.required && profileRegister.password_repeat.$error.compareTo">
-                <div class="alert alert-danger">
-                    <strong>Repeat Password is non equal to Password.</strong>
-                </div>
-            </div>
-        </div>
-
-        <div ng-show="profileRegister.email.$touched">
-            <div ng-show="profileRegister.email.$error.required">
-                <div class="alert alert-danger">
-                    <strong>Email is required.</strong>
-                </div>
-            </div>
-            <div ng-show="profileRegister.email.$error.email">
-                <div class="alert alert-danger">
-                    <strong>Email is not valid.</strong>
-                </div>
-            </div>
+        <div class="alert alert-danger" ng-show="registerErrorsVisible(profileRegister)">
+            <ul>
+                <li ng-show="profileRegister.name.$touched && profileRegister.name.$error.required">User Name is required.</li>
+                <li ng-show="profileRegister.password.$touched && profileRegister.password.$error.required">Password is required.</li>
+                <li ng-show="profileRegister.password_repeat.$touched && profileRegister.password_repeat.$error.required">Repeat Password is required.</li>
+                <li ng-show="profileRegister.password_repeat.$touched && !profileRegister.password_repeat.$error.required && profileRegister.password_repeat.$error.compareTo">Repeat Password is non equal to Password.</li>
+                <li ng-show="profileRegister.email.$touched && profileRegister.email.$error.required">Email is required.</li>
+                <li ng-show="profileRegister.email.$touched && profileRegister.email.$error.email">Email is not valid.</li>
+            </ul>
         </div>
 
         <div class="form-group">

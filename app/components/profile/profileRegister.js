@@ -15,7 +15,6 @@ angular.module('myApp.profileRegister', [
 
     $scope.registerProfile = function() {
       var form = $scope.profileRegister;
-
       if (form.name.$valid && form.password_repeat.$valid && form.email.$valid) {
         // Store new user to localStorage.
         profileService.registerUser({
@@ -56,6 +55,27 @@ angular.module('myApp.profileRegister', [
         return 'disabled';
       }
       return '';
+    };
+
+    $scope.registerErrorsVisible = function(form) {
+      var registerErrors = {
+        nameRequired: form.name.$touched && form.name.$error.required,
+        passRequired: form.password.$touched && form.password.$error.required,
+        passRepeatRequired: form.password_repeat.$touched && form.password_repeat.$error.required,
+        passRepeatNonEqual: form.password_repeat.$touched && !form.password_repeat.$error.required && form.password_repeat.$error.compareTo,
+        emailRequired: form.email.$touched && form.email.$error.required,
+        emailNonValid: form.email.$touched && form.email.$error.email
+      };
+
+      var visible = false;
+
+      angular.forEach(registerErrors, function(value, key) {
+        if (value === true) {
+          visible = true;
+        }
+      });
+
+      return visible;
     };
   })
 
