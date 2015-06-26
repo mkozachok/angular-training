@@ -4,7 +4,6 @@ var app = angular.module('app');
         'use strict';
         var resource = KittyFactory;
         // take cat from server
-        var cats;
         $scope.cats = [];
 
         //resource.get().$promise.then(function (response) {

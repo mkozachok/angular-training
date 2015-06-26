@@ -21,7 +21,13 @@ var app = angular.module('app', ['ui.router', 'ngResource']).
         url: '/add_cat',
         templateUrl: 'templates/add_cat.html',
         controller: 'AddCatCtrl'
+    })
+    .state({
+        name: 'about',
+        url: '/about',
+        template: '<h1>Creator of this site... Mr.Catlord</h1>'
     });
+
 }]);
 
 
