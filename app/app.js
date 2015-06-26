@@ -7,7 +7,9 @@
 		    $stateProvider
 		        .state('catsState', {
 			      url: "/cats",
-			      templateUrl: "templates/Cats.html"
+			      templateUrl: "templates/Cats.html",
+			      controller: 'CatsController',
+			      controllerAs: 'vm'
 			    })
 		        .state('catState', {
 			      url: "/addCat",

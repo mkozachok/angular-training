@@ -1,1 +1,11 @@
-<cats-directive />
+<!-- This is directive example. In learning objectives You can Use it instead of routing code below -->
+<!-- <cats-directive /> -->
+
+<div>
+    <ul>
+        <li ng-repeat="cat in vm.cats">                    
+            <img ng-src="Assets/img2/delete.png" ng-click="vm.deleteCat(cat.id)" />                   
+            <cat-directive cat="cat" />           
+        </li>
+    </ul>
+</div>

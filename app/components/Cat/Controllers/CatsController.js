@@ -1,23 +1,25 @@
 angular.module("app").controller("CatsController", function ($scope, $window, CatsService) {
+    var vm = this;
+
 	function successCallback(data) {
-		$scope.cats = data.cats;
+		vm.cats = data.cats;
 	}
 
 	function errorCallback(error) {
     	console.log(error);
 	}
 
-    $scope.getCats = function () { 
+    vm.getCats = function () { 
     	CatsService.cats.get().$promise.then(successCallback, errorCallback); 
     }; 
 
-    $scope.deleteCat = function (id) { 
+    vm.deleteCat = function (id) { 
     	if ($window.confirm("Do You want to delete this cat?")) {
 	    	CatsService.catById.delete({id:id}, function(cat) {
-	    		$scope.getCats();
+	    		vm.getCats();
 	    	}); 
     	}
     };
 
-    $scope.getCats();
+    vm.getCats();
 });
