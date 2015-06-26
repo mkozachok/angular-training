@@ -1,4 +1,4 @@
-angular.module("app").controller("CatsController", function ($scope, $window, CatsService) {
+angular.module("app").controller("CatsController", function ($scope, $window, CatsService, cats) {
     var vm = this;
 
 	function successCallback(data) {
@@ -21,5 +21,10 @@ angular.module("app").controller("CatsController", function ($scope, $window, Ca
     	}
     };
 
-    vm.getCats();
+    //vm.getCats();
+
+    // pass cats collection from ui-router resolve object
+    if (cats !== null) {
+        vm.cats = cats.cats;
+    }
 });

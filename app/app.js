@@ -8,6 +8,14 @@
 		        .state('catsState', {
 			      url: "/cats",
 			      templateUrl: "templates/Cats.html",
+			      resolve: {
+		      		cats:  function(CatsService) {
+			            return CatsService.cats.get().$promise
+			               .then (function (data) {
+			                   return data;
+			               });
+			        }
+			      },			      
 			      controller: 'CatsController',
 			      controllerAs: 'vm'
 			    })
