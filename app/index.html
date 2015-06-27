@@ -15,7 +15,13 @@
     <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
 	<script src="/bower_components/underscore/underscore.js"></script>
 	<script src="/build/angular-training.js"></script>
-    <style type="text/css">        
+    <style type="text/css"> 
+        .loader {
+            display: none;
+        }
+        .loaderActive {
+            display: block;
+        }    
         h1,h2,h3 {
             vertical-align:middle;
         }
@@ -37,9 +43,11 @@
       </div>
     </nav>
 
-    <div class="jumbotron">
-      <div class="container">
-      </div>
+    <div class="jumbotron"></div>
+    <div class="jumbotron text-center loader" loader>
+        <div>
+            <h3>Loading...</h3>
+        </div>
     </div>
 
     <div class="container">
