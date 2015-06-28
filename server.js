@@ -5,6 +5,7 @@ var app = expressIO();
 
 var bodyParser = require('body-parser');
 var cats = require('./json/cat.json');
+var users = require('./json/users.json');
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -36,6 +37,10 @@ app.use(expressIO.static(__dirname + '/app'));
 app.get('/cat', function(req, res) {
    // var result = require('./json/cat.json'); //оскыльки память то перший раз треба выдкрити щоб з кетс записати котыв, потым коли вони вже будуть в памяты вын ен потрыбен
     res.json(cats); //cats
+});
+
+app.get('/users', function(req, res) {
+    res.json(users); //cats
 });
 
 app.delete('/cat', function(req, res) {

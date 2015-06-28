@@ -1,7 +1,7 @@
 {"user": [
-  {"name":"John"},
-  {"name":"Jessie"},
-  {"name":"Joy"},
-  {"name":"Mary"},
-  {"name":"Peter"}
+  {"name":"John@ukr.net", "password":"12345"},
+  {"name":"Jessie@ukr.net", "password":"12345"},
+  {"name":"Joy@ukr.net", "password":"12345"},
+  {"name":"Mary@ukr.net", "password":"12345"},
+  {"name":"Peter@buhay.net", "password":"12345"}
 ]}

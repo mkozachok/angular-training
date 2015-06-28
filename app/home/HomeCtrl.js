@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-    app.controller('HomeCtrl', ['$scope','$resource', 'promiseObj', function($scope, $resource, promiseObj) {
+    app.controller('HomeCtrl', ['$scope','promiseObj', function($scope, promiseObj) {
         'use strict';
         $scope.cats = [];
 
@@ -9,8 +9,7 @@ var app = angular.module('app');
         //    $scope.cats = cats.cats;
         //});
 
-        $scope.cats = promiseObj;
-
+        $scope.cats = promiseObj.cats;
         $scope.broadcast = function() {
             $scope.$broadcast('broadToChild', $scope.toChild);
         };

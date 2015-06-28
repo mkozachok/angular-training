@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'ngResource']).
+var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField']).
   config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
     $stateProvider
@@ -10,9 +10,11 @@ var app = angular.module('app', ['ui.router', 'ngResource']).
         controller: 'HomeCtrl',
         resolve:{
             promiseObj:  function(KittyFactory){
-                return KittyFactory.get().$promise.then(function (response) {
-                    return response.cats;
+                var getCats = KittyFactory.get();
+                getCats.$promise.then(function (response) {
+                    return response;
                 });
+                return getCats.$promise;
             }
         }
     })
@@ -28,12 +30,26 @@ var app = angular.module('app', ['ui.router', 'ngResource']).
         template: '<h1>Creator of this site... Mr.Catlord</h1>'
     })
     .state({
-        name: 'login',
-        url: '/login',
-        templateUrl: 'templates/login.html',
-        controller: 'loginCtrl'
+        name: 'authorization',
+        url: '/authorization',
+        templateUrl: 'templates/authorization.html',
+        controller: 'loginCtrl',
+            resolve:{
+                userObj:  function(UserFactory){
+                    var getUsers = UserFactory.get();
+                    getUsers.$promise.then(function (response) {
+                        return response;
+                    });
+                    return getUsers.$promise;
+                }
+            }
+    })
+    .state({
+        name: 'registration',
+        url: '/registration',
+        templateUrl: 'templates/registration.html',
+        controller: 'RegistrationCtrl'
     });
-
 }]);
 
 

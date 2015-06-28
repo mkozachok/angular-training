@@ -1,0 +1,22 @@
+<div class="container">
+    <div style="padding-bottom:0px; text-align: center">
+        <h2>Registered!</h2>
+    </div>
+    <form name="Registration" class="form-signin" ng-submit="registration()">
+        <input type="text" class="form-control" placeholder="Your name" autofocus="" ng-model="userName">
+        <input type="email" class="form-control" placeholder="Your email address" autofocus="" ng-model="userEmail">
+
+        <input type="password" class="form-control" placeholder="Your password" ng-model="userPassword" name="userPassword" />
+        <input type="password" class="form-control" placeholder="Repeat password" ng-confirm-field ng-model="passwordConfirm" confirm-against="userPassword" name="passwordConfirm"/>
+        <!--<div ng-show="Registration.passwordConfirm.$dirty && Registration.passwordConfirm.$invalid">-->
+        <span ng-show="Registration.passwordConfirm.$error.noMatch">Fields do not match</span>
+         <!--</div>-->
+
+        <!--<input type="password" class="form-control" placeholder="Your password" ng-model="userPassword">-->
+        <!--<input type="password" class="form-control" placeholder="Repeat password" ng-model="userPasswordRepeat">-->
+        <!---->
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="signIn">Registered</button>
+        <a class="btn btn-lg btn-primary btn-block" href="#/authorization"> Back to Sign in </a>
+    </form>
+</div>
+

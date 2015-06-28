@@ -28,7 +28,7 @@ app.controller('ChoseCatCtrl', ['$scope', 'addOrDeleteCatService', function($sco
 
     $scope.disLike = function()
     {
-        if($scope.currentCat.votes > 0) $rootScope.currentCat.votes --;
+        if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
     };
 
     $scope.increment = function(){
