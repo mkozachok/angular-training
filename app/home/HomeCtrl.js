@@ -1,13 +1,14 @@
 var app = angular.module('app');
 
-    app.controller('HomeCtrl', ['$scope','promiseObj', function($scope, promiseObj) {
+    app.controller('HomeCtrl', ['$scope', 'AuthenticationService', 'promiseObj', function($scope, AuthenticationService, promiseObj) {
         'use strict';
         $scope.cats = [];
 
-        //resource.get().$promise.then(function (response) {
-        //    cats = response;
-        //    $scope.cats = cats.cats;
-        //});
+        $scope.userName = 'No name';
+        console.log(111, AuthenticationService.getUser());
+        if(AuthenticationService.getUser())
+            $scope.userName = AuthenticationService.getUser();
+
 
         $scope.cats = promiseObj.cats;
         $scope.broadcast = function() {

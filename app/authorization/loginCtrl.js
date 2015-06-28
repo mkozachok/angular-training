@@ -9,6 +9,8 @@ app.controller('loginCtrl', ['$scope', 'userObj', 'AuthenticationService', funct
     $scope.users = userObj.user;
     $scope.login = function () {
        var autheticationResult =  AuthenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
+        console.log(autheticationResult);
+        if(autheticationResult) console.log('uhu');
     };
 }]);
 

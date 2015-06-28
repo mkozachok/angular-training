@@ -1,22 +1,31 @@
 var app = angular.module('app');
 
 app.service('AuthenticationService', ['UserFactory', function (UserFactory) {
-    var resource = UserFactory;
+    var user = '';
     var service = {
         checkLogin : function (allUsers, userEmail, userPassword) {
            var countOfUsers = allUsers.length;
+            console.log(allUsers);
             for(var i =0; i < countOfUsers; i++)
             {
-                if(allUsers[i].name == userEmail)
+                if(allUsers[i].email == userEmail)
                     if(allUsers[i].password == userPassword)
                     {
+                        user = allUsers[i].name;
+                        console.log(user);
                         return allUsers[i];
                     }
             }
             return false;
         },
-        registration : function (userData) {
-
+        registration : function (userName, userEmail, userPassword) {
+            var resource = UserFactory;
+            var temp = {name: userName, password: userPassword, email: userEmail};
+            resource.save(temp);
+            user = userName;
+        },
+        getUser : function(){
+            return user;
         }
     };
 

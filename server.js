@@ -18,6 +18,11 @@ app.post('/cat', function(req, res) {
     //res.json(cats);
 });
 
+app.post('/users', function(req, res) {
+    var user = req.body;
+    users.user.push(user);
+    //res.json(cats);
+});
 
 //GET
 app.use(expressIO.cookieParser());

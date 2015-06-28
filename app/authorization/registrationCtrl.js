@@ -1,15 +1,21 @@
 var app = angular.module('app');
 
-app.controller('RegistrationCtrl', ['$scope', 'AuthenticationService', function ($scope, AuthenticationService) {
+app.controller('RegistrationCtrl', ['$scope', '$location', 'AuthenticationService', 'UserForChekObj', function ($scope, $location, AuthenticationService, UserForChekObj) {
     'use strict';
+    $scope.users = [];
     $scope.userEmail = '';
     $scope.userPassword = '';
     $scope.userName = '';
     $scope.userPasswordRepeat = '';
-
-   // $scope.users = userObj.user;
+    $scope.users = UserForChekObj.user;
     $scope.registration = function () {
-        AuthenticationService.registration($scope.userName, $scope.userEmail, $scope.userPassword);
+        var autheticationResult =  AuthenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
+
+        if(!autheticationResult) {
+            AuthenticationService.registration($scope.userName, $scope.userEmail, $scope.userPassword);
+            $location.path('#/home');
+        }
+        //@todo else show error
     };
 }]);
 

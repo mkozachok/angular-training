@@ -48,7 +48,16 @@ var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField']).
         name: 'registration',
         url: '/registration',
         templateUrl: 'templates/registration.html',
-        controller: 'RegistrationCtrl'
+        controller: 'RegistrationCtrl',
+            resolve:{
+                UserForChekObj:  function(UserFactory){
+                    var getUsers = UserFactory.get();
+                    getUsers.$promise.then(function (response) {
+                        return response;
+                    });
+                    return getUsers.$promise;
+                }
+            }
     });
 }]);
 
