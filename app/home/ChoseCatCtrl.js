@@ -19,11 +19,11 @@ app.controller('ChoseCatCtrl', ['$scope', 'addOrDeleteCatService', 'Authenticati
         $scope.currentCat.v = 1;
     };
 
-// work with user login
-    $scope.userName = 'No name';
-    if(AuthenticationService.getUser()) {
+    var userCookie = $cookieStore.get('user');
+
+    if(userCookie){
         $scope.userActive = 1;
-        $scope.userName = AuthenticationService.getUser();
+        $scope.userName = userCookie;
     }
 
 
@@ -31,8 +31,9 @@ app.controller('ChoseCatCtrl', ['$scope', 'addOrDeleteCatService', 'Authenticati
         addOrDeleteCatService.deleteCat(catName);
     };
 
+
 // votes
-    $cookieStore.put('likeCount', [$scope.currentCat.votes]);
+//  $cookieStore.put('likeCount', $scope.currentCat.votes);
 //    // Get cookie
 
 //    // Removing a cookie
@@ -40,13 +41,18 @@ app.controller('ChoseCatCtrl', ['$scope', 'addOrDeleteCatService', 'Authenticati
     $scope.like = function()
     {
         $scope.currentCat.votes ++;
+        $cookieStore.put('likeCount', $scope.currentCat.votes);
     };
 
     $scope.disLike = function()
     {
         if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
+        $cookieStore.put('likeCount', $scope.currentCat.votes);
     };
 
+    var favoriteCookie = $cookieStore.get('likeCount');
+
+    console.log('finish: ' ,favoriteCookie);
 
     $scope.increment = function(){
         $scope.currentCat.count += 1;

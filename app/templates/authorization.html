@@ -1,12 +1,21 @@
-<div class="container">
-    <div style="padding-bottom:0px; text-align: center">
-        <h2>Sign in!</h2>
+<div>
+    <div ng-show = "userNotActive" class="container">
+        <div style="padding-bottom:0px; text-align: center">
+            <h2>Sign in!</h2>
+        </div>
+        <form name="Login" class="form-signin" ng-submit="login()">
+            <input type="email" class="form-control" placeholder="Email address" autofocus="" ng-model="userEmail">
+            <input type="password" class="form-control" placeholder="Password" ng-model="userPassword">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="signIn">Sign in</button>
+            <a class="btn btn-lg btn-primary btn-block" href="#/registration"> Registration </a>
+        </form>
     </div>
-    <form name="Login" class="form-signin" ng-submit="login()">
-        <input type="email" class="form-control" placeholder="Email address" autofocus="" ng-model="userEmail">
-        <input type="password" class="form-control" placeholder="Password" ng-model="userPassword">
-        <button class="btn btn-lg btn-primary btn-block" type="submit" name="signIn">Sign in</button>
-        <a class="btn btn-lg btn-primary btn-block" href="#/registration"> Registration </a>
-    </form>
-</div>
 
+    <div ng-show = "userActive" class="container">
+        <div style="padding-bottom:0px; text-align: center">
+            <h2>{{ userName }}</h2>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="logout" ng-click="logout()">Logout</button>
+    </div>
+    {{userActive}}
+</div>
