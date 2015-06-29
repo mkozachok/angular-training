@@ -7,19 +7,16 @@ app.controller('AddCatCtrl', ['$scope', 'addOrDeleteCatService', '$cookieStore',
 
     var userCookie = $cookieStore.get('user');
 
-    if(userCookie){
+    if(userCookie)
+    {
         $scope.userActive = 1;
         $scope.userName = userCookie;
     }
 
-    //if(AuthenticationService.getUser()){
-    //    $scope.userActive = 1;
-    //    $scope.userName = AuthenticationService.getUser();
-    //}
 
     $scope.addKitty = function ()
     {
         addOrDeleteCatService.addCat($scope);
     };
 
-    }]);
+}]);

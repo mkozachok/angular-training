@@ -1,10 +1,11 @@
 var app = angular.module('app');
 
-app.controller('ChoseCatCtrl', ['$scope', 'addOrDeleteCatService', 'AuthenticationService', '$cookieStore',  function($scope, addOrDeleteCatService, AuthenticationService, $cookieStore) {
+app.controller('ChoseCatCtrl', ['$window','$scope', 'addOrDeleteCatService', 'AuthenticationService', '$cookieStore',  function($window, $scope, addOrDeleteCatService, AuthenticationService, $cookieStore) {
     'use strict';
     $scope.sort = 'name';
     $scope.find = '';
     $scope.userActive = 0;
+    var likedCats = [];
 
     $scope.$on('Search', function(events, args){
         $scope.find = args; //now we've registered!
@@ -17,37 +18,38 @@ app.controller('ChoseCatCtrl', ['$scope', 'addOrDeleteCatService', 'Authenticati
     $scope.chose = function(cat){
         $scope.currentCat = cat;
         $scope.currentCat.v = 1;
+        $cookieStore.put($scope.currentCat.name, null);
+        console.log($cookieStore.get($scope.currentCat.name));
     };
 
     var userCookie = $cookieStore.get('user');
 
     if(userCookie){
         $scope.userActive = 1;
-        $scope.userName = userCookie;
     }
 
 
     $scope.deleteCat = function(catName){
         addOrDeleteCatService.deleteCat(catName);
+        $window.location.reload();
     };
 
-
-// votes
-//  $cookieStore.put('likeCount', $scope.currentCat.votes);
-//    // Get cookie
-
-//    // Removing a cookie
-//    $cookieStore.remove('myFavorite');
     $scope.like = function()
     {
-        $scope.currentCat.votes ++;
-        $cookieStore.put('likeCount', $scope.currentCat.votes);
+        if($cookieStore.get($scope.currentCat.name) === null) {
+            $scope.currentCat.votes++;
+            $cookieStore.put('likeCount', $scope.currentCat.votes);
+            $cookieStore.put($scope.currentCat.name, userCookie.name);
+        }
     };
 
     $scope.disLike = function()
     {
-        if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
-        $cookieStore.put('likeCount', $scope.currentCat.votes);
+        if($cookieStore.get($scope.currentCat.name) !== null) {
+            if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
+            $cookieStore.put('likeCount', $scope.currentCat.votes);
+            $cookieStore.put($scope.currentCat.name, null);
+        }
     };
 
     var favoriteCookie = $cookieStore.get('likeCount');

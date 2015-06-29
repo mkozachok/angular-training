@@ -50,6 +50,7 @@ app.get('/users', function(req, res) {
 
 app.delete('/cat', function(req, res) {
     var cat = req.body;
+    console.log(cat);
     cats.cats.pop(cat.name);
 });
 

@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('loginCtrl', ['$scope', 'userObj', 'AuthenticationService', '$cookieStore', '$location', function ($scope, userObj, AuthenticationService, $cookieStore, $location) {
+app.controller('loginCtrl', ['$window', '$scope', 'userObj', 'AuthenticationService', '$cookieStore', '$location', function ($window ,$scope, userObj, AuthenticationService, $cookieStore, $location) {
     'use strict';
     $scope.users = [];
     $scope.userName = '';
@@ -23,15 +23,17 @@ app.controller('loginCtrl', ['$scope', 'userObj', 'AuthenticationService', '$coo
         if(autheticationResult) {
             $scope.userName = autheticationResult.name;
             $cookieStore.put('user', $scope.userName);
-            $location.path('#/home');
+            $window.location.reload();
+    //        $location.path('#/home');
         }
     };
 
     $scope.logout = function(){
         $scope.userActive = 0;
         $scope.userNotActive = 1;
-        console.log(111);
         $cookieStore.put('user', '');
+        $window.location.reload();
+     //   $location.path('#/authorization');
     };
 }]);
 

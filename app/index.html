@@ -24,27 +24,16 @@
 </head>
 <body ng-app="app">
 
-<!--<active-user></active-user>-->
-
 <ul class="menu">
     <li><a href="#/home">home</a></li>
     <li><a href="#/add_cat">add cat</a></li>
     <li><a href="#/about">about</a></li>
-    <li><a href="#/authorization">login</a></li>
+    <li ng-controller="MainCtrl"><a href="#/authorization">{{userName}}</a></li>
 </ul>
 
 <div ng-cloak>
     <div ui-view></div>
 </div>
-
-<!--<div>-->
-    <!--<home type="cats"></home>-->
-<!--</div>-->
-<!--<br>-->
-<!--<div>-->
-    <!--<add-cat></add-cat>-->
-<!--</div>-->
-
 
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>

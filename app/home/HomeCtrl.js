@@ -1,17 +1,9 @@
 var app = angular.module('app');
 
-    app.controller('HomeCtrl', ['$scope', 'promiseObj', '$cookieStore', function($scope, promiseObj,  $cookieStore) {
+    app.controller('HomeCtrl', ['$scope', 'promiseObj', function($scope, promiseObj) {
         'use strict';
         $scope.cats = [];
         $scope.userActive = 0;
-        $scope.userName = '';
-
-        //  console.log(111, AuthenticationService.getUser());
-        var userCookie = $cookieStore.get('user');
-        if(userCookie){
-            $scope.userActive = 1;
-            $scope.userName = userCookie;
-        }
 
         $scope.cats = promiseObj.cats;
         $scope.broadcast = function() {
