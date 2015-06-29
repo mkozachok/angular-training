@@ -1,14 +1,16 @@
 var app = angular.module('app');
 
-    app.controller('HomeCtrl', ['$scope', 'AuthenticationService', 'promiseObj', function($scope, AuthenticationService, promiseObj) {
+    app.controller('HomeCtrl', ['$scope', 'promiseObj', 'AuthenticationService',function($scope, promiseObj, AuthenticationService) {
         'use strict';
         $scope.cats = [];
+        $scope.userActive = 0;
+        $scope.userName = '';
 
-        $scope.userName = 'No name';
-        console.log(111, AuthenticationService.getUser());
-        if(AuthenticationService.getUser())
+        //  console.log(111, AuthenticationService.getUser());
+        if(AuthenticationService.getUser()){
+            $scope.userActive = 1;
             $scope.userName = AuthenticationService.getUser();
-
+        }
 
         $scope.cats = promiseObj.cats;
         $scope.broadcast = function() {

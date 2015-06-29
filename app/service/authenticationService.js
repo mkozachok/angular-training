@@ -5,14 +5,12 @@ app.service('AuthenticationService', ['UserFactory', function (UserFactory) {
     var service = {
         checkLogin : function (allUsers, userEmail, userPassword) {
            var countOfUsers = allUsers.length;
-            console.log(allUsers);
             for(var i =0; i < countOfUsers; i++)
             {
                 if(allUsers[i].email == userEmail)
                     if(allUsers[i].password == userPassword)
                     {
                         user = allUsers[i].name;
-                        console.log(user);
                         return allUsers[i];
                     }
             }

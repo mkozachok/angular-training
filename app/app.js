@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField']).
+var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField', 'ngCookies']).
   config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
     $stateProvider
