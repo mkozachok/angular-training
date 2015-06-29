@@ -1,14 +1,12 @@
-angular.module("app").directive("list", function () {
+angular.module("app").directive("catsList", function () {
     return {
         restrict: "AE",
         templateUrl: "templates/list.html",
         replace: true,
-        controller: 'ListController',
+        controller: 'ListCtrl',
         controllerAs: 'list',
         bindToController: true,
-        // scope: {
-        //     type: "=masterType"
-        // },
+        scope: false,
         transclude: true,
         // require: "^?ngApp"
     };

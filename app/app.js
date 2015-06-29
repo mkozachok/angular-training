@@ -8,11 +8,14 @@ angular.module('app', [
   $routeProvider
   .when('/view', {
     templateUrl: 'templates/view.html',
-    controller: 'ViewCtrl'
   })
   .when('/add', {
     templateUrl: 'templates/add.html',
     controller: 'AddCtrl'
+  })
+  .when('/register', {
+    templateUrl: 'templates/register.html',
+    controller: 'regCtrl'
   })
   .otherwise({redirectTo: '/view'});
 }]);
