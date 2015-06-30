@@ -14,12 +14,4 @@
         catService.selectedCat.clicks++;
     };
 
-    $scope.Like = function () {
-        catService.selectedCat.likes++;
-    };
-
-    $scope.Dislike = function () {
-        catService.selectedCat.likes--;
-    };
-
 });

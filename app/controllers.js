@@ -56,7 +56,7 @@ app.controller('CatAddCtrl', function ($scope, catService, $location) {
             'name': $scope.newCat.Name,
             'likes': '0',
             'clicks': '0',
-            'pic': $scope.newCat.Pic,
+            'pic': $scope.newCat.Url,
             'checked': 'false'
         }, function () { $location.path("/app"); });
     };

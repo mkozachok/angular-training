@@ -3,5 +3,5 @@ Clicks: {{$CatDetailsCtrl.sel.clicks}} <br />
 Likes: {{$CatDetailsCtrl.sel.likes}} <br />
 
 <img ng-click="Click()" ng-src="{{$CatDetailsCtrl.sel.pic}}" height="200" width="250" />
-<img ng-click="Like()" ng-src="/Res/like.png" />
-<img ng-click="Dislike()" ng-src="/Res/dislike.png" />
+
+<vote-spinner model="$CatDetailsCtrl.sel"></vote-spinner>

@@ -46,7 +46,25 @@ app.directive('ngEnter', function ($document) {
 app.directive('catImg', function () {
     return {
         restrict: "EA",
-        scope: "=",
+        scope: {
+            model: "="
+        },
+        bindToController: true,
+        controller: "CatImgCtrl",
+        controllerAs: "vm",
         templateUrl: 'directives/catImg.html'
+    };
+});
+
+app.directive('voteSpinner', function () {
+    return {
+        restrict: "EA",
+        scope: {
+            model: "="
+        },
+        bindToController: true,
+        controller: "VoteSpinnerCtrl",
+        controllerAs: "vm",
+        templateUrl: 'directives/voteSpinner.html'
     };
 });
