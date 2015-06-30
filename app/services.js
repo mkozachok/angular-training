@@ -1,4 +1,4 @@
-﻿app.service('catService', ['$resource', function ($resource) {
+﻿app.service('catService', function ($resource) {
 
     this.res = $resource('/cats/:cat', { cat: '@cat' }, {
         update: {
@@ -8,7 +8,7 @@
 
     this.selectedCat = "";
 
-}]);
+});
 
 //app.factory('catFactory', function () {
 //    //Not used so fat

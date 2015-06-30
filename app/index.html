@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Catz</title>
 
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
@@ -26,10 +27,12 @@
 </body>-->
 
 <body>
-    <section ui-view>
-        <section ui-view="catList"></section>
-        <section ui-view="catDetails"></section>
-    </section>
+    <div class="container">
+        <section ui-view>
+            <section ui-view="catList"></section>
+            <section ui-view="catDetails"></section>
+        </section>
+    </div>
 </body>
 
 </html>
