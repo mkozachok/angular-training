@@ -1,7 +1,9 @@
 
 
 angular.module('myApp.catsView', [
-    'myApp.catsServices', 'ui.router'
+    'myApp.catsServices',
+    'myApp.profileServices',
+    'ui.router'
   ])
 
   .config(['$stateProvider', function($stateProvider) {
@@ -31,16 +33,6 @@ angular.module('myApp.catsView', [
       $scope.visible = true;
     };
 
-    $scope.vote = function() {
-      $scope.selected_cat.votes++;
-      catsService.updateCat($scope.selected_cat);
-    };
-
-    $scope.disvote = function() {
-      $scope.selected_cat.votes--;
-      catsService.updateCat($scope.selected_cat);
-    };
-
     $scope.catsFilter = function() {
       $scope.cats = filterFilter($scope.allCats, {"name": $scope.name});
       $scope.cats = orderByFilter($scope.cats, $scope.order);
@@ -58,18 +50,13 @@ angular.module('myApp.catsView', [
     };
 
     $scope.deleteCat = function(id) {
-      catsService.deleteCat(id);
-
-      // Delete Cat from $scope.
-      var newCats = [];
-      for (var i = 0 ; i < cats.length; i++) {
-        if (cats[i].id != id) {
-          newCats.push(cats[i]);
-        }
-      }
-
-      $scope.cats = newCats;
-      $scope.allCats = newCats;
+      catsService.deleteCat(id).then(function() {
+        catsService.getCats().then(function(data) {
+          cats = data;
+          $scope.cats = data;
+          $scope.allCats = data;
+        });
+      });
     };
   })
 
@@ -81,15 +68,11 @@ angular.module('myApp.catsView', [
       replace: true,
       scope: {
         visible: '=?',
-        modalTitle: '=?'
+        cat: '=?'
       },
-      link: function (scope, element, attrs) {
-        attrs.$observe('modalTitle', function(value) {
-          scope.modalTitle = value;
-        });
-
+      link: function (scope, element) {
         scope.$watch('visible', function(value){
-          if (value === true){
+          if (value === true) {
             $(element).modal('show');
           }
           else{
@@ -108,6 +91,72 @@ angular.module('myApp.catsView', [
             scope.visible = false;
           });
         });
+      }
+    };
+  })
+
+  .directive('voteSpinner', function () {
+    return {
+      templateUrl: 'components/cats/templates/voteSpinner.html',
+      restrict: 'AE',
+      replace: true,
+      scope: {
+        cat: '='
+      },
+      controller: function($scope, catsService, profileService) {
+        $scope.voteAccess = function(cat) {
+          if (!angular.isUndefined(cat)) {
+            var user = profileService.getLoggedUser();
+
+            if (user) {
+              if (user == cat.author || (cat.votedBy.length && cat.votedBy.indexOf(user) !== -1)) {
+                return false;
+              }
+              else {
+                return true;
+              }
+            }
+            else {
+              return false;
+            }
+          }
+          return false;
+        };
+
+        $scope.voteAccessMessage = function (cat) {
+          if (!angular.isUndefined(cat)) {
+            var user = profileService.getLoggedUser();
+
+            if (user) {
+              if (user == cat.author) {
+                return 'You cannot vote for own cat!';
+              }
+              else if (cat.votedBy.length && cat.votedBy.indexOf(user) !== -1) {
+                return 'You have already voted for this cat!';
+              }
+            }
+            else {
+              return 'Please login to vote this cat!';
+            }
+          }
+          return '';
+        };
+
+        $scope.vote = function(cat) {
+          var user = profileService.getLoggedUser();
+
+          cat.votes++;
+          cat.votedBy.push(user);
+          catsService.updateCat(cat);
+        };
+
+        $scope.disvote = function(cat) {
+          var user = profileService.getLoggedUser();
+
+          cat.votes--;
+          cat.votedBy.push(user);
+          catsService.updateCat(cat);
+        };
       }
     };
   });

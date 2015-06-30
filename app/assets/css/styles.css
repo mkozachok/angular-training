@@ -2,15 +2,37 @@
     display: none;
 }
 
-.loading-content {
-    display: none;
+.loading-content .row {
+    /*display: none;*/
 }
 
 body.loading .loading-message {
     display: block;
 }
 
-body.loaded .loading-content {
+body.loading .loading-message .loading-overview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgb(51, 51, 51);;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+}
+
+body.loading.modal-open .loading-message .loading-overview {
+    display: none;
+}
+
+body.loading .loading-message .spinner {
+    z-index: 1001;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+body.loaded .loading-content .row {
     display: block;
 }
 

@@ -1,0 +1,15 @@
+<div>
+    <h5>
+        <ng-pluralize count="cat.votes"
+                      when="{'0': '{} votes',
+                         '1': '{} vote',
+                         '-1': '{} vote',
+                         'other': '{} votes'}">
+        </ng-pluralize>
+    </h5>
+    <div class="btn-group">
+        <button type="button" class="btn btn-success btn-lg glyphicon glyphicon-thumbs-up" ng-class="{'disabled':!voteAccess(cat)}" ng-click="vote(cat)"></button>
+        <button type="button" class="btn btn-danger btn-lg glyphicon glyphicon-thumbs-down" ng-class="{'disabled':!voteAccess(cat)}" ng-click="disvote(cat)"></button>
+    </div>
+    <em>{{voteAccessMessage(cat)}}</em>
+</div>

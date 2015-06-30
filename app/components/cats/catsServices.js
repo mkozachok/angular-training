@@ -28,7 +28,7 @@ angular.module('myApp.catsServices', [
     };
 
     this.insertCat = function (cat) {
-      return request.newData(cat);
+      return request.newData(cat).$promise;
     };
 
     this.updateCat = function (cat) {
@@ -36,6 +36,6 @@ angular.module('myApp.catsServices', [
     };
 
     this.deleteCat = function (id) {
-      return request.deleteData({id: id});
+      return request.deleteData({id: id}).$promise;
     };
   });

@@ -18,21 +18,24 @@ angular.module('myApp.catsAdd', [
     $scope.add = function() {
       if ($scope.catAdd.name.$valid && $scope.catAdd.path.$valid) {
         var author = profileService.getLoggedUser();
-        catsService.insertCat({
+        var newCat = {
           name: $scope.name,
           path: $scope.path,
           viewed: 0,
-          likes: 0,
+          votes: 0,
+          votedBy: [],
           author: author
+        };
+
+        catsService.insertCat(newCat).then(function() {
+          $scope.name = '';
+          $scope.path = '';
+          $scope.catAdd.$setPristine();
+          $scope.catAdd.$setUntouched();
+
+          $location.path('/view');
+          $rootScope.selectedTab = 'view';
         });
-
-        $scope.name = '';
-        $scope.path = '';
-        $scope.catAdd.$setPristine();
-        $scope.catAdd.$setUntouched();
-
-        $location.path('/view');
-        $rootScope.selectedTab = 'view';
       }
     };
 
