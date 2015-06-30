@@ -1,4 +1,4 @@
-catApp.controller('CatItemDirectiveController', function($state, catsService) {							  				
+catApp.controller('CatItemDirectiveController', function($state, catsService, indetityService) {							  				
 		var vm = this;		
 	
 		vm.click = function(cat){
@@ -6,7 +6,9 @@ catApp.controller('CatItemDirectiveController', function($state, catsService) {
 		};
 
 		vm.remove = function(cat) {
-			catsService.remove(cat);
-			$state.reload();
+			if (indetityService.currentUser !== null){
+				catsService.remove(cat);
+				$state.reload();
+			}
 		};
 	});

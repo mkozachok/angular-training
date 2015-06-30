@@ -6,7 +6,8 @@ catApp.directive('catItem', function() {
 		bindToController: true,
 		replace: true,
 		scope: {
-	        model: "=item"
+	        model : "=item",
+	        currentUser : "="
       	}
 	};
 });

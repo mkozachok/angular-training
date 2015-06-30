@@ -1,6 +1,6 @@
 catApp.provider('authorizeProvider', function () {	
 	var prepare = function(scope, locator, identityService) {
-		var anonymous = ["/", "profileAdd", "about"];
+		var anonymous = ["/", "profileAdd", "catDetail", "about"];
 		var defaultState = "/";
 
 		scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 

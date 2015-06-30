@@ -8,7 +8,7 @@
 		<button class="btn btn-primary"  ng-click="catsCtrl.filter(catsCtrl.CatFilter)">Find</button>
 
 		<div class="row" ng-repeat="cat in catsCtrl.filteredCats">
-			<cat-item item="cat"></cat-item>
+			<cat-item item="cat" current-user="appCtrl.currentUser"></cat-item>
 		</div>
-		<a class="btn btn-info" href="#/add">Add new cat</a>
+		<a class="btn btn-info" href="#/add" ng-show="appCtrl.currentUser">Add new cat</a>
 </div>

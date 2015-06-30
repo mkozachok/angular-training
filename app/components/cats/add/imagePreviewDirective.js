@@ -5,7 +5,6 @@ catApp.directive('imagePreview', function ()
 		scope : {
 			model : '='
 		},
-		replace: true,
 		templateUrl : 'components/cats/add/imagePreview.html'
 	};
 });

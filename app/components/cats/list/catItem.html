@@ -10,7 +10,7 @@
 		<span ng-show="catCtrl.model.is_viewed === 1">&#10003;</span>
 	</div>						  				 		  		
 	<div class="col-md-1">
-		<button class="btn btn-danger" role="button" ng-click="catCtrl.remove(catCtrl.model)">Remove</button>
+		<button class="btn btn-danger" role="button" ng-click="catCtrl.remove(catCtrl.model)" ng-show="catCtrl.currentUser">Remove</button>
 	</div>						  				 	
 	<div class="col-md-1">
 		<a class="btn btn-default" role="button" href="#/cat/{{catCtrl.model.id}}">View details &raquo;</a>
