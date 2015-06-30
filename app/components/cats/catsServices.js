@@ -15,14 +15,11 @@ angular.module('myApp.catsServices', [
       'newData': {
         method: 'POST'
       },
+      'updateData': {
+        method: 'PUT'
+      },
       'deleteData': {
         method: 'DELETE'
-      }
-    });
-
-    var requestDelete = $resource('/delete', {}, {
-      'deleteData': {
-        method: 'POST'
       }
     });
 
@@ -34,7 +31,11 @@ angular.module('myApp.catsServices', [
       return request.newData(cat);
     };
 
+    this.updateCat = function (cat) {
+      return request.updateData(cat);
+    };
+
     this.deleteCat = function (id) {
-      return requestDelete.deleteData({id: id});
+      return request.deleteData({id: id});
     };
   });

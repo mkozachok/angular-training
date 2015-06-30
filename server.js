@@ -58,7 +58,7 @@ app.post('/cats', function(req, res) {
   res.send('OK');
 });
 
-app.post('/delete', function(req, res) {
+app.delete('/cats', function(req, res) {
   // Read Cat file.
   var fs = require('fs');
   var content = fs.readFileSync(catFile, 'utf8');
@@ -67,7 +67,7 @@ app.post('/delete', function(req, res) {
   var data = [];
   // Delete element item.
   for (var i = 0 ; i < result.length; i++) {
-    if (result[i].id != req.body.id) {
+    if (result[i].id != req.query.id) {
       data.push(result[i]);
     }
   }
@@ -75,6 +75,27 @@ app.post('/delete', function(req, res) {
   // Write the file.
   var fs = require('fs');
   fs.writeFile(catFile, JSON.stringify(data), function (err) {});
+
+  res.send('OK');
+});
+
+app.put('/cats', function(req, res) {
+  // Read Cat file.
+  var fs = require('fs');
+  var content = fs.readFileSync(catFile, 'utf8');
+  var result = JSON.parse(content);
+
+  // Update element item.
+  for (var i = 0 ; i < result.length; i++) {
+    if (result[i].id == req.body.id) {
+      result[i] = req.body;
+    }
+  }
+
+  // Write the file.
+  var fs = require('fs');
+  fs.writeFile(catFile, JSON.stringify(result), function (err) {});
+
   res.send('OK');
 });
 

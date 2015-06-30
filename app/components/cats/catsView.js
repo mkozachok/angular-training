@@ -27,15 +27,18 @@ angular.module('myApp.catsView', [
     $scope.changeCat = function(index) {
       $scope.selected_cat = $scope.cats[index];
       $scope.selected_cat.viewed = 1;
+      catsService.updateCat($scope.selected_cat);
       $scope.visible = true;
     };
 
     $scope.vote = function() {
       $scope.selected_cat.votes++;
+      catsService.updateCat($scope.selected_cat);
     };
 
     $scope.disvote = function() {
       $scope.selected_cat.votes--;
+      catsService.updateCat($scope.selected_cat);
     };
 
     $scope.catsFilter = function() {
@@ -67,7 +70,6 @@ angular.module('myApp.catsView', [
 
       $scope.cats = newCats;
       $scope.allCats = newCats;
-      console.dir($scope.cats);
     };
   })
 
@@ -79,11 +81,11 @@ angular.module('myApp.catsView', [
       replace: true,
       scope: {
         visible: '=?',
-        title: '=?'
+        modalTitle: '=?'
       },
       link: function (scope, element, attrs) {
-        attrs.$observe('title', function(value) {
-          scope.title = value;
+        attrs.$observe('modalTitle', function(value) {
+          scope.modalTitle = value;
         });
 
         scope.$watch('visible', function(value){
