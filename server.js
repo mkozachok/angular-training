@@ -31,13 +31,16 @@ app.get('/mentees', function(req, res) {
 });
 
 app.get('/cats', function(req, res) {
-  var result = require(catFile);
-  res.json(result);
+  var fs = require('fs');
+  var content = fs.readFileSync(catFile, 'utf8');
+  res.json(JSON.parse(content));
 });
 
 app.post('/cats', function(req, res) {
   // Read Cat file.
-  var result = require(catFile);
+  var fs = require('fs');
+  var content = fs.readFileSync(catFile, 'utf8');
+  var result = JSON.parse(content);
 
   // Add new item.
   var max = 0;
@@ -57,11 +60,13 @@ app.post('/cats', function(req, res) {
 
 app.post('/delete', function(req, res) {
   // Read Cat file.
-  var result = require(catFile);
+  var fs = require('fs');
+  var content = fs.readFileSync(catFile, 'utf8');
+  var result = JSON.parse(content);
 
   var data = [];
   // Delete element item.
-  for (var i=0 ; i <result.length; i++) {
+  for (var i = 0 ; i < result.length; i++) {
     if (result[i].id != req.body.id) {
       data.push(result[i]);
     }

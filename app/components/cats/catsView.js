@@ -24,8 +24,6 @@ angular.module('myApp.catsView', [
     $scope.cats = cats;
     $scope.allCats = cats;
 
-    console.dir($scope.cats);
-
     $scope.changeCat = function(index) {
       $scope.selected_cat = $scope.cats[index];
       $scope.selected_cat.viewed = 1;
@@ -58,6 +56,18 @@ angular.module('myApp.catsView', [
 
     $scope.deleteCat = function(id) {
       catsService.deleteCat(id);
+
+      // Delete Cat from $scope.
+      var newCats = [];
+      for (var i = 0 ; i < cats.length; i++) {
+        if (cats[i].id != id) {
+          newCats.push(cats[i]);
+        }
+      }
+
+      $scope.cats = newCats;
+      $scope.allCats = newCats;
+      console.dir($scope.cats);
     };
   })
 
