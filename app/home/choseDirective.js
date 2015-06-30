@@ -2,7 +2,7 @@ angular.module("app").directive("chose", function () {
     return {
         templateUrl: "templates/choseCat.html",
         replace: true,
-        //scope: {},
+        //scope: {}, //@todo change to local scope
         controller: 'ChoseCatCtrl'
     };
 });

@@ -5,7 +5,7 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
     $scope.sort = 'name';
     $scope.find = '';
     $scope.userActive = 0;
-    var likedCats = [];
+    var likedCats = {};
 
     $scope.$on('Search', function(events, args){
         $scope.find = args; //now we've registered!
@@ -18,9 +18,10 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
     $scope.chose = function(cat){
         $scope.currentCat = cat;
         $scope.currentCat.v = 1;
-        likedCats[$scope.currentCat.name] = 0;
-     //   $cookieStore.put($scope.currentCat.name, null);
-       // console.log($cookieStore.get($scope.currentCat.name));
+
+        if(likedCats[$scope.currentCat.name] === undefined) {
+            likedCats[$scope.currentCat.name] = 0;
+        }
     };
 
     var userCookie = $cookieStore.get('user');
@@ -29,10 +30,10 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
         $scope.userActive = 1;
     }
 
-
+  //@todo rewrite that work without reload
     $scope.deleteCat = function(catName){
         addOrDeleteCatService.deleteCat(catName);
-        $window.location.reload();
+        $scope.cats = addOrDeleteCatService.updateCat();
     };
 
     $scope.like = function()
@@ -40,22 +41,20 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
         if(likedCats[$scope.currentCat.name] === 0) {
             $scope.currentCat.votes++;
             //$cookieStore.put('likeCount', $scope.currentCat.votes);
-            likedCats[$scope.currentCat.name] = $scope.currentCat.votes;
+            likedCats[$scope.currentCat.name] = 1;
             $cookieStore.put(userCookie.name, likedCats);
-         //   votesService.saveVotes(userCookie, likedCats);
+            votesService.saveVotes(userCookie, likedCats);
         }
     };
 
     $scope.disLike = function()
     {
-        if(likedCats[$scope.currentCat.name] !== 0) { //$scope.currentCat.votes > 0 &&
+        if(likedCats[$scope.currentCat.name] !== 0) {
             if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
-            likedCats[$scope.currentCat.name] = $scope.currentCat.votes;
-          //  $cookieStore.put(userCookie.name, likedCats);
+            likedCats[$scope.currentCat.name] = 0;
+          //$cookieStore.put(userCookie.name, likedCats);
         }
     };
-
-    console.log('finish: ' ,favoriteCookie);
 
     $scope.increment = function(){
         $scope.currentCat.count += 1;

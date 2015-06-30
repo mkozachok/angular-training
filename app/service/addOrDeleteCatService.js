@@ -9,11 +9,18 @@ app.service('addOrDeleteCatService',['KittyFactory', function (KittyFactory) {
             scope.kittyName = '';
             scope.kittyImg = '';
         },
-        deleteCat : function (name) {
-            console.log(name);
+        deleteCat : function (catName) {
+            //console.log(catName);
             var resource = KittyFactory;
-            var temp = {name: name};
+            var temp = {name: catName};
+            console.log(temp);
             resource.delete(temp);
+        },
+        updateCat: function(){
+            var getCats = KittyFactory.get();
+            getCats.$promise.then(function (response) {
+                return response;
+            });
         }
     };
     return service;

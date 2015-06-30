@@ -48,9 +48,10 @@ app.get('/users', function(req, res) {
     res.json(users); //cats
 });
 
-app.delete('/cat', function(req, res) {
+app.delete('/cat', function(req, res)
+{
+    var deletedCat = req.query.name;
 
-    var deletedCat = req.body.name;
     var countOfCats = cats.cats.length;
     var k = 0;
 
@@ -58,10 +59,11 @@ app.delete('/cat', function(req, res) {
     {
         if(cats.cats[i].name == deletedCat) {
             k = i;
-            cats.splice(i, 1);
+            cats.cats.splice(i, 1);
             break;
         }
     }
+    res.send("success");
 });
 
 //app.get('/mentees', function(req, res) {
