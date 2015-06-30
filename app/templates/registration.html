@@ -3,11 +3,26 @@
         <h2>Registered!</h2>
     </div>
     <form name="Registration" class="form-signin" ng-submit="registration()">
-        <input type="text" class="form-control" placeholder="Your name" autofocus="" ng-model="userName">
-        <input type="email" class="form-control" placeholder="Your email address" autofocus="" ng-model="userEmail">
+        <input name="userName" type="text" class="form-control" ng-minlength="3" placeholder="Your name" autofocus="" ng-model="userName">
+        <div ng-show="Registration.$submitted || Registration.userName.$touched">
+            <div ng-show="Registration.userName.$error.required">Write your name.</div>
+            <div ng-show="Registration.userName.$error.minlength">Too short user name!</div>
+        </div>
 
-        <input type="password" class="form-control" placeholder="Your password" ng-model="userPassword" name="userPassword" />
+        <input name="userEmail" type="email" ng-pattern="/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/" class="form-control" placeholder="Your email address" autofocus="" ng-model="userEmail">
+        <div ng-show="Registration.$submitted || Registration.userEmail.$touched">
+            <span ng-show="Registration.userEmail.$error.required">Tell us your email.</span>
+            <span ng-show="Registration.userEmail.$error.email">This is not a valid email.</span>
+        </div>
+
+        <input type="password" name="userPassword" ng-minlength="5" class="form-control" placeholder="Your password" ng-model="userPassword" name="userPassword" />
+        <div ng-show="Registration.$submitted || Registration.userPassword.$touched">
+            <span ng-show="Registration.userPassword.$error.required">Please, write your password.</span>
+            <span ng-show="Registration.userPassword.$error.minlength">Password too short.</span>
+        </div>
         <input type="password" class="form-control" placeholder="Repeat password" ng-confirm-field ng-model="passwordConfirm" confirm-against="userPassword" name="passwordConfirm"/>
+
+
         <div style="color: red" ng-show="Registration.passwordConfirm.$dirty && Registration.passwordConfirm.$invalid">
             <span  ng-show="Registration.passwordConfirm.$error.noMatch">Passwords don't match</span>
         </div>

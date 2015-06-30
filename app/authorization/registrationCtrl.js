@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('RegistrationCtrl', ['$scope', '$cookieStore', '$location', 'AuthenticationService', 'UserForChekObj', function ($scope, $cookieStore, $location, AuthenticationService, UserForChekObj) {
+app.controller('RegistrationCtrl', ['$window', '$scope', '$cookieStore', '$location', 'AuthenticationService', 'UserForChekObj', function ($window ,$scope, $cookieStore, $location, AuthenticationService, UserForChekObj) {
     'use strict';
     $scope.users = [];
     $scope.userEmail = '';
@@ -14,6 +14,7 @@ app.controller('RegistrationCtrl', ['$scope', '$cookieStore', '$location', 'Auth
         if(!autheticationResult) {
             AuthenticationService.registration($scope.userName, $scope.userEmail, $scope.userPassword);
             $cookieStore.put('user', $scope.userName);
+            $window.location.reload();
             $location.path('#/home');
         }
         //@todo else show error

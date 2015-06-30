@@ -4,11 +4,12 @@
             <h2>Sign in!</h2>
         </div>
         <form name="Login" class="form-signin" ng-submit="login()">
-            <input type="email" class="form-control" placeholder="Email address" autofocus="" ng-model="userEmail">
+            <input name="userEmail" type="email" class="form-control" placeholder="Email address" autofocus="" ng-model="userEmail">
             <input type="password" class="form-control" placeholder="Password" ng-model="userPassword">
             <button class="btn btn-lg btn-primary btn-block" type="submit" name="signIn">Sign in</button>
             <a class="btn btn-lg btn-primary btn-block" href="#/registration"> Registration </a>
         </form>
+        <span  class="error" ng-show="Registration.userEmail.$error">Don't valid email!</span>
     </div>
 
     <div ng-show = "userActive" class="container">

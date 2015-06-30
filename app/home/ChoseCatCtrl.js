@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('ChoseCatCtrl', ['$window','$scope', 'addOrDeleteCatService', 'AuthenticationService', '$cookieStore',  function($window, $scope, addOrDeleteCatService, AuthenticationService, $cookieStore) {
+app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteCatService', 'AuthenticationService', '$cookieStore',  function(votesService ,$window, $scope, addOrDeleteCatService, AuthenticationService, $cookieStore) {
     'use strict';
     $scope.sort = 'name';
     $scope.find = '';
@@ -18,8 +18,9 @@ app.controller('ChoseCatCtrl', ['$window','$scope', 'addOrDeleteCatService', 'Au
     $scope.chose = function(cat){
         $scope.currentCat = cat;
         $scope.currentCat.v = 1;
-        $cookieStore.put($scope.currentCat.name, null);
-        console.log($cookieStore.get($scope.currentCat.name));
+        likedCats[$scope.currentCat.name] = 0;
+     //   $cookieStore.put($scope.currentCat.name, null);
+       // console.log($cookieStore.get($scope.currentCat.name));
     };
 
     var userCookie = $cookieStore.get('user');
@@ -36,23 +37,23 @@ app.controller('ChoseCatCtrl', ['$window','$scope', 'addOrDeleteCatService', 'Au
 
     $scope.like = function()
     {
-        if($cookieStore.get($scope.currentCat.name) === null) {
+        if(likedCats[$scope.currentCat.name] === 0) {
             $scope.currentCat.votes++;
-            $cookieStore.put('likeCount', $scope.currentCat.votes);
-            $cookieStore.put($scope.currentCat.name, userCookie.name);
+            //$cookieStore.put('likeCount', $scope.currentCat.votes);
+            likedCats[$scope.currentCat.name] = $scope.currentCat.votes;
+            $cookieStore.put(userCookie.name, likedCats);
+         //   votesService.saveVotes(userCookie, likedCats);
         }
     };
 
     $scope.disLike = function()
     {
-        if($cookieStore.get($scope.currentCat.name) !== null) {
+        if(likedCats[$scope.currentCat.name] !== 0) { //$scope.currentCat.votes > 0 &&
             if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
-            $cookieStore.put('likeCount', $scope.currentCat.votes);
-            $cookieStore.put($scope.currentCat.name, null);
+            likedCats[$scope.currentCat.name] = $scope.currentCat.votes;
+          //  $cookieStore.put(userCookie.name, likedCats);
         }
     };
-
-    var favoriteCookie = $cookieStore.get('likeCount');
 
     console.log('finish: ' ,favoriteCookie);
 

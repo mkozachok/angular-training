@@ -49,9 +49,19 @@ app.get('/users', function(req, res) {
 });
 
 app.delete('/cat', function(req, res) {
-    var cat = req.body;
-    console.log(cat);
-    cats.cats.pop(cat.name);
+
+    var deletedCat = req.body.name;
+    var countOfCats = cats.cats.length;
+    var k = 0;
+
+    for(var i=0; i<countOfCats; i++)
+    {
+        if(cats.cats[i].name == deletedCat) {
+            k = i;
+            cats.splice(i, 1);
+            break;
+        }
+    }
 });
 
 //app.get('/mentees', function(req, res) {

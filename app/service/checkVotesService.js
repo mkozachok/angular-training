@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.service('checkVotes',['UserFactory', function (KittyFactory) {
+app.service('votesService',['UserFactory', function (UserFactory) {
     var service = {
         checkVotes : function (scope) {
             var resource = KittyFactory;
@@ -8,6 +8,13 @@ app.service('checkVotes',['UserFactory', function (KittyFactory) {
             resource.save(temp);
             scope.kittyName = '';
             scope.kittyImg = '';
+        },
+        saveVotes : function(user, votes){
+            var resource = UserFactory;
+
+            var temp = {name: user.name, password: user.password, email: user.email, catVote: [votes] };
+            console.log(JSON.stringify(votes), votes);
+           // resource.save(temp);
         }
     };
     return service;
