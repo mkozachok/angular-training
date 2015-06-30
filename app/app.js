@@ -15,15 +15,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
       .state('cats', {
           url: "/cats",
-          templateUrl: "list.html",
+          templateUrl: "templates/list.html",
           views: {
               catList: {
-                  templateUrl: 'list.html',
+                  templateUrl: 'templates/list.html',
                   controller: 'CatMainCtrl',
                   controllerAs: '$CatMainCtrl'
               },
               catDetails: {
-                  templateUrl: 'catDetails.html',
+                  templateUrl: 'components/cats/details/catDetails.html',
                   controller: 'CatDetailsCtrl',
                   controllerAs: '$CatDetailsCtrl'
               },
@@ -43,7 +43,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
       .state('add', {
           url: "/add",
-          templateUrl: "add.html",
+          templateUrl: "templates/add.html",
           controller: 'CatAddCtrl',
           controllerAs: '$CatAddCtrl'
       });

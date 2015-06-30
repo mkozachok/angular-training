@@ -1,6 +1,22 @@
-<div>
-    <div style="color:red" ng-transclude></div>
-    <ul>
-        <li ng-repeat="mentor in list.mentors"><list-item type="mentor"></list-item></li>
-    </ul>
-</div>
+<input type="text" ng-model="searchName" placeholder="Search by" autofocus1 />
+<select ng-model="orderProp">
+    <option value="name" ng-selected="true">Asc</option>
+    <option value="-name">Desc</option>
+</select>
+
+<ul>
+    <li ng-repeat="cat in cats | filter:filterCats | orderBy:orderProp " ng-click="SelectCat(cat)">
+
+        <input type="text" ng-model="cat.name" name="catName">        
+        : {{cat.clicks}} : {{cat.checked}} ({{cat.likes}} likes)
+        <span ng-if="cat.checked == true">&#10004;</span>
+
+        <a href="" ng-click="updateCat(cat)">Edit</a>
+        <a href="" ng-click="deleteCat(cat.id)">Delete</a>
+
+    </li>
+</ul>
+
+<a href="#/add">Add new cat</a>
+
+<hr /><br />
