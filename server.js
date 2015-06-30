@@ -39,7 +39,7 @@ app.get('/cats', function(req, res) {
 
     setTimeout(function (){
         res.json(cats);
-    }, 5000);
+    }, 500);
 });
 
 app.get('/cats/:id', function(req, res) {
@@ -70,6 +70,7 @@ app.post('/cats/:id', function(req, res) {
                     "is_viewed":req.body.is_viewed,
                     "votes":req.body.votes
                  });
+    res.send('<p>Thank you</p>');
 });
 
 app.put('/cats/:id', function(req, res) {

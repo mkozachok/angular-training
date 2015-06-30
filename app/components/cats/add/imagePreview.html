@@ -1,0 +1,7 @@
+<label for="catUrl">Cat image url:</label>
+<input type="text" class="form-control" id="catUrl" ng-model="model.src" 
+	ng-required="true"
+	ng-pattern="/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/">
+<div>
+	<img style="margin-top:50px" ng-src="{{model.src}}" ng-show="model.src" height="200" width="200"/>
+</div>

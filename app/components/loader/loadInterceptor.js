@@ -10,14 +10,16 @@ catApp.factory('httpInterceptor', function ($q, $rootScope, $log) {
 
         },
         response: function (response) {
-            if ((--numLoadings) === 0) {
+            numLoadings--;
+            if (numLoadings === 0) {
                 $rootScope.$broadcast("loader.hide");
             }
             return response || $q.when(response);
 
         },
         responseError: function (response) {
-            if ((--numLoadings) === 0) {
+            numLoadings--;
+            if (numLoadings === 0) {
                 $rootScope.$broadcast("loader.hide");
             }
             return $q.reject(response);

@@ -1,5 +1,4 @@
 catApp.factory('catsService', function (catsResource, filterFilter, orderByFilter, votesService) {
-	
 	var get = function(){
 		return catsResource.query().$promise;
 	};

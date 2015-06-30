@@ -5,15 +5,7 @@
 	<div class="col-md-2">			  
 	  	<img style="margin-top:5px" ng-src="{{catCtrl.model.src}}" ng-click="catCtrl.click(catCtrl.model)" alt="{{catCtrl.model.count}}" title="{{catCtrl.model.count}}" height="50" width="50"/>
 	</div>			
-	<div class="col-md-1">
-		<i class="glyphicon glyphicon-thumbs-up" ng-click="catCtrl.updateVote(catCtrl.model, 1)"></i>				
-	</div>							
-	<div class="col-md-1">
-		<span class="badge">{{catCtrl.model.votes}}</span>
-	</div>
-	<div class="col-md-1">
-		<i class="glyphicon glyphicon-thumbs-down" ng-click="catCtrl.updateVote(catCtrl.model, -1)"></i>				
-	</div>				
+	<vote-spinner item="catCtrl.model"></vote-spinner>
 	<div class="col-md-1">
 		<span ng-show="catCtrl.model.is_viewed === 1">&#10003;</span>
 	</div>						  				 		  		

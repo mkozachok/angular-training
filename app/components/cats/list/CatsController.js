@@ -1,5 +1,5 @@
 catApp.controller('CatsController', function($scope, catsService) {							  				
-		var vm = this;		
+		var vm = this;
 
 		vm.CatFilter = {Value :'', OrderBy:'name'};		
 		
@@ -21,8 +21,4 @@ catApp.controller('CatsController', function($scope, catsService) {
 				  vm.filter(vm.CatFilter);
             }
 		);
-
-		vm.click = function(cat) {
-			catsService.click(cat);
-		};		
 	});

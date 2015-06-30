@@ -1,17 +1,13 @@
-<ng-form name="addCatForm" ng-controller="CatAddController as catCtrl" role="form">
+<div  ng-controller="CatAddController as catCtrl">
+<ng-form name="addCatForm" role="form" submit-enter="catCtrl.addCat(addCatForm, catCtrl.newCat)">
 	<div class="form-group">
-	    <label for="login">Cat name:</label>
-	    <input type="text" class="form-control" id="catName" ng-model="catCtrl.newCat.name" ng-required="true">
+	    <label for="catName">Cat name:</label>
+	    <input type="text" class="form-control" id="catName" ng-model="catCtrl.newCat.name" ng-required="true" input-focus>
 	 </div>	
 	<div class="form-group">
-	    <label for="email">Cat image url:</label>
-	    <input type="text" class="form-control" id="catUrl" ng-model="catCtrl.newCat.src" 
-	    	ng-required="true"
-	    	ng-pattern="/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/">
-	    <div>
-	    	<img style="margin-top:50px" ng-src="{{catCtrl.newCat.src}}" ng-click="catCtrl.click(catCtrl.model)" ng-show="catCtrl.newCat.src" height="200" width="200"/>
-	    </div>
+		<image-preview model="catCtrl.newCat"></image-preview>	    
 	 </div>
-	<a href="#/" class="btn btn-success" ng-click="catCtrl.addCat(catCtrl.newCat)" ng-show="addCatForm.$valid">Create</a>
+	<a href="#/" class="btn btn-success" ng-click="catCtrl.addCat(addCatForm, catCtrl.newCat)" ng-show="addCatForm.$valid">Create</a>
 	<a href="#/" class="btn btn-primary">Cancel</a>
 </ng-form>
+</div>

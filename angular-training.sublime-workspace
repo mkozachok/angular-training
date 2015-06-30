@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"for",
+				"form"
+			],
+			[
+				"get",
+				"getMessages"
+			],
+			[
 				"pr",
 				"promise"
 			],
@@ -87,39 +95,48 @@
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/about",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/add",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/detail",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/loader",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/shared",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/bower_components/angular",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/build"
 	],
 	"file_history":
 	[
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/loader/loadDirective.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/catItem.html",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/voteSpinnerDirective.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/voteSpinner.html",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/VoteDirectiveController.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/CatsController.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/CatItemDirectiveController.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/add/imagePreviewDirective.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/shared/imagePreviewDirective.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/add/catAdd.html",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/shared/imagePreview.html",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/control/imagePreviewDirective.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/server.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/loader/loadInterceptor.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/loader/loadDirective.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/add/CatAddController.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/control/enterDirective.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/bower_components/angular/angular.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/control/focusDirective.js",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/catsList.html",
+		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/catsService.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/detail/catDetail.html",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/index.html",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/about/about.html",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/shared/compareFieldDirective.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/profile/profile.html",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/catsService.js",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/catItem.html",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/add/CatAddController.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/detail/CatDetailController.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/profile/compareFieldDirective.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/CatItemController.js",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/catsList.html",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/about/about-dev.html",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/about/about-tasks.html",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/about/AboutController.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/app.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/authenticate/authorizeService.js",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/add/catAdd.html",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/authenticate/identityService.js",
-		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/cats/list/CatsController.js",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/json/cats.json",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/app/components/authenticate/login.html",
 		"/C/Projects/Epam/Angular.Sample/angular-training/angular-training/build/angular-training.js",
@@ -179,6 +196,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ngSubmit",
 			"ui-sref",
 			"catsLi",
 			"favico",
