@@ -1,19 +1,22 @@
-catApp.controller('CatDetailController', function($scope, $stateParams, catsService) {
-	  	onCreate();
-				
-		$scope.click = function (cat){
-			cat.count++;
-			catsService.update(cat);
-		};		
+catApp.controller('CatDetailController', function($stateParams, catsService) {
 
-		function onCreate(){
-			// select cat by id
-			var catId = parseInt($stateParams.id);
-			catsService.one(catId).then(function(cat){
-				cat.is_viewed = 1;
-				catsService.update(cat);
-				$scope.current = cat;
-			});
-		}
-	});
+	var vm = this;
+  			
+	vm.click = function (cat){
+		cat.count++;
+		catsService.update(cat);
+	};		
+
+	var onCreate = function (){
+		// select cat by id
+		var catId = parseInt($stateParams.id);
+		catsService.one(catId).then(function(cat){
+			cat.is_viewed = 1;
+			catsService.update(cat);
+			vm.current = cat;
+		});
+	};
+
+	onCreate();
+});
 	

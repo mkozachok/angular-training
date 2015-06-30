@@ -5,7 +5,7 @@
 		  <option value="votes">Votes</option>
 		  <option value="count">Clicks</option>
 		</select>
-		<button class="btn btn-primary"  ng-click="catsCtrl.filter(catsCtrl.CatFilter)">Find</button>
+		<button class="btn btn-primary" ng-click="catsCtrl.filter(catsCtrl.CatFilter)">Find</button>
 
 		<div class="row" ng-repeat="cat in catsCtrl.filteredCats">
 			<cat-item item="cat" current-user="appCtrl.currentUser"></cat-item>

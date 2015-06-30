@@ -4,12 +4,11 @@ catApp.controller('CatsController', function($scope, catsService) {
 		vm.CatFilter = {Value :'', OrderBy:'name'};		
 		
 		vm.filter = function (flt) {
-			catsService.get().then(function (cats) {
+			catsService.all().then(function (cats) {
 				vm.filteredCats = catsService.filter(cats, flt);
 			});
 		};
 		
-		//vm.filter(vm.CatFilter);
 		vm.filteredCats = catsService.filter($scope.readyCats, vm.CatFilter);
 			
 		$scope.$watch(

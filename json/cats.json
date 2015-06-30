@@ -1,4 +1,13 @@
-[				{
+[				
+				{
+					"id" : 4, 
+					"name":"cat #4", 
+					"src":"http://www.naturephoto-cz.com/photos/others/%D0%9A%D1%96%D1%82-%D1%81%D0%B2%D1%96%D0%B9%D1%81%D1%8C%D0%BA%D0%B8%D0%B9-103814.jpg", 
+					"count":0,
+					"is_viewed":0,
+					"votes":0
+				 },
+				{
 					"id" : 3, 
 					"name":"cat #3", 
 					"src":"http://media4.popsugar-assets.com/files/2014/08/08/878/n/1922507/caef16ec354ca23b_thumb_temp_cover_file32304521407524949.xxxlarge/i/Funny-Cat-GIFs.jpg", 

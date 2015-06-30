@@ -7,5 +7,7 @@ catApp.controller('CatAddController', function(catsService, $state) {
 				catsService.save(cat);
 				$state.go("/");
 			}
+			else
+				throw new Error("Form is not valid");
 		};
 });

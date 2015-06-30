@@ -1,4 +1,6 @@
-var catApp = angular.module('app', ['about', 'ui.router', 'ngResource', 'LocalStorageModule', 'ngCookies']);
+var catApp = angular.module('app', ['about', 'ui.router', 'ngResource', 'LocalStorageModule', 'ngCookies',
+	'debug.exceptions',
+	'debug.expressions']);
 
 catApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.otherwise("/");
@@ -9,7 +11,7 @@ catApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvid
 					templateUrl: "components/cats/list/catsList.html",
 					resolve: {
 						catsPromise : function(catsService){
-							return catsService.get();
+							return catsService.all();
 						}
 					},
 					controller : function($scope, catsPromise){

@@ -1,6 +1,11 @@
-catApp.factory('catsService', function (catsResource, filterFilter, orderByFilter, votesService) {
-	var get = function(){
-		return catsResource.query().$promise;
+catApp.factory('catsService', function (catsResource, filterFilter, orderByFilter, votesService) {	
+	var cats = [];
+
+	var all = function(){
+		return catsResource.query().$promise.then(function(result){
+			cats = result;
+			return result;
+		});
 	};
 
 	var one = function(id) {
@@ -12,8 +17,9 @@ catApp.factory('catsService', function (catsResource, filterFilter, orderByFilte
 	};
 
 	var save = function(cat){
+		var id = _.max(cats) || 0;
 		catsResource.save({
-					"id" : 4, 
+					"id" : id + 1,
 					"name": cat.name, 
 					"src": cat.src, 
 					"count":0,
@@ -46,7 +52,7 @@ catApp.factory('catsService', function (catsResource, filterFilter, orderByFilte
 	};
 
 	return {
-		get : get,
+		all : all,
 		one : one,
 		update : update,
 		save : save,
