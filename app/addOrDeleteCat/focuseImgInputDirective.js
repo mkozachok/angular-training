@@ -1,3 +1,5 @@
+var app = angular.module('app');
+
 app.directive('triggerFocusOn', function($timeout) {
     return {
         link: function(scope, element, attrs) {

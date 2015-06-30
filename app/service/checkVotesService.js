@@ -13,6 +13,7 @@ app.service('votesService',['UserFactory', function (UserFactory) {
             var resource = UserFactory;
 
             var temp = {name: user, catVote: votes };
+            console.log(temp);
           //  console.log(temp, JSON.stringify(votes), votes);
             resource.save(temp);
         }
