@@ -1,4 +1,6 @@
-﻿Cat pic: <input type="url" ng-model="vm.model.Url" name="catPic" required>
+﻿
+
+<input type="url" ng-model="vm.model.Url" name="catPic"  class="form-control" placeholder="Picture url" required>
 <span style="color:red" ng-show="addForm.catPic.$dirty && addForm.catPic.$invalid">
     <span ng-show="addForm.catPic.$error.required">Url is required.</span>
     <span ng-show="addForm.catPic.$error.url">Invalid url detected.</span>
@@ -6,4 +8,4 @@
 
 <br />
 
-<img ng-src="{{vm.model.Url}}">
+<img ng-src="{{vm.model.Url}}" style="width:470px">

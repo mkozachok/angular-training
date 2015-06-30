@@ -1,6 +1,9 @@
-﻿<form name="addForm" novalidate ng-enter="addCat()">
+﻿
+<form name="addForm" novalidate ng-enter="addCat()" class="form-centered">
 
-    Cat name: <input type="text" ng-model="newCat.Name" name="catName" required autofocus1>
+    <h2 class="form-signin-heading">Here comes new one..</h2>
+
+    <input type="text" ng-model="newCat.Name" name="catName" class="form-control" placeholder="Name" required autofocus1>
     <span style="color:red" ng-show="addForm.catName.$dirty && addForm.catName.$invalid">
         <span ng-show="addForm.catName.$error.required">Kotik-name is required.</span>
     </span>
@@ -11,7 +14,7 @@
 
     <br />
 
-    <input type="button" ng-click="addCat()" value="Add cat!"
+    <input type="button" class="btn btn-lg btn-primary btn-block" ng-click="addCat()" value="Add this little mazafaka!"
            ng-disabled="addForm.catName.$dirty && addForm.catName.$invalid || 
            addForm.catPic.$dirty && addForm.catPic.$invalid" disabled/>
 

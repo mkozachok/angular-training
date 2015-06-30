@@ -1,10 +1,12 @@
-<input type="text" ng-model="searchName" placeholder="Search by" autofocus1 />
-<select ng-model="orderProp">
+<input type="text" ng-model="searchName" placeholder="Search by" class="form-control" autofocus1 />
+<select ng-model="orderProp" class="form-control">
     <option value="name" ng-selected="true">Asc</option>
     <option value="-name">Desc</option>
 </select>
 
-<ul>
+<br />
+
+<!--<ul>
     <li ng-repeat="cat in cats | filter:filterCats | orderBy:orderProp " ng-click="SelectCat(cat)">
 
         <input type="text" ng-model="cat.name" name="catName">        
@@ -15,8 +17,52 @@
         <a href="" ng-click="deleteCat(cat.id)">Delete</a>
 
     </li>
-</ul>
+</ul>-->
 
-<a href="#/add">Add new cat</a>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Our kotiki:</div>
 
-<hr /><br />
+    <div class="table-responsive">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Cat</th>
+                    <th>Clicks</th>
+                    <th>Is checked</th>
+                    <th>Likes</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cat in cats | filter:filterCats | orderBy:orderProp " ng-click="SelectCat(cat)">
+                    <td><input type="text" ng-model="cat.name" name="catName" class="form-control" /> </td>
+                    <td>{{cat.clicks}}</td>
+                    <td>{{cat.checked}}</td>
+                    <td>
+                        <!--<button type="button"
+                                id="testBtn"
+                                class="btn btn-success glyphicon glyphicon-thumbs-up"
+                                data-loading-text=" ... "
+                                ng-click=""></button>-->
+                        {{cat.likes}}
+
+                        <!--<button type="button"
+                                id="testBtn"
+                                class="btn btn-success glyphicon glyphicon-thumbs-down"
+                                data-loading-text=" ... "></button>-->
+                    </td>
+
+                    <td><a href="" ng-click="updateCat(cat)">Edit</a></td>
+                    <td><a href="" ng-click="deleteCat(cat.id)">Delete</a></td>
+                </tr>
+                <tr>
+                    <td colspan="6"><a href="#/add" class="btn btn-primary btn-block">Add new cat</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

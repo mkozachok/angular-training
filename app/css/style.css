@@ -1,0 +1,11 @@
+﻿body { padding-top: 50px; }
+
+.form-centered {
+  width: 500px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
