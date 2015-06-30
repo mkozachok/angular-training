@@ -1,20 +1,21 @@
-angular.module("app").controller("ListCtrl", function ($scope, $filter, catsResource, notifyService, sortingService) {
+angular.module("app").controller("ListCtrl", function ($filter, catsResource, notifyService, sortingService) {
     var vm = this;
     // console.log(vm);
     var updateView = function(){
-	    catsResource.getCats.get().$promise.then(function (result) {
+	    catsResource.get().$promise.then(function (result) {
 	        vm.filteredCats = result.cats;
 	        vm.cats = result.cats;
 	    });
 	};
 	updateView();
-    vm.delete = function(id){
-    	catsResource.delCat.delete({catId:id});
-		console.log('delete', id);
+    vm.delete = function(catId){
+    	catsResource.delete({'catId':catId});
 		updateView();
+		vm.select('');
 	};
     vm.select = function(cat){
     	notifyService.notify('chooseCat', cat);
+    	console.log(vm);
     };
     vm.sorting = 'asc';
 	vm.sort = function(){

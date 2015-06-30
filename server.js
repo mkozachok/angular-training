@@ -36,6 +36,7 @@ app.post('/cats', function(req, res) {
 	cats.cats.push(cat);
 	cats.lastId = cat.id;
 	console.log('push cat ', cat);
+	res.send('success');
 });
 
 app.delete('/cats/:catId', function(req, res) {
@@ -45,6 +46,7 @@ app.delete('/cats/:catId', function(req, res) {
 			console.log('delete cat with id', req.params.catId);
 		}
 	}
+	res.send('success');
 });
 //
 exports = module.exports = app;

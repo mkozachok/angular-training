@@ -6,8 +6,6 @@ angular.module("app").directive("catsList", function () {
         controller: 'ListCtrl',
         controllerAs: 'list',
         bindToController: true,
-        scope: false,
-        transclude: true,
-        // require: "^?ngApp"
+        scope: {},
     };
 });
