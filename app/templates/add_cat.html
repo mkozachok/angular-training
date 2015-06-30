@@ -1,15 +1,18 @@
 <div>
-    <form  ng-show="userActive" name="AddCat">
-        Name: <input  ng-enter="addKitty()"  ng-model="kittyName" ng-minlength="3" name="cat_name_field" required/>
-        Img:  <input  ng-enter="addKitty()"  type="url" id="targetInput"  ng-model="kittyImg"  ng-minlength="3"  name="img_field" />
-        <span  class="error" ng-show="AddCat.img_field.$error.url">Not a valid url!</span>
+    <form  ng-show="userActive" name="AddCat" ng-enter="addKitty()"> <!--ng-submit="addKitty()" -->
+        Name: <input  ng-model="kittyName" ng-minlength="3" name="cat_name_field" required/>
         <span  class="error" ng-show="AddCat.cat_name_field.$error.url">Too short cat name!</span>
+
+        <div ng-show="userActive">
+            <preview name="cats.kittyImg" ></preview>
+            <span  class="error" ng-show="AddCat.kittyImg.$error.url">Not a valid url!</span>
+        </div>
+
+        <br />
+        <br />
         <button type="submit" id="save" value="Save">Save</button>
-        <br />
-        <br />
-        Preview: <img ng-show="userActive" src="{{ kittyImg }}" />
+        <!--Preview: <img ng-show="userActive" src="{{ kittyImg }}" />-->
     </form>
 
     <div ng-hide="userActive"><h2>You need login for have permissions for this page</h2></div>
 </div>
-<!--ng-submit="addKitty()" -->
