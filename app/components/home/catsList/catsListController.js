@@ -1,4 +1,4 @@
-angular.module("app").controller("catsListController", function ($filter, catsResource, notifyService, sortingService) {
+angular.module("app").controller("catsListController", function ($scope, $filter, catsResource, notifyService, sortingService) {
     var vm = this;
     var updateView = function(){
 	    catsResource.get().$promise.then(function (result) {

@@ -3,8 +3,8 @@ angular.module("app").directive("catsList", function () {
         restrict: "AE",
         templateUrl: "components/home/catsList/CatsList.html",
         replace: true,
-        controller: 'catsListController',
-        controllerAs: 'list',
+        controller: "catsListController",
+        controllerAs: "list",
         bindToController: true,
         scope: {},
     };

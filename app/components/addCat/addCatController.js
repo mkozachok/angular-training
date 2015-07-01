@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('addCatController', function($scope, catsResource, $location) {
+.controller('addCatController', function($scope, catsResource, $location, $resource) {
 	var lastId = '';
 	catsResource.get().$promise.then(function (result) {
         lastId = result.lastId;
@@ -10,4 +10,6 @@ angular.module('app')
 		catsResource.save($scope.cat);
 		$location.path('/view');
 	};
+
+	$resource('/test/:catId?', {catId:'@catId'}).get();
 });
