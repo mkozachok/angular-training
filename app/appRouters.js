@@ -1,13 +1,16 @@
 var app = angular.module('app');
 
-app.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+app.config(['$httpProvider','$stateProvider','$urlRouterProvider', function ($httpProvider, $stateProvider, $urlRouterProvider) {
+
+    //$httpProvider.interceptors.push('userInterceptor');
+
     $urlRouterProvider.otherwise('/home');
     $stateProvider
         .state(
         {
             name:'home',
             url: '/home',
-            templateUrl: 'home/templates/home.html',
+            templateUrl: 'component/home/templates/home.html',
             controller: 'HomeCtrl',
             resolve:{
                 promiseObj:  function(KittyFactory){
@@ -22,7 +25,7 @@ app.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $ur
         .state({
             name: 'addCat',
             url: '/add_cat',
-            templateUrl: 'addCat/templates/addCat.html',
+            templateUrl: 'component/addCat/addCat.html',
             controller: 'addCatCtrl'
         })
         .state({
@@ -33,7 +36,7 @@ app.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $ur
         .state({
             name: 'authorization',
             url: '/authorization',
-            templateUrl: 'authorization/templates/authorization.html',
+            templateUrl: 'component/authorization/templates/authorization.html',
             controller: 'loginCtrl',
             resolve:{
                 userObj:  function(UserFactory){
@@ -48,7 +51,7 @@ app.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $ur
         .state({
             name: 'registration',
             url: '/registration',
-            templateUrl: 'authorization/templates/registration.html',
+            templateUrl: 'component/authorization/templates/registration.html',
             controller: 'RegistrationCtrl',
             resolve:{
                 UserForChekObj:  function(UserFactory){

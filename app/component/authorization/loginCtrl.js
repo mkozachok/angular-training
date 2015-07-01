@@ -17,9 +17,15 @@ app.controller('loginCtrl', ['$window', '$scope', 'userObj', 'authenticationServ
         $scope.userNotActive = 0;
     }
 
+    //console.log(111, userInterceptor.response(userObj));
+
+    //$http.get('http://localhost:8000/users').then(function() {
+    //    console.log('success');
+    //}, function(rejectReason) {
+    //    console.log('failure');
+    //});
     $scope.login = function () {
        var autheticationResult =  authenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
-
         if(autheticationResult) {
             $scope.userName = autheticationResult.name;
             $cookieStore.put('user', $scope.userName);

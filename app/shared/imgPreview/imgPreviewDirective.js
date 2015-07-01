@@ -1,7 +1,7 @@
 angular.module("app").directive("imgPreview", function () {
     return {
         restrict: 'AE',
-        templateUrl: "addCat/templates/imgPreview.html",
+        templateUrl: "shared/imgPreview/imgPreview.html",
         scope:{
             name: '=name'
         },

@@ -45,7 +45,8 @@ app.get('/cat', function(req, res) {
 });
 
 app.get('/users', function(req, res) {
-    res.json(users); //cats
+
+    res.json(users);
 });
 
 app.delete('/cat', function(req, res)

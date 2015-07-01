@@ -1,6 +1,6 @@
 angular.module("app").directive("addCat", function () {
     return {
-        templateUrl: "addCat/templates/addCat.html",
+        templateUrl: "component/addCat/addCat.html",
         scope:{},
         replace: true,
         controller: 'addCatCtrl'

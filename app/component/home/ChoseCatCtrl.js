@@ -21,12 +21,23 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
             $scope.currentCat.v = 1;
             var currentCatName = $scope.currentCat.name;
 
-            if (allUserData.catVote[currentCatName] === undefined) {
+            console.log(allUserData);
+
+            if (allUserData.hasOwnProperty('catVote') === false) {
                 likedCats[currentCatName] = 0;
             }
-            else if (allUserData.catVote[currentCatName] !== undefined) {
-                likedCats[currentCatName] = allUserData.catVote[currentCatName];
-                if (likedCats[currentCatName] === 1) $scope.currentCat.votes++;
+            else
+            {
+                 if (allUserData.hasOwnProperty('catVote')) {
+                    if(allUserData.catVote.hasOwnProperty(currentCatName))
+                    {
+                        likedCats[currentCatName] = allUserData.catVote[currentCatName];
+                        if (likedCats[currentCatName] === 1) $scope.currentCat.votes++;
+                    }else{
+                        likedCats[currentCatName] = 0;
+                    }
+                }
+
             }
     };
 
