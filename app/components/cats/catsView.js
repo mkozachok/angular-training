@@ -1,7 +1,6 @@
-
-
 angular.module('myApp.catsView', [
     'myApp.catsServices',
+    'myApp.catsVoteSpinner',
     'myApp.profileServices',
     'ui.router'
   ])
@@ -52,10 +51,7 @@ angular.module('myApp.catsView', [
         return false;
       }
 
-      if (cat.author === profileService.getLoggedUser()) {
-        return true;
-      }
-      return false;
+      return cat.author === profileService.getLoggedUser();
     };
 
     $scope.deleteCat = function(id) {
@@ -74,106 +70,5 @@ angular.module('myApp.catsView', [
 
     $scope.close = function() {
       $modalInstance.dismiss('cancel');
-    };
-  })
-
-  .directive('modal', function () {
-    return {
-      templateUrl: 'components/cats/templates/catsModal.html',
-      restrict: 'E',
-      transclude: true,
-      replace: true,
-      scope: {
-        visible: '=?',
-        cat: '=?'
-      },
-      link: function (scope, element) {
-        scope.$watch('visible', function(value){
-          if (value === true) {
-            $(element).modal('show');
-          }
-          else{
-            $(element).modal('hide');
-          }
-        });
-
-        $(element).on('shown.bs.modal', function(){
-          scope.$apply(function () {
-            scope.visible = true;
-          });
-        });
-
-        $(element).on('hidden.bs.modal', function() {
-          scope.$apply( function() {
-            scope.visible = false;
-          });
-        });
-      }
-    };
-  })
-
-  .directive('voteSpinner', function () {
-    return {
-      templateUrl: 'components/cats/templates/voteSpinner.html',
-      restrict: 'AE',
-      replace: true,
-      scope: {
-        cat: '='
-      },
-      controller: function($scope, catsService, profileService) {
-        $scope.voteAccess = function(cat) {
-          if (!angular.isUndefined(cat)) {
-            var user = profileService.getLoggedUser();
-
-            if (user) {
-              if (user == cat.author || (cat.votedBy.length && cat.votedBy.indexOf(user) !== -1)) {
-                return false;
-              }
-              else {
-                return true;
-              }
-            }
-            else {
-              return false;
-            }
-          }
-          return false;
-        };
-
-        $scope.voteAccessMessage = function (cat) {
-          if (!angular.isUndefined(cat)) {
-            var user = profileService.getLoggedUser();
-
-            if (user) {
-              if (user == cat.author) {
-                return 'You cannot vote for own cat!';
-              }
-              else if (cat.votedBy.length && cat.votedBy.indexOf(user) !== -1) {
-                return 'You have already voted for this cat!';
-              }
-            }
-            else {
-              return 'Please login to vote this cat!';
-            }
-          }
-          return '';
-        };
-
-        $scope.vote = function(cat) {
-          var user = profileService.getLoggedUser();
-
-          cat.votes++;
-          cat.votedBy.push(user);
-          catsService.updateCat(cat);
-        };
-
-        $scope.disvote = function(cat) {
-          var user = profileService.getLoggedUser();
-
-          cat.votes--;
-          cat.votedBy.push(user);
-          catsService.updateCat(cat);
-        };
-      }
     };
   });

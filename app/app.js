@@ -9,6 +9,7 @@
     'myApp.catsView',
     'myApp.catsAdd',
     'myApp.catsServices',
+    'myApp.catsVoteSpinner',
     'myApp.profileRegister',
     'myApp.profileLogin',
     'myApp.profileServices'
