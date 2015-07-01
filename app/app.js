@@ -1,6 +1,7 @@
-var catApp = angular.module('app', ['about', 'ui.router', 'ngResource', 'LocalStorageModule', 'ngCookies',
-	'debug.exceptions',
-	'debug.expressions']);
+var catApp = angular.module('app', ['about', 'ui.router', 'ui.bootstrap', 'ngResource', 'LocalStorageModule', 'ngCookies'//,
+	//'debug.exceptions',
+	//'debug.expressions'
+	]);
 
 catApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.otherwise("/");

@@ -36,10 +36,8 @@ app.get('/cats', function(req, res) {
     if (!cats){
         cats = require('./json/cats.json');
     }
-
-    setTimeout(function (){
-        res.json(cats);
-    }, 500);
+    
+    res.json(cats);
 });
 
 app.get('/cats/:id', function(req, res) {

@@ -1,4 +1,4 @@
-catApp.factory('httpInterceptor', function ($q, $rootScope, $log) {
+catApp.factory('httpInterceptor', function ($q, $rootScope, $log, alertService) {
 
     var numLoadings = 0;
 
@@ -14,6 +14,7 @@ catApp.factory('httpInterceptor', function ($q, $rootScope, $log) {
             if (numLoadings === 0) {
                 $rootScope.$broadcast("loader.hide");
             }
+
             return response || $q.when(response);
 
         },
@@ -22,6 +23,13 @@ catApp.factory('httpInterceptor', function ($q, $rootScope, $log) {
             if (numLoadings === 0) {
                 $rootScope.$broadcast("loader.hide");
             }
+
+            if(response.status === 404){   
+                alertService.error(response.config);
+            }
+            else
+                alertService.warn(response.config);
+
             return $q.reject(response);
         }
     };
