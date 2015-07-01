@@ -45,7 +45,9 @@ body.loaded .loading-content .row {
 .spinner > div {
     width: 32px;
     height: 32px;
-    background-color: #333;
+    background-color: #008cba;
+    border-color: #006687;
+    border-width: 1px;
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: bouncedelay 1.4s infinite ease-in-out;

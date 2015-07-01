@@ -4,6 +4,7 @@
     'ui.router',
     'ui.bootstrap',
     'ngResource',
+    'myApp.errors',
     'myApp.formOnEnter',
     'myApp.navigation',
     'myApp.loading',
@@ -18,5 +19,4 @@
   config(['$urlRouterProvider', function($urlRouterProvider) {
       $urlRouterProvider.otherwise('/view');
   }]);
-
 })();

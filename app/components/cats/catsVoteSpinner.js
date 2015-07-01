@@ -16,10 +16,10 @@ angular.module('myApp.catsVoteSpinner', [
           if (!angular.isUndefined(cat)) {
             var user = profileService.getLoggedUser();
             if (user) {
-              return user !== cat.author && (cat.votedBy.length && cat.votedBy.indexOf(user) === -1);
+              return user === cat.author || (cat.votedBy.length && cat.votedBy.indexOf(user) !== -1);
             }
           }
-          return false;
+          return true;
         };
 
         $scope.voteAccessMessage = function (cat) {

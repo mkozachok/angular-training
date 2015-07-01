@@ -9,7 +9,7 @@
     </h5>
     {{voteAccessMessage(cat)}}
     <div class="btn-group">
-        <button type="button" class="btn btn-success glyphicon glyphicon-thumbs-up" ng-show="voteAccess(cat)" ng-click="vote(cat)"></button>
-        <button type="button" class="btn btn-danger glyphicon glyphicon-thumbs-down" ng-show="voteAccess(cat)" ng-click="disvote(cat)"></button>
+        <button type="button" class="btn btn-success glyphicon glyphicon-thumbs-up" ng-hide="voteAccess(cat)" ng-click="vote(cat)"></button>
+        <button type="button" class="btn btn-danger glyphicon glyphicon-thumbs-down" ng-hide="voteAccess(cat)" ng-click="disvote(cat)"></button>
     </div>
 </div>
