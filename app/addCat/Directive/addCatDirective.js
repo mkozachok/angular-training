@@ -1,8 +1,8 @@
 angular.module("app").directive("addCat", function () {
     return {
-        templateUrl: "templates/add_cat.html",
+        templateUrl: "addCat/templates/addCat.html",
         scope:{},
         replace: true,
-        controller: 'AddCatCtrl'
+        controller: 'addCatCtrl'
     };
 });

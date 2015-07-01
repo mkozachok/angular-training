@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.service('AuthenticationService', ['UserFactory', function (UserFactory) {
+app.service('authenticationService', ['UserFactory', function (UserFactory) {
     var service = {
         checkLogin : function (allUsers, userEmail, userPassword) {
            var countOfUsers = allUsers.length;

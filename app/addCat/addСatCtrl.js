@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('AddCatCtrl', ['$scope', 'addOrDeleteCatService', '$cookieStore',  function($scope, addOrDeleteCatService, $cookieStore) {
+app.controller('addCatCtrl', ['$scope', 'addDeleteUpdateCatService', '$cookieStore',  function($scope, addDeleteUpdateCatService, $cookieStore) {
         'use strict';
     $scope.userActive = 0;
     $scope.userName = '';
@@ -16,7 +16,7 @@ app.controller('AddCatCtrl', ['$scope', 'addOrDeleteCatService', '$cookieStore',
 
     $scope.addKitty = function ()
     {
-        addOrDeleteCatService.addCat($scope);
+        addDeleteUpdateCatService.addCat($scope);
     };
 
 }]);

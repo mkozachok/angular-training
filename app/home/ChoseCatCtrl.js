@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteCatService', 'AuthenticationService', '$cookieStore',  function(votesService ,$window, $scope, addOrDeleteCatService, AuthenticationService, $cookieStore) {
+app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope', 'addDeleteUpdateCatService', '$cookieStore',  function(KittyFactory, votesService ,$window, $scope, addDeleteUpdateCatService, $cookieStore) {
     'use strict';
     $scope.sort = 'name';
     $scope.find = '';
@@ -21,7 +21,6 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
             $scope.currentCat.v = 1;
             var currentCatName = $scope.currentCat.name;
 
-            console.log(123, allUserData);
             if (allUserData.catVote[currentCatName] === undefined) {
                 likedCats[currentCatName] = 0;
             }
@@ -39,8 +38,11 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
 
   //@todo rewrite that work without reload
     $scope.deleteCat = function(catName){
-        addOrDeleteCatService.deleteCat(catName);
-        $scope.cats = addOrDeleteCatService.updateCat();
+        addDeleteUpdateCatService.deleteCat(catName);
+        var getCats = KittyFactory.get();
+        getCats.$promise.then(function (response) {
+            $scope.cats = response.cats;
+        });
     };
 
     $scope.like = function()
@@ -61,7 +63,7 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
             votesService.saveVotes(userCookie, likedCats);
 
             $cookieStore.put('fullUserData', votesService.updateUsers());
-            console.log($scope.currentCat.votes,$cookieStore.get('fullUserData'));
+            //console.log($scope.currentCat.votes,$cookieStore.get('fullUserData'));
         }
     };
 

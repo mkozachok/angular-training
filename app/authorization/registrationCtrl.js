@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('RegistrationCtrl', ['$window', '$scope', '$cookieStore', '$location', 'AuthenticationService', 'UserForChekObj', function ($window ,$scope, $cookieStore, $location, AuthenticationService, UserForChekObj) {
+app.controller('RegistrationCtrl', ['$window', '$scope', '$cookieStore', '$location', 'authenticationService', 'UserForChekObj', function ($window ,$scope, $cookieStore, $location, authenticationService, UserForChekObj) {
     'use strict';
     $scope.users = [];
     $scope.userEmail = '';
@@ -9,10 +9,10 @@ app.controller('RegistrationCtrl', ['$window', '$scope', '$cookieStore', '$locat
     $scope.userPasswordRepeat = '';
     $scope.users = UserForChekObj.user;
     $scope.registration = function () {
-        var autheticationResult =  AuthenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
+        var autheticationResult =  authenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
 
         if(!autheticationResult) {
-            AuthenticationService.registration($scope.userName, $scope.userEmail, $scope.userPassword);
+            authenticationService.registration($scope.userName, $scope.userEmail, $scope.userPassword);
             $cookieStore.put('user', $scope.userName);
             $cookieStore.put('fullUserData', undefined);
             $window.location.reload();

@@ -4,7 +4,6 @@ app.service('votesService',['UserFactory', function (UserFactory) {
     var resource = UserFactory;
     var service = {
         updateUsers: function(){
-         //   var getCats = KittyFactory.get();
             resource.get().$promise.then(function (response) {
                 return response;
             });

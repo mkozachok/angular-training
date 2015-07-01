@@ -6,7 +6,7 @@ var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField', '
     {
         name:'home',
         url: '/home',
-        templateUrl: 'templates/home.html',
+        templateUrl: 'home/templates/home.html',
         controller: 'HomeCtrl',
         resolve:{
             promiseObj:  function(KittyFactory){
@@ -21,8 +21,8 @@ var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField', '
     .state({
         name: 'addCat',
         url: '/add_cat',
-        templateUrl: 'templates/add_cat.html',
-        controller: 'AddCatCtrl'
+        templateUrl: 'addCat/templates/addCat.html',
+        controller: 'addCatCtrl'
     })
     .state({
         name: 'about',
@@ -32,7 +32,7 @@ var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField', '
     .state({
         name: 'authorization',
         url: '/authorization',
-        templateUrl: 'templates/authorization.html',
+        templateUrl: 'authorization/templates/authorization.html',
         controller: 'loginCtrl',
             resolve:{
                 userObj:  function(UserFactory){
@@ -47,7 +47,7 @@ var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField', '
     .state({
         name: 'registration',
         url: '/registration',
-        templateUrl: 'templates/registration.html',
+        templateUrl: 'authorization/templates/registration.html',
         controller: 'RegistrationCtrl',
             resolve:{
                 UserForChekObj:  function(UserFactory){

@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.directive('triggerFocusOn', function($timeout) {
+app.directive('focusInput', function($timeout) {
     return {
         link: function(scope, element, attrs) {
             //element.bind('click', function() {

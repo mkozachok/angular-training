@@ -1,18 +1,16 @@
 var app = angular.module('app');
 
-app.directive('ngEnter', function () {
+app.directive('ngEnterClick', function () {
     return {
         restrict: 'A',
         scope: {
-            ngEnter: "&"
+            ngEnterClick: "&"
         },
         link: function (scope, elem, attrs) {
             elem.bind('keydown', function(event) {
                 var code = event.which;
-                console.log(code, scope);
                 if (code === 13) {
-                    scope.ngEnter();
-                  //  event.preventDefault(); //dont need there
+                    scope.ngEnterClick();
                 }
             });
         }

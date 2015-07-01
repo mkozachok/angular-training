@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('loginCtrl', ['$window', '$scope', 'userObj', 'AuthenticationService', '$cookieStore', '$location', function ($window ,$scope, userObj, AuthenticationService, $cookieStore, $location) {
+app.controller('loginCtrl', ['$window', '$scope', 'userObj', 'authenticationService', '$cookieStore', '$location', function ($window ,$scope, userObj, authenticationService, $cookieStore, $location) {
     'use strict';
     $scope.users = [];
     $scope.userName = '';
@@ -18,7 +18,7 @@ app.controller('loginCtrl', ['$window', '$scope', 'userObj', 'AuthenticationServ
     }
 
     $scope.login = function () {
-       var autheticationResult =  AuthenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
+       var autheticationResult =  authenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
 
         if(autheticationResult) {
             $scope.userName = autheticationResult.name;
