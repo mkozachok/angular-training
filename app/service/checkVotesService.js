@@ -1,21 +1,17 @@
 var app = angular.module('app');
 
 app.service('votesService',['UserFactory', function (UserFactory) {
+    var resource = UserFactory;
     var service = {
-        checkVotes : function (scope) {
-            var resource = KittyFactory;
-            var temp = {name: scope.kittyName, img: scope.kittyImg, count: 0, v: 0, votes: 0};
-            resource.save(temp);
-            scope.kittyName = '';
-            scope.kittyImg = '';
+        updateUsers: function(){
+         //   var getCats = KittyFactory.get();
+            resource.get().$promise.then(function (response) {
+                return response;
+            });
         },
         saveVotes : function(user, votes){
-            var resource = UserFactory;
-
             var temp = {name: user, catVote: votes };
-            console.log(temp);
-          //  console.log(temp, JSON.stringify(votes), votes);
-            resource.save(temp);
+            resource.delete(temp);
         }
     };
     return service;

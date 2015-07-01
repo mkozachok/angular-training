@@ -23,6 +23,7 @@ app.controller('loginCtrl', ['$window', '$scope', 'userObj', 'AuthenticationServ
         if(autheticationResult) {
             $scope.userName = autheticationResult.name;
             $cookieStore.put('user', $scope.userName);
+            $cookieStore.put('fullUserData', autheticationResult);
             $window.location.reload();
     //        $location.path('#/home');
         }
@@ -32,6 +33,7 @@ app.controller('loginCtrl', ['$window', '$scope', 'userObj', 'AuthenticationServ
         $scope.userActive = 0;
         $scope.userNotActive = 1;
         $cookieStore.put('user', '');
+        $cookieStore.put('fullUserData', undefined);
         $window.location.reload();
      //   $location.path('#/authorization');
     };

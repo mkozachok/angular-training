@@ -66,10 +66,26 @@ app.delete('/cat', function(req, res)
     res.send("success");
 });
 
-//app.get('/mentees', function(req, res) {
-//    var result = require('./json/mentees.json');
-//    res.json(result);
-//});
+app.delete('/users', function(req, res)
+{
+    var addToUser = req.query.name;
+    var countOfUsers = users.user.length;
+    var k = 0;
+
+    for(var i=0; i<countOfUsers; i++)
+    {
+        if(users.user[i].name === addToUser) {
+            k = i;
+            //console.log(users.user[i].name );
+            //users.user.splice(i, 1);
+         //  users.user.push(req.query);
+            users.user[i].catVote = req.query.catVote;
+            //users.user[i].push(req.query.catVote);
+            break;
+        }
+    }
+    res.send("success");
+});
 
 exports = module.exports = app;
 

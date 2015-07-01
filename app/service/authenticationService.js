@@ -16,7 +16,7 @@ app.service('AuthenticationService', ['UserFactory', function (UserFactory) {
         },
         registration : function (userName, userEmail, userPassword) {
             var resource = UserFactory;
-            var temp = {name: userName, password: userPassword, email: userEmail};
+            var temp = {name: userName, password: userPassword, email: userEmail, catVote: {}};
             resource.save(temp);
         }
     };

@@ -10,10 +10,11 @@ app.controller('RegistrationCtrl', ['$window', '$scope', '$cookieStore', '$locat
     $scope.users = UserForChekObj.user;
     $scope.registration = function () {
         var autheticationResult =  AuthenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
-        console.log(autheticationResult);
+
         if(!autheticationResult) {
             AuthenticationService.registration($scope.userName, $scope.userEmail, $scope.userPassword);
             $cookieStore.put('user', $scope.userName);
+            $cookieStore.put('fullUserData', undefined);
             $window.location.reload();
             $location.path('#/home');
         }

@@ -16,12 +16,19 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
     });
 
     $scope.chose = function(cat){
-        $scope.currentCat = cat;
-        $scope.currentCat.v = 1;
+        var allUserData = $cookieStore.get('fullUserData');
+            $scope.currentCat = cat;
+            $scope.currentCat.v = 1;
+            var currentCatName = $scope.currentCat.name;
 
-        if(likedCats[$scope.currentCat.name] === undefined) {
-            likedCats[$scope.currentCat.name] = 0;
-        }
+            console.log(123, allUserData);
+            if (allUserData.catVote[currentCatName] === undefined) {
+                likedCats[currentCatName] = 0;
+            }
+            else if (allUserData.catVote[currentCatName] !== undefined) {
+                likedCats[currentCatName] = allUserData.catVote[currentCatName];
+                if (likedCats[currentCatName] === 1) $scope.currentCat.votes++;
+            }
     };
 
     var userCookie = $cookieStore.get('user');
@@ -40,10 +47,9 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
     {
         if(likedCats[$scope.currentCat.name] === 0) {
             $scope.currentCat.votes++;
-            //$cookieStore.put('likeCount', $scope.currentCat.votes);
             likedCats[$scope.currentCat.name] = 1;
-            $cookieStore.put(userCookie.name, likedCats);
             votesService.saveVotes(userCookie, likedCats);
+            $cookieStore.put('fullUserData', votesService.updateUsers());
         }
     };
 
@@ -52,7 +58,10 @@ app.controller('ChoseCatCtrl', ['votesService','$window','$scope', 'addOrDeleteC
         if(likedCats[$scope.currentCat.name] !== 0) {
             if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
             likedCats[$scope.currentCat.name] = 0;
-          //$cookieStore.put(userCookie.name, likedCats);
+            votesService.saveVotes(userCookie, likedCats);
+
+            $cookieStore.put('fullUserData', votesService.updateUsers());
+            console.log($scope.currentCat.votes,$cookieStore.get('fullUserData'));
         }
     };
 
