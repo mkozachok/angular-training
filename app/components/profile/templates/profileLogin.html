@@ -4,7 +4,7 @@
         <h2>Log in</h2>
         <div ng-controller="profileLogin">
             <div class="alert alert alert-success" ng-show="registeredMessage">
-                <strong>Congratulations, you are registered!<br/> Now you can log-in using your username and password.</strong>
+                Congratulations, you are registered!<br/> Now you can log-in using your username and password.
             </div>
 
             <form name="profileLogin" novalidate>
@@ -18,12 +18,12 @@
 
                 <div class="form-group">
                     <label for="name">User Name:</label>
-                    <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" ng-keydown="loginErrorClear()" />
+                    <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" ng-keydown="loginErrorClear()" form-on-enter="loginProfile()" />
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control" ng-model="password" id="password" name="password" required="" ng-keydown="loginErrorClear()" />
+                    <input type="password" class="form-control" ng-model="password" id="password" name="password" required="" ng-keydown="loginErrorClear()" form-on-enter="loginProfile()" />
                 </div>
 
                 <button type="button" class="btn btn-success" ng-click="loginProfile()" ng-class="loginFormSubmitClass()">Log in</button>

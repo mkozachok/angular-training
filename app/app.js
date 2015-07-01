@@ -4,6 +4,7 @@
     'ui.router',
     'ui.bootstrap',
     'ngResource',
+    'myApp.formOnEnter',
     'myApp.navigation',
     'myApp.loading',
     'myApp.catsView',

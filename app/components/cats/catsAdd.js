@@ -1,7 +1,6 @@
-
-
 angular.module('myApp.catsAdd', [
-    'myApp.catsServices'
+    'myApp.catsServices',
+    'myApp.profileServices'
   ])
 
   .config(['$stateProvider', function($stateProvider) {

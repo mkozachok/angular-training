@@ -15,12 +15,12 @@
 
                 <div class="form-group">
                     <label for="name">Cat's Name:</label>
-                    <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" />
+                    <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" form-on-enter="add()" />
                 </div>
 
                 <div class="form-group">
                     <label for="path">Url of a Cat's Picture:</label>
-                    <input type="url" class="form-control" ng-model="path" id="path" name="path" required="" />
+                    <input type="url" class="form-control" ng-model="path" id="path" name="path" required="" form-on-enter="add()" />
                 </div>
 
                 <button type="button" class="btn btn-success" ng-click="add()" ng-class="setClass()">Add new cat</button>
