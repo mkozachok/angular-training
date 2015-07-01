@@ -1,6 +1,5 @@
-angular.module("app").controller("ListCtrl", function ($filter, catsResource, notifyService, sortingService) {
+angular.module("app").controller("catsListController", function ($filter, catsResource, notifyService, sortingService) {
     var vm = this;
-    // console.log(vm);
     var updateView = function(){
 	    catsResource.get().$promise.then(function (result) {
 	        vm.filteredCats = result.cats;
@@ -15,7 +14,6 @@ angular.module("app").controller("ListCtrl", function ($filter, catsResource, no
 	};
     vm.select = function(cat){
     	notifyService.notify('chooseCat', cat);
-    	console.log(vm);
     };
     vm.sorting = 'asc';
 	vm.sort = function(){

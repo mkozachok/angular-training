@@ -1,9 +1,9 @@
-angular.module("app").directive("listItem", function ($templateCache, $compile) {
+angular.module("app").directive("catsItem", function ($templateCache, $compile) {
     return {
         restrict: "E",
         compile: function (elem, attrs) {
             var tpl;
-            tpl = $templateCache.get('templates/cat.html');
+            tpl = $templateCache.get('components/home/catsItem/catsItem.html');
             elem.append(tpl);
             return function (scope) {
             };

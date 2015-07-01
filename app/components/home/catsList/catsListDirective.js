@@ -1,9 +1,9 @@
 angular.module("app").directive("catsList", function () {
     return {
         restrict: "AE",
-        templateUrl: "templates/list.html",
+        templateUrl: "components/home/catsList/CatsList.html",
         replace: true,
-        controller: 'ListCtrl',
+        controller: 'catsListController',
         controllerAs: 'list',
         bindToController: true,
         scope: {},

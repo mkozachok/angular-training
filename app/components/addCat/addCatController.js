@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('AddCtrl', function($scope, catsResource, $location) {
+.controller('addCatController', function($scope, catsResource, $location) {
 	var lastId = '';
 	catsResource.get().$promise.then(function (result) {
         lastId = result.lastId;

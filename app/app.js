@@ -7,23 +7,23 @@ angular.module('app', [
 
 .config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
-      $urlRouterProvider.otherwise('/view');
+      $urlRouterProvider.otherwise('/home');
     
       $stateProvider
-        .state('view', {
-          url: '/view',
-          templateUrl: 'templates/view.html',
+        .state('home', {
+          url: '/home',
+          templateUrl: 'components/home/home.html',
         })
 
         .state('add', {
           url: '/add',
-          templateUrl: 'templates/add.html',
-          controller: 'AddCtrl'
+          templateUrl: 'components/addCat/addCat.html',
+          controller: 'addCatController'
         })
 
         .state('register', {
           url: '/register',
-          templateUrl: 'templates/register.html',
-          controller: 'regCtrl as vm'
+          templateUrl: 'components/register/register.html',
+          controller: 'registerController as vm'
         });
 }]);

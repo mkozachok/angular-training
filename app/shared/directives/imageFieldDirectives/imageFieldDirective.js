@@ -1,7 +1,7 @@
-angular.module("app").directive("imgField", function () {
+angular.module("app").directive("imageField", function () {
     return {
         restrict: "AE",
-        templateUrl: "templates/imageField.html",
+        templateUrl: "shared/directives/imageField.html",
         replace: true,
         scope: {
         	name: "=name"
