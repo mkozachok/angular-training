@@ -29,22 +29,16 @@
             <tbody>
             <tr ng-repeat="cat in cats track by cat.id">
                 <td>
-                    {{cat.id}} <a href="#view" ng-click="changeCat($index)">{{cat.name}}</a> <span class="glyphicon" ng-class="{'glyphicon-ok':cat.viewed > 0}"></span>
+                    <h5><a href="#view" ng-click="openCat($index)">{{cat.name}}</a> <span class="glyphicon" ng-class="{'glyphicon-ok':cat.viewed > 0}"></span></h5>
                 </td>
                 <td>{{cat.author}}</td>
                 <td>{{cat.votes}}</td>
                 <td>
-                    <button type="button" class="btn btn-success" ng-click="changeCat($index)" data-toggle="modal" data-target="#catModal">View</button>
-                    <button type="button" class="btn btn-danger" ng-click="deleteCat(cat.id)" ng-show="catAccess(cat)">Delete</button>
+                    <button type="button" class="btn btn-sm btn-success" ng-click="openCat($index)" data-toggle="modal" data-target="#catModal">View</button>
+                    <button type="button" class="btn btn-sm btn-danger" ng-click="deleteCat(cat.id)" ng-show="catAccess(cat)">Delete</button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
-
-
-<modal cat="selected_cat" visible="visible">
-    <img ng-src="{{selected_cat.path}}" style="max-width:100%;" class="img-rounded" title="{{selected_cat.name}}" />
-    <div vote-spinner cat="selected_cat"></div>
-</modal>

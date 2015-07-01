@@ -19,18 +19,27 @@ angular.module('myApp.catsView', [
     });
   }])
 
-  .controller('catsView', function ($scope, $filter, filterFilter, orderByFilter, cats, profileService, catsService) {
+  .controller('catsView', function ($scope, $modal, $filter, filterFilter, orderByFilter, cats, profileService, catsService) {
     'use strict';
 
-    $scope.visible = false;
     $scope.cats = cats;
     $scope.allCats = cats;
 
-    $scope.changeCat = function(index) {
+    $scope.openCat = function(index) {
       $scope.selected_cat = $scope.cats[index];
       $scope.selected_cat.viewed = 1;
-      catsService.updateCat($scope.selected_cat);
-      $scope.visible = true;
+
+      $modal.open({
+        animation: true,
+        templateUrl: 'components/cats/templates/catsModal.html',
+        controller: 'catModal',
+        resolve: {
+          cat: function (catsService) {
+            catsService.updateCat();
+            return $scope.selected_cat;
+          }
+        }
+      });
     };
 
     $scope.catsFilter = function() {
@@ -57,6 +66,14 @@ angular.module('myApp.catsView', [
           $scope.allCats = data;
         });
       });
+    };
+  })
+
+  .controller('catModal', function ($scope, $modalInstance, cat) {
+    $scope.cat = cat;
+
+    $scope.close = function() {
+      $modalInstance.dismiss('cancel');
     };
   })
 
