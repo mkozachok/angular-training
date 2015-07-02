@@ -16,7 +16,7 @@
 
                 <div class="form-group" ng-class="{ 'has-error': catAdd.name.$invalid && catAdd.name.$dirty }">
                     <label for="name">Cat's Name:</label>
-                    <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" form-on-enter="add()" />
+                    <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" form-on-enter="add()" auto-focus />
                 </div>
 
                 <div class="form-group" ng-class="{ 'has-error': catAdd.path.$invalid && catAdd.path.$dirty }">

@@ -18,7 +18,7 @@
 
                 <div class="form-group" ng-class="{ 'has-error': profileRegister.name.$invalid && profileRegister.name.$dirty }">
                     <label for="name">User Name:</label>
-                    <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" form-on-enter="registerProfile()" />
+                    <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" form-on-enter="registerProfile()" auto-focus />
                 </div>
 
                 <div class="form-group" ng-class="{ 'has-error': profileRegister.password.$invalid && profileRegister.password.$dirty }">

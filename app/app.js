@@ -6,6 +6,7 @@
     'ngResource',
     'myApp.errors',
     'myApp.formOnEnter',
+    'myApp.autoFocus',
     'myApp.imagePathValidate',
     'myApp.navigation',
     'myApp.loading',
