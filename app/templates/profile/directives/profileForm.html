@@ -1,0 +1,48 @@
+<form class="form-horizontal" name='createProfile' >
+  <fieldset>
+    <legend>Create profile</legend>
+    <div class="control-group">
+      <label class="control-label" for="nameInput">Name</label>
+      <div class="controls">
+       <input type="text" class="input-xlarge" name='nameInput' id="nameInput" ng-model='profile.name' required value = 'Alex'>
+
+        </div>
+
+      <label class="control-label" for="emailInput">Email</label>
+      <div class="controls">
+        <input type="email" class="input-xlarge" id="emailInput" name="emailInput" ng-model='profile.email' required value="Alex@email.org">
+       </div>
+
+      <label class="control-label" for="password1Input">Password</label>
+      <div class="controls">
+        <input type="password" class="input-xlarge" id="passwordInput" name="passwordInput" ng-model='profile.password' required minlength="3" value = '123' >
+
+        </div>
+
+      <label class="control-label" for="password2Input">Repeat password</label>
+
+      <div class="controls">
+        <input type="password" same compare-to="createProfile.passwordInput" minlength="3" class="input-xlarge" id="confirmPasswordInput" name="confirmPasswordInput" ng-model='profile.confirmPassword' value = '123'>
+
+
+        <div style="clear: both;">
+        </div>
+
+        <div ng-show="createProfile.passwordInput.$modelValue !== undefined && createProfile.passwordInput.$viewValue !== undefined && createProfile.confirmPasswordInput.$modelValue === createProfile.passwordInput.$modelValue " class="alert alert-success fade in col-sm-2" >Passwords are matching!</div>
+        </div>
+
+        <p ng-hide="createProfile.confirmPasswordInput.$dirty" class="help-block" style="clear: both;" >Confirm previously entred  password</p>
+
+        <div ng-messages="createProfile.confirmPasswordInput.$error"> <ng-messages-include src="components/profile/msgs.html"></ng-
+        messages-include></div>
+      </div>
+
+      <div class="controls" style="display: block; clear: both;">
+         <input type="submit" class="btn btn-primary" name='submitFormBtn' value = 'Create profile' required='false' ng-click='profile.createProfile();' ng-disabled="createProfile.$invalid" />
+      </div>
+
+      <truth-ful data="profile.result"></truth-ful>
+
+    </div>
+  </fieldset>
+</form>

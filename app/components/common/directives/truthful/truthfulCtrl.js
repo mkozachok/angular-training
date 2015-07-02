@@ -2,7 +2,7 @@ __mainApp
 
 .controller("TruthfulCtrl",
             function ($scope) {
-
+                
                 this.truthfulMessage =''; 
                 this.truthfulClass = '';
 

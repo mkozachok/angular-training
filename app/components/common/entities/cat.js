@@ -31,12 +31,19 @@ __mainApp.factory('Cat', function() {
     		value: 0,
     		writable: true,
     		enumerable: true
-  		},
-  		"init" : {
+  		}
+      ,"uploadedUser":
+      {
+        value: '',
+        writable: true,
+        enumerable: true
+      }
+
+  		,"init" : {
 			value: 
   			function(name, image)
   			{
-  				this.name = name;
+  				this.name = name + ' ' + Math.floor(Date.now() / 1000);
   				this.image = image;
   				this.votes = Math.floor((Math.random() * 10) + 1);
   			},

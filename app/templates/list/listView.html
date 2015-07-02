@@ -1,0 +1,62 @@
+
+<div class="container" >
+<div class="row">
+<div class = "col-md-4"></div>
+<div class = "col-md-4">
+    Filter by: <input type="text" ng-model="list.filterBy"/><button ng-click="list.doFilter();">FILTER</button><p/>
+
+    <hr/>
+    {{ list.tooltip.length }}
+    <span ng-if="list.tooltip.length>0">Suggestions:
+    <select  data-ng-attr-size={{$parent.list.tooltip.length}} style="width:300px;"> 
+        <option ng-repeat = "x in list.tooltip track by $index" value="{{ x }}">{{ x }}</option>
+    </select>
+    </span> 
+    </div>
+<div class = "col-md-4"></div>
+</div>
+
+<div class="row">
+    <div class = "col-md-4" style="order:1px; border-style:dotted;" sstyle="float: left; width:25%; border:1px; border-style:dotted;">
+
+        <div ng-repeat = "x	in list.cats| filter:list.filterExpression | orderBy:'name'">
+            <div>
+            <span ng-click="list.selectCat(x);">
+                {{ $index }} : {{ x.name }} / {{ x.click }} / {{ x.votes }}               
+            </span>
+            <span class="glyphicon fa fa-pencil" ng-click="list.changeView('/editCat',x);"></span>
+            <span class="glyphicon glyphicon-thumbs-up" ng-show="x.isViewed"></span>
+            </div>
+                
+        </div>
+    </div>
+    <div class = "col-md-4"></div>
+
+    <div class = "col-md-4" style = "border:1px; border-style:solid;" sstyle="float: right; border:1px; border-style:solid; width:75%;">
+        <p> {{ list.selectedCat.name }}</p>
+        
+        <img ng-click="list.toggle();" src="{{ list.selectedCat.image }} "/><p/>
+
+        <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="{{ list.selectedCat.image }}">{{ list.selectedCat.image }}</p>
+
+        <div class="input-group" ng="list.selectedCat.isActive" style = "width:120px;">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" data-value="-1" data-target="#spinner2" data-toggle="spinner" ng-click="list.voteDown();">
+                    <span class="glyphicon fa fa-hand-o-down"></span>
+                </button>
+            </span>
+            
+            <input type="text" data-ride="spinner" id="spinner2" class="form-control input-number" data-min="0" data-max="10" ng-model="list.selectedCat.votes"  >
+
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" data-value="1" data-target="#spinner2" data-toggle="spinner" data-on="mousehold" ng-click="list.voteUp();">
+                    <span class="glyphicon fa fa-hand-o-up"></span>
+                </button>
+            </span>
+        </div>
+        
+        </div>
+
+    </div>
+</div>
+

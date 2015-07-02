@@ -1,0 +1,12 @@
+    Current PID: {{ home.PID }}    
+    <div ng-show="home.isUserLogged" class="alert alert-info fade in">Welcome back, Mr.{{home.loggedUser}}!</div>
+    <div id="view" class="container-fluid">
+    <ul class="menu">
+    	<li><a ui-sref="login">Login</a></li>
+        <li><a ui-sref="listCats">List Cats</a></li>
+        <li><a ui-sref="addCat">Append Cat</a></li>
+        <li><a ui-sref="home.about">About Cat0Clicker</a></li>
+        <li><a ui-sref="createProfile">Create profile</a></li>
+    </ul>
+    </div>
+    <section ui-view="aboutPage"></section>

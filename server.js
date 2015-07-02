@@ -29,32 +29,34 @@ app.get('/', function(req, res) {
 app.use(expressIO.static(__dirname + '/'));
 app.use(expressIO.static(__dirname + '/build'));
 
+function sleep(timeout, action) { setTimeout( action, timeout); }
 
 //GETs
 app.get('/getCats', function(req, res) {
+  console.log('/getCats');
   // GET 'http://www.example.com/admin/new'
   console.log(req.originalUrl); // '/admin/new'
   console.log(req.baseUrl); // '/admin'
   console.log(req.path); // '/new'
-  function foobar(el) { setTimeout(function() { console.log('Pause continued');  res.json(catsData); }, 5000); }
-  foobar(5000);
+  sleep(2000, function() { console.log('Pause continued');  res.json(catsData); } );
    
 });
 
 app.put('/addCat', function(req,res)
 {
-    console.log('/addCat');
+  console.log('/addCat');
 	console.log(req.body);
-	function foobar(el) { setTimeout(function() { console.log('Pause continued');  res.json(catsData); }, 5000); }
-  foobar(5000);
+
+  var addCatResult = '';
+  sleep(2000, function() { console.log('Pause continued'); res.send(addCatResult);} );
   
 	if( req.body.name && req.body.image )
 	{
 		catsData.push(req.body);    
-		res.send('{"Result":1, "Message":"Cat saved"}');
+		addCatResult = '{"Result":1, "Message":"Cat saved"}' ;
 	}    
 	else
-		res.send('{"Result":0, "Message":"Cat is notsaved"}');
+		addCatResult = '{"Result":0, "Message":"Cat is not saved"}' ;
 
 });
 

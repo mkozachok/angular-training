@@ -10,29 +10,31 @@
     <link rel="stylesheet" type="text/css" href="/build/app.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/angular-emoji-filter-hd/dist/emoji.min.css" />
     <link rel="stylesheet" type="text/css" href="/resources/font-awesome-4.3.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="resources/signin.css"/>
 
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/ngstorage/ngStorage.js"></script>
+
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"></script>
 
     <script type="text/javascript" src="/build/angular-training.js"></script>
 
 
 </head>
 <body ng-app="app" ng-cloak>
-    <div id="view" class="container-fluid">
-    <ul class="menu">
-        <li><a href="#/view1">List Cats</a></li>
-        <li><a href="#/view2">Append Cat</a></li>
-    </ul>
-    </div>
 
-    <div ng-view></div>
-
-<p/>
-
+    <a href ui-sref="home">Back to home</a>
+    <section ui-view="homePage"></section>
+    <section ui-view="listCats"></section>
+    <section ui-view="editCat"></section>
+    <section ui-view="addCat"></section>
+    <section ui-view="profile"></section>
+    <section ui-view="login"></section>
+    
 </body>
 </html>

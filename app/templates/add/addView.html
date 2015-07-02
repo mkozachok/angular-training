@@ -1,0 +1,13 @@
+<div submitter="addCatButton">
+	<p>Submit new cat:</p>
+	<label for="catName">Cat Name:</label>
+	<input type="text" ng-model="add.catName" id="catName" /><p/>
+	<label for="catImage">Cat Image:</label> 
+	<input type="text" ng-model="add.catImage" id="catImage" focusizer="yes"/><p/>
+	<button id="addCatButton" ng-click="add.addCat();">Add cat</button><p/>
+	<truth-ful data="add.result"></truth-ful>
+
+	<div style="display:inline;">
+		<img src="{{ add.catImage }}"/>
+	</div>
+</div>
