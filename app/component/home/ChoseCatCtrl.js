@@ -21,14 +21,12 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
             $scope.currentCat.v = 1;
             var currentCatName = $scope.currentCat.name;
 
-            console.log(allUserData);
-
-            if (allUserData.hasOwnProperty('catVote') === false) {
+          if (allUserData.catVote.hasOwnProperty(currentCatName) === false) {
                 likedCats[currentCatName] = 0;
-            }
+           }
             else
             {
-                 if (allUserData.hasOwnProperty('catVote')) {
+                 if (allUserData.catVote.hasOwnProperty(currentCatName)) {
                     if(allUserData.catVote.hasOwnProperty(currentCatName))
                     {
                         likedCats[currentCatName] = allUserData.catVote[currentCatName];
@@ -62,7 +60,7 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
             $scope.currentCat.votes++;
             likedCats[$scope.currentCat.name] = 1;
             votesService.saveVotes(userCookie, likedCats);
-            $cookieStore.put('fullUserData', votesService.updateUsers());
+            votesService.updateUsers(userCookie);
         }
     };
 
@@ -72,9 +70,7 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
             if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
             likedCats[$scope.currentCat.name] = 0;
             votesService.saveVotes(userCookie, likedCats);
-
-            $cookieStore.put('fullUserData', votesService.updateUsers());
-            //console.log($scope.currentCat.votes,$cookieStore.get('fullUserData'));
+            votesService.updateUsers(userCookie);
         }
     };
 

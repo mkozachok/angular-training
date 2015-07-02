@@ -44,10 +44,10 @@ app.get('/cat', function(req, res) {
     res.json(cats); //cats
 });
 
-//app.get('/users', function(req, res) {
-//
-//    res.json(users);
-//});
+app.get('/users', function(req, res) {
+
+    res.json(users);
+});
 
 app.delete('/cat', function(req, res)
 {
@@ -77,11 +77,7 @@ app.delete('/users', function(req, res)
     {
         if(users.user[i].name === addToUser) {
             k = i;
-            //console.log(users.user[i].name );
-            //users.user.splice(i, 1);
-         //  users.user.push(req.query);
             users.user[i].catVote = req.query.catVote;
-            //users.user[i].push(req.query.catVote);
             break;
         }
     }

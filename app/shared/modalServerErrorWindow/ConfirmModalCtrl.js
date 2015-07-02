@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('ConfirmModalCtrl', ['$modalInstance', '$scope', 'response', 'message', '$http', function ($modalInstance, $scope, response, message, $http) {
+app.controller('ConfirmModalCtrl', ['$modalInstance', '$scope', 'response', 'message', '$http', '$location', function ($modalInstance, $scope, response, message, $http, $location) {
 
     $scope.status = response.status;
     $scope.statusText = response.statusText;

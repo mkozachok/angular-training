@@ -14,7 +14,7 @@ app.controller('RegistrationCtrl', ['$window', '$scope', '$cookieStore', '$locat
         if(!autheticationResult) {
             authenticationService.registration($scope.userName, $scope.userEmail, $scope.userPassword);
             $cookieStore.put('user', $scope.userName);
-            $cookieStore.put('fullUserData', undefined);
+            $cookieStore.put('fullUserData', 0);
             $window.location.reload();
             $location.path('#/home');
         }

@@ -28,6 +28,7 @@ app.controller('loginCtrl', ['$http', '$window', '$scope', 'userObj', 'authentic
 
     $scope.login = function () {
        var autheticationResult =  authenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
+
         if(autheticationResult) {
             $scope.userName = autheticationResult.name;
             $cookieStore.put('user', $scope.userName);
@@ -41,7 +42,7 @@ app.controller('loginCtrl', ['$http', '$window', '$scope', 'userObj', 'authentic
         $scope.userActive = 0;
         $scope.userNotActive = 1;
         $cookieStore.put('user', '');
-        $cookieStore.put('fullUserData', undefined);
+        $cookieStore.put('fullUserData', 0);
         $window.location.reload();
      //   $location.path('#/authorization');
     };

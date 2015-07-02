@@ -4,6 +4,7 @@
     </div>
     <form name="Registration" class="form-signin" ng-submit="registration()">
         <input name="userName" type="text" class="form-control" ng-minlength="3" placeholder="Your name" autofocus="" ng-model="userName" required>
+
         <div ng-show="Registration.$submitted || Registration.userName.$touched">
             <div ng-show="Registration.userName.$error.required">Write your name.</div>
             <div ng-show="Registration.userName.$error.minlength">Too short user name!</div>
@@ -15,7 +16,7 @@
             <span ng-show="Registration.userEmail.$error.email">This is not a valid email.</span>
         </div>
 
-        <input type="password" name="userPassword" ng-minlength="5" class="form-control" placeholder="Your password" ng-model="userPassword" name="userPassword" required />
+        <input type="password" my-number name="userPassword" ng-minlength="5" class="form-control" placeholder="Your password" ng-model="userPassword" name="userPassword" required />
         <div ng-show="Registration.$submitted || Registration.userPassword.$touched">
             <span ng-show="Registration.userPassword.$error.required">Please, write your password.</span>
             <span ng-show="Registration.userPassword.$error.minlength">Password too short.</span>
