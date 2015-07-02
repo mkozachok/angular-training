@@ -35,7 +35,7 @@
                 <td>{{cat.votes}}</td>
                 <td>
                     <button type="button" class="btn btn-sm btn-success" ng-click="openCat($index)" data-toggle="modal" data-target="#catModal">View</button>
-                    <button type="button" class="btn btn-sm btn-danger" ng-click="deleteCat(cat.id)" ng-show="catAccess(cat)">Delete</button>
+                    <button type="button" class="btn btn-sm btn-danger" ng-click="deleteCat(cat)" ng-show="catAccess(cat)">Delete</button>
                 </td>
             </tr>
             </tbody>

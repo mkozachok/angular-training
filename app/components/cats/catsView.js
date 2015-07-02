@@ -30,11 +30,11 @@ angular.module('myApp.catsView', [
 
       $modal.open({
         animation: true,
-        templateUrl: 'components/cats/templates/catsModal.html',
-        controller: 'catModal',
+        templateUrl: 'components/cats/templates/catsModalView.html',
+        controller: 'catModalView',
         resolve: {
           cat: function (catsService) {
-            catsService.updateCat();
+            catsService.updateCat($scope.selected_cat);
             return $scope.selected_cat;
           }
         }
@@ -54,21 +54,49 @@ angular.module('myApp.catsView', [
       return cat.author === profileService.getLoggedUser();
     };
 
-    $scope.deleteCat = function(id) {
-      catsService.deleteCat(id).then(function() {
-        catsService.getCats().then(function(data) {
+    $scope.deleteCat = function(cat) {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'components/cats/templates/catsModalDelete.html',
+        controller: 'catModalDelete',
+        resolve: {
+          cat: function () {
+            return cat;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        catsService.getCats().then(function (data) {
           cats = data;
           $scope.cats = data;
           $scope.allCats = data;
         });
+      }, function () {
       });
     };
   })
 
-  .controller('catModal', function ($scope, $modalInstance, cat) {
+  .controller('catModalView', function ($scope, $modalInstance, cat) {
     $scope.cat = cat;
 
     $scope.close = function() {
       $modalInstance.dismiss('cancel');
     };
+  })
+
+  .controller('catModalDelete', function ($scope, $modalInstance, catsService, cat) {
+    $scope.cat = cat;
+
+    $scope.process = function() {
+      catsService.deleteCat(cat.id).then(function () {
+        $modalInstance.close();
+      });
+    };
+
+    $scope.close = function() {
+      $modalInstance.dismiss('cancel');
+    };
   });
+
+
