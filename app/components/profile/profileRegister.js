@@ -59,12 +59,12 @@ angular.module('myApp.profileRegister', [
 
     $scope.registerErrorsVisible = function(form) {
       var registerErrors = {
-        nameRequired: form.name.$touched && form.name.$error.required,
-        passRequired: form.password.$touched && form.password.$error.required,
-        passRepeatRequired: form.password_repeat.$touched && form.password_repeat.$error.required,
-        passRepeatNonEqual: form.password_repeat.$touched && !form.password_repeat.$error.required && form.password_repeat.$error.compareTo,
-        emailRequired: form.email.$touched && form.email.$error.required,
-        emailNonValid: form.email.$touched && form.email.$error.email
+        nameRequired: form.name.$dirty && form.name.$error.required,
+        passRequired: form.password.$dirty && form.password.$error.required,
+        passRepeatRequired: form.password_repeat.$dirty && form.password_repeat.$error.required,
+        passRepeatNonEqual: form.password_repeat.$dirty && !form.password_repeat.$error.required && form.password_repeat.$error.compareTo,
+        emailRequired: form.email.$dirty && form.email.$error.required,
+        emailNonValid: form.email.$dirty && form.email.$error.email
       };
 
       var visible = false;
