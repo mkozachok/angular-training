@@ -17,7 +17,8 @@
     'myApp.profileLogin',
     'myApp.profileServices'
   ]).
-  config(['$urlRouterProvider', function($urlRouterProvider) {
-      $urlRouterProvider.otherwise('/view');
-  }]);
+  config(function($urlRouterProvider, $locationProvider) {
+      $urlRouterProvider.otherwise('/');
+      $locationProvider.html5Mode(true);
+  });
 })();

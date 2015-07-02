@@ -5,27 +5,27 @@
         <div ng-controller="catsAdd">
             <form name="catAdd" novalidate>
 
-                <div class="alert alert-danger" ng-show="catAdd.name.$touched && catAdd.name.$error.required || catAdd.path.$touched && catAdd.path.$error.required || !catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$invalid || !catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$error.imagePath">
+                <div class="alert alert-danger" ng-show="catAdd.name.$dirty && catAdd.name.$error.required || catAdd.path.$dirty && catAdd.path.$error.required || !catAdd.path.$error.required && catAdd.path.$dirty && catAdd.path.$invalid || !catAdd.path.$error.required && catAdd.path.$dirty && catAdd.path.$error.imagePath">
                     <ul>
-                        <li ng-show="catAdd.name.$touched && catAdd.name.$error.required">Cat's Name is required</li>
-                        <li ng-show="catAdd.path.$touched && catAdd.path.$error.required">Url of a Cat's Picture is required</li>
-                        <li ng-show="!catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$error.url">Url of a Cat's Picture is invalid</li>
-                        <li ng-show="!catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$error.imagePath">Url of a Cat's Picture is invalid image</li>
+                        <li ng-show="catAdd.name.$dirty && catAdd.name.$error.required">Cat's Name is required</li>
+                        <li ng-show="catAdd.path.$dirty && catAdd.path.$error.required">Url of a Cat's Picture is required</li>
+                        <li ng-show="!catAdd.path.$error.required && catAdd.path.$dirty && catAdd.path.$error.url">Url of a Cat's Picture is invalid</li>
+                        <li ng-show="!catAdd.path.$error.required && catAdd.path.$dirty && catAdd.path.$error.imagePath">Url of a Cat's Picture is invalid image</li>
                     </ul>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': catAdd.name.$invalid && catAdd.name.$dirty }">
                     <label for="name">Cat's Name:</label>
                     <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" form-on-enter="add()" />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': catAdd.path.$invalid && catAdd.path.$dirty }">
                     <label for="path">Url of a Cat's Picture:</label>
-                    <input image-path-valid type="url" class="form-control input-sm" ng-model="path" id="path" name="path" required="" form-on-enter="add()" placeholder="E.g. http://example.com/image.jpg" />
+                    <input image-path-validate type="url" class="form-control input-sm" ng-model="path" id="path" name="path" required="" form-on-enter="add()" placeholder="E.g. http://example.com/image.jpg" />
                 </div>
 
                 <div class="form-group" ng-if="catAdd.path.$pending">
-                    <h5><span class="glyphicon glyphicon-repeat gly-spin"></span>  Checking image url...</h5>
+                    <h5><span class="glyphicon glyphicon-screenshot gly-spin"></span>  Checking image url...</h5>
                 </div>
 
                 <div class="form-group" ng-show="catAdd.path.$valid">

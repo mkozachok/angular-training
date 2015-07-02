@@ -7,7 +7,7 @@ angular.module('myApp.catsView', [
 
   .config(['$stateProvider', function($stateProvider) {
     $stateProvider.state('catspage', {
-      url: '/view',
+      url: '/',
       templateUrl: 'components/cats/templates/catsView.html',
       controller: 'catsView',
       resolve: {

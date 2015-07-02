@@ -8,20 +8,20 @@
             </div>
 
             <form name="profileLogin" novalidate>
-                <div class="alert alert-danger" ng-show="loginError || profileLogin.name.$touched && profileLogin.name.$error.required || profileLogin.password.$touched && profileLogin.password.$error.required">
+                <div class="alert alert-danger" ng-show="loginError || profileLogin.name.$dirty && profileLogin.name.$error.required || profileLogin.password.$dirty && profileLogin.password.$error.required">
                     <ul>
                         <li ng-show="loginError">Username or Password is incorrect</li>
-                        <li ng-show="profileLogin.name.$touched && profileLogin.name.$error.required">User Name is required</li>
-                        <li ng-show="profileLogin.password.$touched && profileLogin.password.$error.required">Password is required</li>
+                        <li ng-show="profileLogin.name.$dirty && profileLogin.name.$error.required">User Name is required</li>
+                        <li ng-show="profileLogin.password.$dirty && profileLogin.password.$error.required">Password is required</li>
                     </ul>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': profileLogin.name.$invalid && profileLogin.name.$dirty }">
                     <label for="name">User Name:</label>
                     <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" ng-keydown="loginErrorClear()" form-on-enter="loginProfile()" />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': profileLogin.password.$invalid && profileLogin.password.$dirty }">
                     <label for="password">Password:</label>
                     <input type="password" class="form-control" ng-model="password" id="password" name="password" required="" ng-keydown="loginErrorClear()" form-on-enter="loginProfile()" />
                 </div>

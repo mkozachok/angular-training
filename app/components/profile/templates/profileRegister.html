@@ -7,31 +7,31 @@
 
                 <div class="alert alert-danger" ng-show="registerErrorsVisible(profileRegister)">
                     <ul>
-                        <li ng-show="profileRegister.name.$touched && profileRegister.name.$error.required">User Name is required</li>
-                        <li ng-show="profileRegister.password.$touched && profileRegister.password.$error.required">Password is required</li>
-                        <li ng-show="profileRegister.password_repeat.$touched && profileRegister.password_repeat.$error.required">Repeat Password is required</li>
-                        <li ng-show="profileRegister.password_repeat.$touched && !profileRegister.password_repeat.$error.required && profileRegister.password_repeat.$error.compareTo">Repeat Password is non equal to Password</li>
-                        <li ng-show="profileRegister.email.$touched && profileRegister.email.$error.required">Email is required</li>
-                        <li ng-show="profileRegister.email.$touched && profileRegister.email.$error.email">Email is not valid</li>
+                        <li ng-show="profileRegister.name.$dirty && profileRegister.name.$error.required">User Name is required</li>
+                        <li ng-show="profileRegister.password.$dirty && profileRegister.password.$error.required">Password is required</li>
+                        <li ng-show="profileRegister.password_repeat.$dirty && profileRegister.password_repeat.$error.required">Repeat Password is required</li>
+                        <li ng-show="profileRegister.password_repeat.$dirty && !profileRegister.password_repeat.$error.required && profileRegister.password_repeat.$error.compareTo">Repeat Password is non equal to Password</li>
+                        <li ng-show="profileRegister.email.$dirty && profileRegister.email.$error.required">Email is required</li>
+                        <li ng-show="profileRegister.email.$dirty && profileRegister.email.$error.email">Email is not valid</li>
                     </ul>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': profileRegister.name.$invalid && profileRegister.name.$dirty }">
                     <label for="name">User Name:</label>
                     <input type="text" class="form-control" ng-model="name" id="name" name="name" required="" form-on-enter="registerProfile()" />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': profileRegister.password.$invalid && profileRegister.password.$dirty }">
                     <label for="password">Password:</label>
                     <input type="password" class="form-control" ng-model="password" id="password" name="password" required="" form-on-enter="registerProfile()" />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': profileRegister.password_repeat.$invalid && profileRegister.password_repeat.$dirty }">
                     <label for="password_repeat">Repeat Password:</label>
                     <input type="password" class="form-control" ng-model="password_repeat" compare-to="password" id="password_repeat" name="password_repeat" required="" form-on-enter="registerProfile()" />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': profileRegister.email.$invalid && profileRegister.email.$dirty }">
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" ng-model="email" id="email" name="email" required="" form-on-enter="registerProfile()" />
                 </div>

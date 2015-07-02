@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div>
             <ul class="nav navbar-nav" ng-init="selectedTab = 'view'">
-                <li ng-class="{'active':selectedTab === 'view'}" ng-click="selectedTab = 'view'"><a href="#/view">View Cats</a></li>
-                <li ng-class="{'active':selectedTab === 'add'}" ng-click="selectedTab = 'add'" ng-show="isLogged()"><a href="#/add">Add New Cat</a></li>
+                <li ng-class="{'active':selectedTab === 'view'}" ng-click="selectedTab = 'view'"><a href="/view">View Cats</a></li>
+                <li ng-class="{'active':selectedTab === 'add'}" ng-click="selectedTab = 'add'" ng-show="isLogged()"><a href="/add">Add New Cat</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li ng-class="{'active':selectedTab === 'profile/register'}" ng-click="selectedTab = 'profile/register'" ng-hide="isLogged()"><a href="#/profile/register">Register</a></li>
-                <li ng-class="{'active':selectedTab === 'profile/login'}" ng-click="selectedTab = 'profile/login'" ng-hide="isLogged()"><a href="#/profile/login">Log in</a></li>
-                <li ng-show="isLogged()" ng-click="navigationLogout()"><a href="#/view">Log out</a></li>
+                <li ng-class="{'active':selectedTab === 'profile/register'}" ng-click="selectedTab = 'profile/register'" ng-hide="isLogged()"><a href="/profile/register">Register</a></li>
+                <li ng-class="{'active':selectedTab === 'profile/login'}" ng-click="selectedTab = 'profile/login'" ng-hide="isLogged()"><a href="/profile/login">Log in</a></li>
+                <li ng-show="isLogged()" ng-click="navigationLogout()"><a href="/view">Log out</a></li>
             </ul>
         </div>
     </div>
