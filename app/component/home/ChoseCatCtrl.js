@@ -31,6 +31,8 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
 
         var currentCatName = $scope.currentCat.name;
 
+        if(allUserData !== undefined)
+        {
           if (allUserData.catVote.hasOwnProperty(currentCatName) === false) {
                 likedCats[currentCatName] = 0;
            }
@@ -47,6 +49,7 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
                 }
 
             }
+        }
     };
 
     var userCookie = $cookieStore.get('user');
