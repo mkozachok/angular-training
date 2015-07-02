@@ -52,6 +52,7 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
         getCats.$promise.then(function (response) {
             $scope.cats = response.cats;
         });
+        $scope.currentCat.img = '';
     };
 
     $scope.like = function()

@@ -17,14 +17,6 @@ app.controller('loginCtrl', ['$http', '$window', '$scope', 'userObj', 'authentic
         $scope.userNotActive = 0;
     }
 
-    //console.log(111, userInterceptor.response(userObj));
-    //$scope.requestTime=0;
-    //$http.get('http://localhost:8000/users').then(function(response) {
-    //    var time = response.config.responseTimestamp - response.config.requestTimestamp;
-    //    console.log(111,time);
-    //    $scope.requestTime = (time / 1000);
-    //});
-
 
     $scope.login = function () {
        var autheticationResult =  authenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);

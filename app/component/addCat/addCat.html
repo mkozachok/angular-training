@@ -8,6 +8,11 @@
             <span  class="error" ng-show="AddCat.kittyImg.$error.url">Not a valid url!</span>
         </div>
 
+        <div  ng-messages="AddCat.kittyImg.$error">
+            <div ng-messages-include="shared/messengerValidator/messages.html"
+                 class="errors"></div>
+        </div>
+
         <br />
         <br />
         <button type="submit" id="save" value="Save">Save</button>

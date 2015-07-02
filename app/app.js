@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField', 'ngCookies', 'ui.bootstrap']);
+var app = angular.module('app', ['ui.router', 'ngResource', 'ng.confirmField', 'ngCookies', 'ui.bootstrap', 'ngMessages']);
 
 app.controller('MainCtrl', ['$scope', '$cookieStore', function($scope, $cookieStore) {
     'use strict';
