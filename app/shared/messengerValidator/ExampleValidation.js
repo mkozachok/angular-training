@@ -23,7 +23,7 @@ app.directive("picturesValidator", function($q, $timeout) {
                     };
                     image.src = modelValue;
                 }, 1000);
-                
+
                 return defer.promise;
             };
         }
