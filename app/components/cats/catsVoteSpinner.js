@@ -28,14 +28,14 @@ angular.module('myApp.catsVoteSpinner', [
 
             if (user) {
               if (user == cat.author) {
-                return 'You cannot vote for own cat!';
+                return 'You cannot vote for own cat';
               }
               else if (cat.votedBy.length && cat.votedBy.indexOf(user) !== -1) {
-                return 'You have already voted for this cat!';
+                return 'You have already voted for this cat';
               }
             }
             else {
-              return 'Please login to vote this cat!';
+              return 'Please login to vote this cat';
             }
           }
           return '';

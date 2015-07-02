@@ -1,13 +1,13 @@
 <div>
-    <h5>
+    <h5><span popover="{{voteAccessMessage(cat)}}" popover-trigger="mouseenter" popover-animation="false" popover-placement="left">
         <ng-pluralize count="cat.votes"
                       when="{'0': '{} votes',
                          '1': '{} vote',
                          '-1': '{} vote',
                          'other': '{} votes'}">
         </ng-pluralize>
-    </h5>
-    {{voteAccessMessage(cat)}}
+    </span></h5>
+
     <div class="btn-group">
         <button type="button" class="btn btn-success glyphicon glyphicon-thumbs-up" ng-hide="voteAccess(cat)" ng-click="vote(cat)"></button>
         <button type="button" class="btn btn-danger glyphicon glyphicon-thumbs-down" ng-hide="voteAccess(cat)" ng-click="disvote(cat)"></button>
