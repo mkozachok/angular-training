@@ -1,7 +1,12 @@
 <div>
     <form  ng-show="userActive" name="AddCat" ng-enter-click="addKitty()"> <!--ng-submit="addKitty()" -->
         Name: <input  ng-model="kittyName" ng-minlength="3" name="cat_name_field" required/>
-        <span  class="error" ng-show="AddCat.cat_name_field.$error.url">Too short cat name!</span>
+        <!--<span  class="error" ng-show="AddCat.cat_name_field.$error.url">Too short cat name!</span>-->
+
+        <div messages-validator ng-messages="AddCat.cat_name_field.$error">
+            <div ng-messages-include="shared/messengerValidator/messages.html"
+                 class="errors"></div>
+        </div>
 
         <div ng-show="userActive">
             <img-preview name="cats.kittyImg" ></img-preview>
@@ -15,7 +20,7 @@
 
         <br />
         <br />
-        <button type="submit" id="save" value="Save">Save</button>
+        <button class="btn btn-lg btn-primary btn-block" ng-disabled="AddCat.$invalid" type="submit" id="save" value="Save">Save</button>
     </form>
 
     <div ng-hide="userActive"><h2>You need login for have permissions for this page</h2></div>

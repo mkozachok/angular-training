@@ -19,7 +19,17 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
         var allUserData = $cookieStore.get('fullUserData');
             $scope.currentCat = cat;
             $scope.currentCat.v = 1;
-            var currentCatName = $scope.currentCat.name;
+
+        if($cookieStore.get(cat.name) !== undefined)
+        {
+            $scope.currentCat.count = $cookieStore.get(cat.name);
+        }
+        else
+        {
+            $scope.currentCat.count = 0;
+        }
+
+        var currentCatName = $scope.currentCat.name;
 
           if (allUserData.catVote.hasOwnProperty(currentCatName) === false) {
                 likedCats[currentCatName] = 0;
@@ -45,7 +55,6 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
         $scope.userActive = 1;
     }
 
-  //@todo rewrite that work without reload
     $scope.deleteCat = function(catName){
         addDeleteUpdateCatService.deleteCat(catName);
         var getCats = KittyFactory.get();
@@ -59,6 +68,7 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
     {
         if(likedCats[$scope.currentCat.name] === 0) {
             $scope.currentCat.votes++;
+            $cookieStore.put('catVotes', $scope.currentCat.votes);
             likedCats[$scope.currentCat.name] = 1;
             votesService.saveVotes(userCookie, likedCats);
             votesService.updateUsers(userCookie);
@@ -70,13 +80,17 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
         if(likedCats[$scope.currentCat.name] !== 0) {
             if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
             likedCats[$scope.currentCat.name] = 0;
+            $cookieStore.put('catVotes', $scope.currentCat.votes);
             votesService.saveVotes(userCookie, likedCats);
             votesService.updateUsers(userCookie);
         }
     };
 
     $scope.increment = function(){
+
         $scope.currentCat.count += 1;
+        $cookieStore.put($scope.currentCat.name, $scope.currentCat.count);
+
     };
 
     $scope.emit = function() {

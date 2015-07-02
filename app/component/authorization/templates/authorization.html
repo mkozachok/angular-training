@@ -5,11 +5,15 @@
         </div>
         <form name="Login" class="form-signin" ng-submit="login()">
             <input name="userEmail" type="email" class="form-control" placeholder="Email address: user@example.com" autofocus="" ng-model="userEmail" required>
-            <input type="password" class="form-control" placeholder="Password" ng-model="userPassword">
+            <div ng-show="Login.$submitted || Login.userEmail.$touched" ng-messages="Login.userEmail.$error">
+                <div ng-messages-include="shared/messengerValidator/messages.html"
+                     class="errors"></div>
+            </div>
+
+            <input type="password" class="form-control" placeholder="Password" ng-model="userPassword" required="">
             <button class="btn btn-lg btn-primary btn-block" type="submit" name="signIn">Sign in</button>
-            <a class="btn btn-lg btn-primary btn-block" href="#/registration"> Registration </a>
+            <a  class="btn btn-lg btn-primary btn-block" href="#/registration"> Registration </a>
         </form>
-        <span  class="error" ng-show="Registration.userEmail.$error">Don't valid email!</span>
     </div>
 
     <div ng-show = "userActive" class="container">

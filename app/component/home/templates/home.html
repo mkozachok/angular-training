@@ -5,15 +5,11 @@
     <chose></chose>
 
     <div ng-show="currentCat">
+
         <img width="300px" height="300px" src="{{ currentCat.img }}" ng-click="increment()">
         <span> Count: {{ currentCat.count }} </span>
 
         <vote-spinner ng-show="userActive"></vote-spinner>
-        <!--<span ng-show="userActive">-->
-            <!--<button ng-click="like(currentCat)">&uarr;</button>-->
-            <!--<button ng-click="disLike(currentCat)">&darr;</button>-->
-        <!--</span>-->
 
-        <!--<span>{{ currentCat.votes }} votes</span>-->
     </div>
 </div>
