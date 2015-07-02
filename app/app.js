@@ -3,5 +3,6 @@ angular.module('app', [
   'ui.router',
   'ngResource',
   'LocalStorageModule',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngMessages'
 ]);

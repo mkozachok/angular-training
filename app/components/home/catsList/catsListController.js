@@ -1,16 +1,18 @@
-angular.module("app").controller("catsListController", function ($scope, $filter, catsResource, notifyService, sortingService) {
+angular.module("app").controller("catsListController", function ($scope, $timeout, $filter, catsResource, notifyService, sortingService, catsCollection) {
     var vm = this;
+    vm.filteredCats = catsCollection.cats;
+    vm.cats = catsCollection.cats;
     var updateView = function(){
 	    catsResource.get().$promise.then(function (result) {
 	        vm.filteredCats = result.cats;
 	        vm.cats = result.cats;
 	    });
 	};
-	updateView();
     vm.delete = function(catId){
     	catsResource.delete({'catId':catId});
 		updateView();
-		vm.select('');
+		// vm.select('');
+	        notifyService.notify('deleteCat', catId);
 	};
     vm.select = function(cat){
     	notifyService.notify('chooseCat', cat);

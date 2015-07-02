@@ -22,13 +22,13 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
 
-        <li ng-class="getClass('/home')"><a href="#/home">Home</a></li>
-        <li ng-class="getClass('/add')"><a href="#/add">Add cat</a></li>
-        <li ng-class="getClass('/about')"><a href="#/about">About</a></li>
+        <li ng-class="getClass('/home')"><a ui-sref="home.catsList">Home</a></li>
+        <li ng-class="getClass('/add')"><a ui-sref="add">Add cat</a></li>
+        <li ng-class="getClass('/about')"><a ui-sref="about">About</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li ng-class="getClass('/register')"><a href="#/register">Registration</a></li>
+        <li ng-class="getClass('/register')"><a ui-sref="register">Registration</a></li>
       </ul>
     </div><!--/.nav-collapse -->
 
@@ -47,6 +47,7 @@
   <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.js"></script>
   <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="/bower_components/angular-messages/angular-messages.js"></script>
   <script src="/build/angular-training.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@ angular.module("app").directive("catsItem", function ($templateCache, $compile) 
             elem.append(tpl);
             return function (scope) {
             };
-        }
+        },
+        replace: true
     };
 });

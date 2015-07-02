@@ -1,17 +1,29 @@
 <div>
-    <div style="color:red"></div>
     <select ng-change="list.sort()" ng-model="list.sorting">
     	<option selected value="asc">Asc</option>
     	<option value="desc">Desc</option>
     </select>
-    <form novalidate>
-    	Search:<br>
-    	<input ng-keyup="list.startSearch(substr)" type="text" ng-model="substr">
-    	<button class="btn btn-success" ng-click="list.search(substr)">Go!</button>
-    </form>
-    <ul>
-        <li ng-repeat="cat in list.filteredCats | orderBy:'name':list.reverse">
-        	<cats-item></cats-item>
-        </li>
-    </ul>
+
+<div class="row">
+        <h3>Search Box</h3>
+        <div class="input-group col-md-4">
+            <input ng-keyup="list.startSearch(substr)" ng-model="substr" type="text" class="  search-query form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button class="btn btn-success" ng-click="list.search(substr)">
+                    <span class=" glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="cat in list.filteredCats | orderBy:'name':list.reverse">
+                	<div class="clearfix"><cats-item></cats-item><button class="btn btn-danger pull-right" ng-click="list.delete(cat.id)">Delete</button></div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

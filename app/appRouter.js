@@ -3,24 +3,26 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
     function ($stateProvider, $urlRouterProvider, $httpProvider) {
     	$httpProvider.interceptors.push('modalErrorInterceptor');
 
-		$urlRouterProvider.otherwise('/home');
+		$urlRouterProvider.otherwise('/cats-list');
 
 		$stateProvider
 		.state('home', {
-		  url: '/home',
+			abstract: true,
+		  url: '/',
 		  templateUrl: 'components/home/home.html',
-		  // resolve: {
-    //             catsCollection:  function(catsResource){
-    //                 var getCats = catsResource.get();
-    //                 return getCats.$promise;
-    //             }
-    //         }
 		})
 		.state('home.catsList', {
+			url: 'cats-list',
 		  	views: {
 		        "cats" : {
-		        	templateUrl: 'components/home/catsList/CatsList.html',
-			  		controller: 'catsListController as list'
+		        	templateUrl: 'components/home/catsList/catsList.html',
+			  		controller: 'catsListController as list',
+			  		resolve: {
+		                catsCollection:  function(catsResource){
+		                    var getCats = catsResource.get();
+		                    return getCats.$promise;
+		                }
+		            }
 		        },            
 		        "choose" : {
 		        	templateUrl: 'components/home/chooseCat/chooseCat.html',
