@@ -24,8 +24,8 @@
      this.addCat = function (name, image, refreshCallback)
      {
         var catNew = Object.create( Object.prototype , CatProps  );
-        catNew.init(name, image);
-        var catsCollection = _provider('/addCat', null, {
+        catNew.init(name, image, share.loggedUserId);
+        var catsCollection = _provider('/cat', null, {
             'put':{isArray:false, method:'PUT'}
         });
         var self = this;
@@ -73,7 +73,7 @@
     this.refreshCats = function()
     {
         console.log('Refresh cats');
-         var catsCollection = _provider('/getCats', null, {
+         var catsCollection = _provider('/cats', null, {
                 'get':{isArray:true, method:'GET'}
             });
            return catsCollection.get({}).$promise;
@@ -103,6 +103,29 @@
     {
         if(typeof _selectedCat === 'object' && _selectedCat && _selectedCat.votes > 0 )
             _selectedCat.votes--;
+    }
+
+    this.isCatRemovable = function(cat)
+    {
+        if(cat.uploadedUserId !== undefined && cat.uploadedUserId === share.loggedUserId) return true;
+        return false;
+    }
+
+     this.removeCat = function (cat, refreshCallback)
+     {
+        var catsCollection = _provider('/cat/'+cat.id, null, {
+            'delete':{isArray:false, method:'DELETE'}
+        });
+        var self = this;
+        var result = catsCollection.delete()
+        .$promise
+        .then(
+         function(response) 
+         {          
+            _isCatsObtained = false;  //forcing to refresh from backend
+            self.obtainCats();
+            refreshCallback({'cat': cat, 'result':response});
+        } )  ;
     }
 
 }

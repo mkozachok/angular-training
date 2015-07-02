@@ -6,12 +6,6 @@ __mainApp
     	this.result = [];
     	var self =this;
 
-        if(share.isUserLogged)
-        {
-            location.path('/');   
-             scope.$apply(); 
-        }
-
     	this.loginUser = function()
     	{
             var result = auth.authenticateUserByEmail(self.email, self.password);

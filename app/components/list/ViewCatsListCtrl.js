@@ -8,6 +8,8 @@ __mainApp
         this.cats = share.cats = catsList;
         this.tooltip = [];
 
+        this.result = [];
+
         
         var self = this;
 
@@ -63,6 +65,24 @@ __mainApp
             share.selectedCat = element;
             $location.path(route+'/'+element.name);
         }
+
+       this.isCatRemovable = function(cat)
+       {
+            return mcs.isCatRemovable(cat);
+        }
+
+        this.refreshAddResult = function(response)
+        {
+            if(typeof response === 'object' && response.hasOwnProperty('result'));
+            self.result = response.result;
+        }
+
+
+        this.removeCat = function(cat)
+        {
+            mcs.removeCat(cat, self.refreshAddResult);
+        }
+ 
 
     }]);
 

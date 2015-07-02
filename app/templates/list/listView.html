@@ -17,22 +17,25 @@
 </div>
 
 <div class="row">
-    <div class = "col-md-4" style="order:1px; border-style:dotted;" sstyle="float: left; width:25%; border:1px; border-style:dotted;">
-
+    <div class = "col-md-4"  >
+    <div style="border:1px; border-style:dotted;">
         <div ng-repeat = "x	in list.cats| filter:list.filterExpression | orderBy:'name'">
             <div>
             <span ng-click="list.selectCat(x);">
                 {{ $index }} : {{ x.name }} / {{ x.click }} / {{ x.votes }}               
             </span>
             <span class="glyphicon fa fa-pencil" ng-click="list.changeView('/editCat',x);"></span>
+            <span class="glypicon fa fa-trash-o" ng-show="list.isCatRemovable(x)" ng-click="list.removeCat(x);"></span>
             <span class="glyphicon glyphicon-thumbs-up" ng-show="x.isViewed"></span>
             </div>
                 
         </div>
-    </div>
+        </div>
+        <truth-ful data = "list.result"></truth-ful>
+    </div>  
     <div class = "col-md-4"></div>
 
-    <div class = "col-md-4" style = "border:1px; border-style:solid;" sstyle="float: right; border:1px; border-style:solid; width:75%;">
+    <div class = "col-md-4" style = "border:1px; border-style:solid;" width="300px" sstyle="float: right; border:1px; border-style:solid; width:75%;">
         <p> {{ list.selectedCat.name }}</p>
         
         <img ng-click="list.toggle();" src="{{ list.selectedCat.image }} "/><p/>

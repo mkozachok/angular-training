@@ -10,7 +10,8 @@
     <link rel="stylesheet" type="text/css" href="/build/app.css" />
     <link rel="stylesheet" type="text/css" href="/bower_components/angular-emoji-filter-hd/dist/emoji.min.css" />
     <link rel="stylesheet" type="text/css" href="/resources/font-awesome-4.3.0/css/font-awesome.css" />
-    <link rel="stylesheet" type="text/css" href="resources/signin.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/signin.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/http-error-handling.css"/>
 
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -21,12 +22,21 @@
     <script src="/bower_components/ngstorage/ngStorage.js"></script>
 
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"></script>
+    <script src="components/common/services/http-error-handling.js"></script>
 
     <script type="text/javascript" src="/build/angular-training.js"></script>
 
 
 </head>
 <body ng-app="app" ng-cloak>
+    <!-- Display errors -->
+    <div class="row">
+    <div cclass = "col-md-6" ></div>
+    <div class="col-md-12 panel panel-success">
+        <div class="panel-heading">HTTP responses results</div>
+        <div class="panel-body" http-error-messages></div>
+    </div>
+    </div>
 
     <a href ui-sref="home">Back to home</a>
     <section ui-view="homePage"></section>

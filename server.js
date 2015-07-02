@@ -32,8 +32,8 @@ app.use(expressIO.static(__dirname + '/build'));
 function sleep(timeout, action) { setTimeout( action, timeout); }
 
 //GETs
-app.get('/getCats', function(req, res) {
-  console.log('/getCats');
+app.get('/cats', function(req, res) {
+  console.log('get /cats');
   // GET 'http://www.example.com/admin/new'
   console.log(req.originalUrl); // '/admin/new'
   console.log(req.baseUrl); // '/admin'
@@ -42,9 +42,9 @@ app.get('/getCats', function(req, res) {
    
 });
 
-app.put('/addCat', function(req,res)
+app.put('/cat', function(req,res)
 {
-  console.log('/addCat');
+  console.log('put /cat');
 	console.log(req.body);
 
   var addCatResult = '';
@@ -57,6 +57,35 @@ app.put('/addCat', function(req,res)
 	}    
 	else
 		addCatResult = '{"Result":0, "Message":"Cat is not saved"}' ;
+
+});
+
+app.delete('/cat/:id', function(req,res)
+{
+  console.log('delete /Cat');
+  console.log('BODY:');
+  console.log(req.body);
+  console.log('PARAMS:');
+    console.log(req.params);
+
+
+  var addCatResult = '';
+  sleep(1000, function() { console.log('Pause continued'); res.send(addCatResult);} );
+
+  addCatResult = '{"Result":0, "Message":"Cat was not removed: no cat with specified ID was found"}' ;
+  for(var i =0 ;i<catsData.length; i++)
+  {
+    console.log(i+':'+ parseInt(catsData[i].id) + '===' + parseInt(req.params.id) + ':' + ( parseInt(catsData[i].id) === parseInt(req.params.id)) );
+
+    if( catsData[i].id !== undefined && (parseInt(catsData[i].id) === parseInt(req.params.id)) )
+    {
+        var removedCat = catsData.splice(i, 1);
+        console.log(removedCat[0].name);
+        addCatResult = '{"Result":1, "Message":"Cat '+removedCat[0].name +' was removed"}' ;
+    }
+
+  }
+    
 
 });
 

@@ -2,6 +2,12 @@
 __mainApp.factory('Cat', function() {
 	var Cat = 
 	{
+      "id": 
+      {
+        value: 0,
+        writable: true,
+        enumerable: true
+      },
     	"click": {
     		value: 0,
     		writable: true,
@@ -32,7 +38,7 @@ __mainApp.factory('Cat', function() {
     		writable: true,
     		enumerable: true
   		}
-      ,"uploadedUser":
+      ,"uploadedUserId":
       {
         value: '',
         writable: true,
@@ -41,11 +47,13 @@ __mainApp.factory('Cat', function() {
 
   		,"init" : {
 			value: 
-  			function(name, image)
+  			function(name, image, uploadedUserId)
   			{
-  				this.name = name + ' ' + Math.floor(Date.now() / 1000);
+          this.id = Math.floor(Date.now() / 1000);
+  				this.name = name;
   				this.image = image;
   				this.votes = Math.floor((Math.random() * 10) + 1);
+          this.uploadedUserId = uploadedUserId;
   			},
   			writable: true,
     		enumerable: true
