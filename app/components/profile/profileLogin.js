@@ -46,8 +46,8 @@ angular.module('myApp.profileLogin', [
           form.$setUntouched();
 
           // Redirect to main page.
-          $location.path('/view');
-          $rootScope.selectedTab = 'view';
+          $location.path('/');
+          $rootScope.selectedTab = '/';
         }
       }
     };

@@ -6,12 +6,18 @@ angular.module('myApp.navigation', [])
   .controller('navigationController', function ($rootScope, $scope, $location, profileService) {
     'use strict';
 
+    $scope.selectedTab = $location.url();
+
+    $scope.changeTab = function(tab) {
+      $scope.selectedTab = tab;
+    };
+
     $scope.navigationLogout = function() {
       profileService.logoutUser();
 
       // Redirect to main page.
-      $location.path('/view');
-      $rootScope.selectedTab = 'view';
+      $location.path('/');
+      $rootScope.selectedTab = '/';
     };
 
     $scope.isLogged = function() {

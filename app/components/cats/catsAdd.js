@@ -32,8 +32,8 @@ angular.module('myApp.catsAdd', [
           $scope.catAdd.$setPristine();
           $scope.catAdd.$setUntouched();
 
-          $location.path('/view');
-          $rootScope.selectedTab = 'view';
+          $location.path('/');
+          $rootScope.selectedTab = '/';
         });
       }
     };
