@@ -1,14 +1,15 @@
 <div>
+    <br>
+    <div class="text-center">
+        <select  ng-model="sort">
+            <option value="name">ASC</option>
+            <option value="-name">DESC</option>
+        </select>
+    </div>
 
-    <select ng-model="sort">
-        <option value="name">ASC</option>
-        <option value="-name">DESC</option>
-    </select>
-
-    <div ng-repeat="cat in cats | orderBy: sort | filter: find">
-        <button ng-show="userActive" ng-click="deleteCat(cat.name)">Delete</button>
-        <span  ng-click="chose(cat)"> {{ cat.name }} </span>
+    <div  ng-repeat="cat in cats | orderBy: sort | filter: find">
+        <button class="btn btn-danger" ng-show="userActive" ng-click="deleteCat(cat.name)">Delete</button>
+        <span class="btn btn-primary"  style="cursor: pointer;width: 100px" ng-click="chose(cat)"> {{ cat.name }} </span>
         <span ng-show="cat.v">&hearts;</span>
-        <br>
     </div>
 </div>

@@ -6,10 +6,11 @@
 
     <div ng-show="currentCat">
 
-        <img width="300px" height="300px" src="{{ currentCat.img }}" ng-click="increment()">
-        <span> Count: {{ currentCat.count }} </span>
-
-        <vote-spinner ng-show="userActive"></vote-spinner>
+        <div class="text-center">
+            <img class="img-responsive img-thumbnail img-rounded" width="300px" height="300px" src="{{ currentCat.img }}" ng-click="increment()">
+            <span> Count: {{ currentCat.count }} </span>
+            <vote-spinner ng-show="userActive"></vote-spinner>
+        </div>
 
     </div>
 </div>

@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope', 'addDeleteUpdateCatService', '$cookieStore',  function(KittyFactory, votesService ,$window, $scope, addDeleteUpdateCatService, $cookieStore) {
+app.controller('ChoseCatCtrl', ['likesService','KittyFactory', '$window','$scope', 'addDeleteUpdateCatService', '$cookieStore',  function(likesService, KittyFactory, $window, $scope, addDeleteUpdateCatService, $cookieStore) {
     'use strict';
     $scope.sort = 'name';
     $scope.find = '';
@@ -15,21 +15,24 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
         $scope.cats = fromParent;
     });
 
+
     $scope.chose = function(cat){
         var allUserData = $cookieStore.get('fullUserData');
             $scope.currentCat = cat;
             $scope.currentCat.v = 1;
 
         if($cookieStore.get(cat.name) !== undefined)
-        {
             $scope.currentCat.count = $cookieStore.get(cat.name);
-        }
         else
-        {
             $scope.currentCat.count = 0;
-        }
+
 
         var currentCatName = $scope.currentCat.name;
+
+        //if($cookieStore.get(userCookie + 'catVotes') !== undefined)
+        //    likedCats[currentCatName] = 1;
+        //else
+        //    likedCats[currentCatName] = 0;
 
         if(allUserData !== undefined)
         {
@@ -38,16 +41,13 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
            }
             else
             {
-                 if (allUserData.catVote.hasOwnProperty(currentCatName)) {
-                    if(allUserData.catVote.hasOwnProperty(currentCatName))
-                    {
-                        likedCats[currentCatName] = allUserData.catVote[currentCatName];
-                        if (likedCats[currentCatName] === 1) $scope.currentCat.votes++;
-                    }else{
-                        likedCats[currentCatName] = 0;
-                    }
+                if(allUserData.catVote.hasOwnProperty(currentCatName))
+                {
+                    likedCats[currentCatName] = allUserData.catVote[currentCatName];
+                    if (likedCats[currentCatName] === 1) $scope.currentCat.votes++;
+                }else{
+                    likedCats[currentCatName] = 0;
                 }
-
             }
         }
     };
@@ -69,24 +69,12 @@ app.controller('ChoseCatCtrl', ['KittyFactory', 'votesService','$window','$scope
 
     $scope.like = function()
     {
-        if(likedCats[$scope.currentCat.name] === 0) {
-            $scope.currentCat.votes++;
-            $cookieStore.put('catVotes', $scope.currentCat.votes);
-            likedCats[$scope.currentCat.name] = 1;
-            votesService.saveVotes(userCookie, likedCats);
-            votesService.updateUsers(userCookie);
-        }
+        likedCats = likesService.like($scope, userCookie, likedCats);
     };
 
     $scope.disLike = function()
     {
-        if(likedCats[$scope.currentCat.name] !== 0) {
-            if($scope.currentCat.votes > 0) $scope.currentCat.votes --;
-            likedCats[$scope.currentCat.name] = 0;
-            $cookieStore.put('catVotes', $scope.currentCat.votes);
-            votesService.saveVotes(userCookie, likedCats);
-            votesService.updateUsers(userCookie);
-        }
+        likedCats = likesService.disLike($scope, userCookie, likedCats);
     };
 
     $scope.increment = function(){

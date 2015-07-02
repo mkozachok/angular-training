@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/main.css">
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
     <script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -26,20 +28,18 @@
 </head>
 <body ng-app="app">
 
-<ul class="menu">
+<ul class="menu text-center">
     <li><a href="#/home">home</a></li>
     <li><a  href="#/add_cat">add cat</a></li>
     <li><a href="#/about">about</a></li>
     <li ng-controller="MainCtrl"><a href="#/authorization">{{userName}}</a></li>
 </ul>
 
+
 <div ng-cloak>
     <div ui-view></div>
 </div>
 
-<!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
--->
 
 </body>
 </html>
