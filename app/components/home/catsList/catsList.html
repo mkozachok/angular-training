@@ -7,7 +7,7 @@
     <form novalidate>
     	Search:<br>
     	<input ng-keyup="list.startSearch(substr)" type="text" ng-model="substr">
-    	<button ng-click="list.search(substr)">Go!</button>
+    	<button class="btn btn-success" ng-click="list.search(substr)">Go!</button>
     </form>
     <ul>
         <li ng-repeat="cat in list.filteredCats | orderBy:'name':list.reverse">

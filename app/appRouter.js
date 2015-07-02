@@ -9,24 +9,36 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
 		.state('home', {
 		  url: '/home',
 		  templateUrl: 'components/home/home.html',
-		  resolve: {
-                catsCollection:  function(catsResource){
-                    var getCats = catsResource.get();
-                    return getCats.$promise;
-                }
-            }
+		  // resolve: {
+    //             catsCollection:  function(catsResource){
+    //                 var getCats = catsResource.get();
+    //                 return getCats.$promise;
+    //             }
+    //         }
+		})
+		.state('home.catsList', {
+		  	views: {
+		        "cats" : {
+		        	templateUrl: 'components/home/catsList/CatsList.html',
+			  		controller: 'catsListController as list'
+		        },            
+		        "choose" : {
+		        	templateUrl: 'components/home/chooseCat/chooseCat.html',
+			  		controller: 'chooseCatController as choose'
+		        }
+		    }
 		})
 
 		.state('add', {
-		  url: '/add',
-		  templateUrl: 'components/addCat/addCat.html',
-		  controller: 'addCatController'
+			url: '/add',
+			templateUrl: 'components/addCat/addCat.html',
+			controller: 'addCatController'
 		})
 
 		.state('register', {
-		  url: '/register',
-		  templateUrl: 'components/register/register.html',
-		  controller: 'registerController as vm'
+			url: '/register',
+			templateUrl: 'components/register/register.html',
+			controller: 'registerController as vm'
 		})
 		.state({
             name: 'about',

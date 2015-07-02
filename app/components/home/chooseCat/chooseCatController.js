@@ -11,10 +11,4 @@ angular.module("app").controller("chooseCatController", function (notifyService)
     vm.increment = function(cat){
         cat.count++;
     };
-    vm.voteIncrement = function(cat){
-        cat.voteCount++;
-    };
-    vm.voteDecrement = function(cat){
-        cat.voteCount--;
-    };
 });

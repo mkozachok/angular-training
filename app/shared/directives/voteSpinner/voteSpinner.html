@@ -1,0 +1,11 @@
+<div>
+	<button class="btn btn-primary" ng-click="spinner.vote(spinner.element)">&#x2191;</button>
+	<button class="btn btn-danger" ng-click="spinner.unvote(spinner.element)">&#x2193;</button>
+	<span>{{element.voteCount}}</span>
+	<ng-pluralize count="spinner.element.voteCount"
+                when="{'0': '0 votes.',
+                       '1': '1 vote.',
+                       '-1': '-1 vote.',
+                       'other': '{} votes.'}">
+  	</ng-pluralize><br>
+</div>

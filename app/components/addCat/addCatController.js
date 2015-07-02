@@ -11,5 +11,5 @@ angular.module('app')
 		$location.path('/view');
 	};
 
-	$resource('/test/:catId?', {catId:'@catId'}).get();
+	// $resource('/test/:catId?', {catId:'@catId'}).get();
 });

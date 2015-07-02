@@ -1,0 +1,14 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">&times;</button>
+        <h3 class="modal-title">Error {{status}}: {{statusText}}</h3>
+    </div>
+    <div class="modal-body">
+        <p><i>{{data}}</i></p>
+        <p><b>{{message}}</b></p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="close()">OK</button>
+        <button class="btn btn-warning" ng-click="tryAgain()">Try Again</button>
+    </div>
+</div>

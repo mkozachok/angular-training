@@ -1,12 +1,5 @@
 <div ng-show="choose.selected" ng-cloak>
-	<img  src="{{choose.selected.path}}" ng-click="choose.increment(choose.selected)"  width="300px"/>
+	<img class="img-thumbnail"  src="{{choose.selected.path}}" ng-click="choose.increment(choose.selected)"  width="300px"/>
 	<p>{{choose.selected.name}} ({{ choose.selected.count }})</p>
-	<button ng-click="choose.voteIncrement(choose.selected)">&#x2191;</button>
-	<button ng-click="choose.voteDecrement(choose.selected)">&#x2193;</button>
-	<ng-pluralize count="choose.selected.voteCount"
-                when="{'0': '0 votes.',
-                       '1': '1 vote.',
-                       '-1': '-1 vote.',
-                       'other': '{} votes.'}">
-  	</ng-pluralize><br>
+	<vote-spinner element="choose.selected"></vote-spinner>
 </div>
