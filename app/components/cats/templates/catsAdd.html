@@ -5,11 +5,12 @@
         <div ng-controller="catsAdd">
             <form name="catAdd" novalidate>
 
-                <div class="alert alert-danger" ng-show="catAdd.name.$touched && catAdd.name.$error.required || catAdd.path.$touched && catAdd.path.$error.required || !catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$invalid">
+                <div class="alert alert-danger" ng-show="catAdd.name.$touched && catAdd.name.$error.required || catAdd.path.$touched && catAdd.path.$error.required || !catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$invalid || !catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$error.imagePath">
                     <ul>
-                        <li ng-show="catAdd.name.$touched && catAdd.name.$error.required">Cat's Name is required.</li>
-                        <li ng-show="catAdd.path.$touched && catAdd.path.$error.required">Url of a Cat's Picture is required.</li>
-                        <li ng-show="!catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$invalid">Url of a Cat's Picture is invalid.</li>
+                        <li ng-show="catAdd.name.$touched && catAdd.name.$error.required">Cat's Name is required</li>
+                        <li ng-show="catAdd.path.$touched && catAdd.path.$error.required">Url of a Cat's Picture is required</li>
+                        <li ng-show="!catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$error.url">Url of a Cat's Picture is invalid</li>
+                        <li ng-show="!catAdd.path.$error.required && catAdd.path.$touched && catAdd.path.$error.imagePath">Url of a Cat's Picture is invalid image</li>
                     </ul>
                 </div>
 
@@ -20,11 +21,8 @@
 
                 <div class="form-group">
                     <label for="path">Url of a Cat's Picture:</label>
-                    <input type="url" class="form-control" ng-model="path" id="path" name="path" required="" form-on-enter="add()" />
-                </div>
-
-                <div class="form-group">
-                    <div image-preview image-path="{{path}}"></div>
+                    <input image-preview type="url" class="form-control" ng-model="path" id="path" name="path" required="" form-on-enter="add()" placeholder="E.g. http://example.com/image.jpg" />
+                    <span ng-if="catAdd.path.$pending">Checking image...</span>
                 </div>
 
                 <button type="button" class="btn btn-success" ng-click="add()" ng-class="setClass()">Add new cat</button>

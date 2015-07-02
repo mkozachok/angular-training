@@ -7,12 +7,12 @@
 
                 <div class="alert alert-danger" ng-show="registerErrorsVisible(profileRegister)">
                     <ul>
-                        <li ng-show="profileRegister.name.$touched && profileRegister.name.$error.required">User Name is required.</li>
-                        <li ng-show="profileRegister.password.$touched && profileRegister.password.$error.required">Password is required.</li>
-                        <li ng-show="profileRegister.password_repeat.$touched && profileRegister.password_repeat.$error.required">Repeat Password is required.</li>
-                        <li ng-show="profileRegister.password_repeat.$touched && !profileRegister.password_repeat.$error.required && profileRegister.password_repeat.$error.compareTo">Repeat Password is non equal to Password.</li>
-                        <li ng-show="profileRegister.email.$touched && profileRegister.email.$error.required">Email is required.</li>
-                        <li ng-show="profileRegister.email.$touched && profileRegister.email.$error.email">Email is not valid.</li>
+                        <li ng-show="profileRegister.name.$touched && profileRegister.name.$error.required">User Name is required</li>
+                        <li ng-show="profileRegister.password.$touched && profileRegister.password.$error.required">Password is required</li>
+                        <li ng-show="profileRegister.password_repeat.$touched && profileRegister.password_repeat.$error.required">Repeat Password is required</li>
+                        <li ng-show="profileRegister.password_repeat.$touched && !profileRegister.password_repeat.$error.required && profileRegister.password_repeat.$error.compareTo">Repeat Password is non equal to Password</li>
+                        <li ng-show="profileRegister.email.$touched && profileRegister.email.$error.required">Email is required</li>
+                        <li ng-show="profileRegister.email.$touched && profileRegister.email.$error.email">Email is not valid</li>
                     </ul>
                 </div>
 

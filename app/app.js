@@ -6,6 +6,7 @@
     'ngResource',
     'myApp.errors',
     'myApp.formOnEnter',
+    'myApp.imagePreview',
     'myApp.navigation',
     'myApp.loading',
     'myApp.catsView',

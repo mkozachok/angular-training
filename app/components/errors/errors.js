@@ -16,19 +16,17 @@ angular.module('myApp.errors', [
   .service('showError', function($injector) {
 
     this.showModal = function (response) {
-      var modal = $injector.get('$modal');
-      modal.open({
-        animation: true,
-        templateUrl: 'components/errors/errorModal.html',
-        controller: 'errorModal',
-        resolve: {
-          response: function () {
-            return response;
+        var modal = $injector.get('$modal');
+        modal.open({
+          animation: true,
+          templateUrl: 'components/errors/errorModal.html',
+          controller: 'errorModal',
+          resolve: {
+            response: function () {
+              return response;
+            }
           }
-        }
-      });
-
-      return status;
+        });
     };
   })
 
