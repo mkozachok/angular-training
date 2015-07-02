@@ -27,8 +27,6 @@ angular.module('myApp.catsAdd', [
         };
 
         catsService.insertCat(newCat).then(function() {
-          $scope.name = '';
-          $scope.path = '';
           $scope.catAdd.$setPristine();
           $scope.catAdd.$setUntouched();
 
