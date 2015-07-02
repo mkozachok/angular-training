@@ -51,4 +51,16 @@ angular.module('myApp.catsAdd', [
       }
       return '';
     };
+  })
+
+  .directive('imagePreview', function () {
+    return {
+      restrict: 'AE',
+      template: '<img src="{{imagePath}}" style="max-width: 300px;" />',
+      link: function (scope, element, attrs) {
+        attrs.$observe('imagePath', function(val){
+          scope.imagePath = val;
+        });
+      }
+    };
   });

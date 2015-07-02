@@ -1,4 +1,4 @@
-angular.module('myApp.imagePreview', [])
+angular.module('myApp.imagePathValidate', [])
 
   .factory('httpQuery', function($q) {
     return {
@@ -26,11 +26,10 @@ angular.module('myApp.imagePreview', [])
     };
   })
 
-  .directive('imagePreview', function (httpQuery) {
+  .directive('imagePathValidate', function (httpQuery) {
     return {
       restrict: 'A',
       require: "ngModel",
-      //template: '<img src="{{imagePath}}" ng-hide="{{imagePath}}" style="max-width: 200px;" />',
       link: function (scope, element, attrs, ngModel) {
         ngModel.$asyncValidators.imagePath = function(modelValue, viewValue) {
           return httpQuery.isImage(modelValue);

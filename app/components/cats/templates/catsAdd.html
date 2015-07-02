@@ -21,8 +21,15 @@
 
                 <div class="form-group">
                     <label for="path">Url of a Cat's Picture:</label>
-                    <input image-preview type="url" class="form-control" ng-model="path" id="path" name="path" required="" form-on-enter="add()" placeholder="E.g. http://example.com/image.jpg" />
-                    <span ng-if="catAdd.path.$pending">Checking image...</span>
+                    <input image-path-valid type="url" class="form-control input-sm" ng-model="path" id="path" name="path" required="" form-on-enter="add()" placeholder="E.g. http://example.com/image.jpg" />
+                </div>
+
+                <div class="form-group" ng-if="catAdd.path.$pending">
+                    <h5><span class="glyphicon glyphicon-repeat gly-spin"></span>  Checking image url...</h5>
+                </div>
+
+                <div class="form-group" ng-show="catAdd.path.$valid">
+                    <div image-preview image-path="{{path}}" ></div>
                 </div>
 
                 <button type="button" class="btn btn-success" ng-click="add()" ng-class="setClass()">Add new cat</button>
