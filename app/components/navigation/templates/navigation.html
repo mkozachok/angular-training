@@ -11,7 +11,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ng-class="{'active':selectedTab === '/profile/register'}" ng-click="changeTab('/profile/register')" ng-hide="isLogged()"><a href="/profile/register">Register</a></li>
                 <li ng-class="{'active':selectedTab === '/profile/login'}" ng-click="changeTab('/profile/login')" ng-hide="isLogged()"><a href="/profile/login">Log in</a></li>
-                <li ng-show="isLogged()" ng-click="changeTab('/')" ng-click="navigationLogout()"><a href="/">Log out</a></li>
+                <li ng-show="isLogged()" ng-click="navigationLogout(); changeTab('/')"><a href="/">Log out</a></li>
             </ul>
 
         </div>
