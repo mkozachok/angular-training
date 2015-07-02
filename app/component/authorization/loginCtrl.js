@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('loginCtrl', ['$window', '$scope', 'userObj', 'authenticationService', '$cookieStore', '$location', function ($window ,$scope, userObj, authenticationService, $cookieStore, $location) {
+app.controller('loginCtrl', ['$http', '$window', '$scope', 'userObj', 'authenticationService', '$cookieStore', '$location', function ($http, $window ,$scope, userObj, authenticationService, $cookieStore, $location) {
     'use strict';
     $scope.users = [];
     $scope.userName = '';
@@ -18,12 +18,14 @@ app.controller('loginCtrl', ['$window', '$scope', 'userObj', 'authenticationServ
     }
 
     //console.log(111, userInterceptor.response(userObj));
-
-    //$http.get('http://localhost:8000/users').then(function() {
-    //    console.log('success');
-    //}, function(rejectReason) {
-    //    console.log('failure');
+    //$scope.requestTime=0;
+    //$http.get('http://localhost:8000/users').then(function(response) {
+    //    var time = response.config.responseTimestamp - response.config.requestTimestamp;
+    //    console.log(111,time);
+    //    $scope.requestTime = (time / 1000);
     //});
+
+
     $scope.login = function () {
        var autheticationResult =  authenticationService.checkLogin($scope.users, $scope.userEmail, $scope.userPassword);
         if(autheticationResult) {

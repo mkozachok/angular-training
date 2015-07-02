@@ -44,10 +44,10 @@ app.get('/cat', function(req, res) {
     res.json(cats); //cats
 });
 
-app.get('/users', function(req, res) {
-
-    res.json(users);
-});
+//app.get('/users', function(req, res) {
+//
+//    res.json(users);
+//});
 
 app.delete('/cat', function(req, res)
 {

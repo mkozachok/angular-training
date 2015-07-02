@@ -2,7 +2,7 @@ var app = angular.module('app');
 
 app.config(['$httpProvider','$stateProvider','$urlRouterProvider', function ($httpProvider, $stateProvider, $urlRouterProvider) {
 
-    //$httpProvider.interceptors.push('userInterceptor');
+    $httpProvider.interceptors.push('userInterceptor');
 
     $urlRouterProvider.otherwise('/home');
     $stateProvider
