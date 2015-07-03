@@ -29,7 +29,6 @@ app.controller('ChoseCatCtrl', ['likesService','KittyFactory', '$window','$scope
         else
             $scope.currentCat.count = 0;
 
-
         var currentCatName = $scope.currentCat.name;
 
         if(allUserData !== undefined)
