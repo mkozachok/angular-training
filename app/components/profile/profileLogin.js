@@ -10,7 +10,7 @@ angular.module('myApp.profileLogin', [
     });
   }])
 
-  .controller('profileLogin', function ($rootScope, $scope, catsService, $location, profileService) {
+  .controller('profileLogin', function ($rootScope, $scope, $location, profileService) {
     'use strict';
 
     $scope.loginError = false;
@@ -25,7 +25,7 @@ angular.module('myApp.profileLogin', [
     };
 
     $scope.loginProfile = function() {
-      var form = $scope.profileLogin;
+      var form = $scope.profileLogin || {};
 
       if (form.name.$valid && form.password.$valid) {
         // Try to get user data.
@@ -42,8 +42,12 @@ angular.module('myApp.profileLogin', [
           $scope.email = '';
 
           // Clear form states.
-          form.$setPristine();
-          form.$setUntouched();
+          if (!angular.isUndefined(form.$setPristine)) {
+            form.$setPristine();
+          }
+          if (!angular.isUndefined(form.$setUntouched)) {
+            form.$setUntouched();
+          }
 
           // Redirect to main page.
           $location.path('/');
@@ -53,10 +57,17 @@ angular.module('myApp.profileLogin', [
     };
 
     $scope.loginCancel = function() {
+      var form = $scope.profileLogin || {};
+
       $scope.name = '';
       $scope.password = '';
-      $scope.profileLogin.$setPristine();
-      $scope.profileLogin.$setUntouched();
+
+      if (!angular.isUndefined(form.$setPristine)) {
+        form.$setPristine();
+      }
+      if (!angular.isUndefined(form.$setUntouched)) {
+        form.$setUntouched();
+      }
     };
 
     $scope.loginFormSubmitClass = function() {

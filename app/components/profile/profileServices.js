@@ -32,6 +32,6 @@ angular.module('myApp.profileServices', [
     };
 
     this.logoutUser = function () {
-      localStorageService.cookie.remove('loggedUser');
+      return localStorageService.cookie.remove('loggedUser');
     };
   });

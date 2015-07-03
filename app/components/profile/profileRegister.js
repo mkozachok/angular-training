@@ -10,7 +10,7 @@ angular.module('myApp.profileRegister', [
     });
   }])
 
-  .controller('profileRegister', function ($rootScope, $scope, catsService, $location, profileService) {
+  .controller('profileRegister', function ($rootScope, $scope, $location, profileService) {
     'use strict';
 
     $scope.registerProfile = function() {
