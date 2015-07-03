@@ -72,9 +72,11 @@ angular.module('myApp.profileLogin', [
 
     $scope.loginFormSubmitClass = function() {
       var form = $scope.profileLogin;
-      if (form.name.$invalid || form.password.$invalid) {
+      if (form.name.$valid && form.password.$valid) {
+        return '';
+      }
+      else {
         return 'disabled';
       }
-      return '';
     };
   });

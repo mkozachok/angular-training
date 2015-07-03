@@ -62,9 +62,21 @@ describe("profileLogin controller", function () {
     this.scope.name = user.name;
     this.scope.password = user.password;
 
-
     this.scope.loginCancel();
     expect(this.scope.name == '' && this.scope.password == '').toBeTruthy();
+  });
+
+  it("will check access to submit", function () {
+    this.scope.profileLogin = {
+      name: {
+        $valid: true
+      },
+      password: {
+        $valid: true
+      }
+    };
+
+    expect(this.scope.loginFormSubmitClass()).not.toBe('disabled');
   });
 
 });
