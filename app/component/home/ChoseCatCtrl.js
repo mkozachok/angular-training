@@ -6,6 +6,9 @@ app.controller('ChoseCatCtrl', ['likesService','KittyFactory', '$window','$scope
     $scope.find = '';
     $scope.userActive = 0;
     var likedCats = {};
+    var userCookie = $cookieStore.get('user');
+
+    $scope.userActive = (userCookie ?  1 : 0);
 
     $scope.$on('Search', function(events, args){
         $scope.find = args; //now we've registered!
@@ -29,21 +32,16 @@ app.controller('ChoseCatCtrl', ['likesService','KittyFactory', '$window','$scope
 
         var currentCatName = $scope.currentCat.name;
 
-        //if($cookieStore.get(userCookie + 'catVotes') !== undefined)
-        //    likedCats[currentCatName] = 1;
-        //else
-        //    likedCats[currentCatName] = 0;
-
         if(allUserData !== undefined)
         {
-          if (allUserData.catVote.hasOwnProperty(currentCatName) === false) {
+          if ((angular.fromJson(allUserData.catVote))[currentCatName] === undefined) {
                 likedCats[currentCatName] = 0;
            }
             else
             {
-                if(allUserData.catVote.hasOwnProperty(currentCatName))
+                if((angular.fromJson(allUserData.catVote))[currentCatName])
                 {
-                    likedCats[currentCatName] = allUserData.catVote[currentCatName];
+                    likedCats[currentCatName] = (angular.fromJson(allUserData.catVote))[currentCatName];
                     if (likedCats[currentCatName] === 1) $scope.currentCat.votes++;
                 }else{
                     likedCats[currentCatName] = 0;
@@ -51,12 +49,6 @@ app.controller('ChoseCatCtrl', ['likesService','KittyFactory', '$window','$scope
             }
         }
     };
-
-    var userCookie = $cookieStore.get('user');
-
-    if(userCookie){
-        $scope.userActive = 1;
-    }
 
     $scope.deleteCat = function(catName){
         addDeleteUpdateCatService.deleteCat(catName);
