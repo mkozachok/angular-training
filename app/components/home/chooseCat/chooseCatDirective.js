@@ -6,8 +6,7 @@ angular.module("app").directive("chooseCat", function () {
         controller: 'chooseCatController',
         controllerAs: 'choose',
         bindToController: true,
-        scope: {
-        	
+        scope: {  	
         },
     };
 });

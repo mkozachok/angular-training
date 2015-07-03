@@ -34,5 +34,8 @@
     "grunt-cli": "~0.1.13",
     "grunt": "~0.4.5",
     "grunt-concurrent": "~2.0.0"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js"
   }
 }

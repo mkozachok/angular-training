@@ -1,7 +1,11 @@
 angular.module('app')
-.controller('addCatController', function($scope, catsResource, $location, $resource) {
-	var lastId = '';
-	catsResource.get().$promise.then(function (result) {
+.controller('addCatController', function($scope, catsResource, $location) {
+	$scope.cat = { 
+		"count" : undefined,
+		"id" : undefined
+	};
+	var lastId;
+	catsResource.get(function (result) {
         lastId = result.lastId;
     });
 	$scope.submit = function(){

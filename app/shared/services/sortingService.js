@@ -6,5 +6,4 @@ angular.module("app").service('sortingService', function() {
 		}
 		return reverse;
 	};
-}
-);
+});
