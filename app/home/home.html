@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    <title>Ahahusichka</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+</head>
+
+<body ng-cloak>
+    <div ng-controlle="HomeCtrl">
+
+        <!--ng-pattern="/^*.*jpg$/"-->
+        <div>
+            <form name="myForm" ng-submit="addKitty()">
+                Name: <input ng-model="kittyName" ng-minlength="3" required/>
+                Img: <input type="url"  ng-model="kittyImg"  ng-minlength="3"  name="img_field" />
+                <span  class="error" ng-show="myForm.img_field.$error.url">Not a valid url!</span>
+                <!--<span ng-show="myForm.img_field.$error.pattern">Not a valid number!</span>-->
+                <!--ng-pattern="/^[0-9]{1,7}$/"-->
+                <button type="submit" id="save" value="Save">Save</button>
+            </form>
+        </div>
+
+        <br />
+
+        <div>
+            <form ng-submit="submit()">
+                <input ng-model="search">
+                <button type="submit" id="submit" value="Submit">Search</button>
+            </form>
+        </div>
+
+        <select ng-model="sort">
+            <option value="name">ASC</option>
+            <option value="-name">DESC</option>
+        </select>
+
+        <div ng-repeat="cat in cats | orderBy: sort | filter: find">
+            <span ng-click="chose(cat)"> {{ cat.name }} </span><span ng-show="cat.v">&hearts;</span>
+        </div>
+
+        <p ng-show="currentCat">
+            <img src="{{currentCat.img }}" ng-click="increment()">
+            <span> Count: {{ currentCat.count }} </span>
+            <button ng-click="like(currentCat)">&uarr;</button>
+            <button ng-click="disLike(currentCat)">&darr;</button>
+            <span>{{ currentCat.votes }} votes</span>
+        </p>
+    </div>
+</body>
+</html>

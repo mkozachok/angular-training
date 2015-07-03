@@ -1,1 +1,10 @@
-[{"name": "ppp"}]
+{
+  "responses": [
+    {"name": "Viktor", "amountOfMentees": 2, "id": 1},
+    {"name": "Valeriy", "amountOfMentees": 3, "id": 1},
+    {"name": "Sergii", "amountOfMentees": 1, "id": 1},
+    {"name": "Andrii", "amountOfMentees": 1, "id": 1},
+    {"name": "Liubomyr", "amountOfMentees": 2, "id": 1},
+    {"name": "Oleksii", "amountOfMentees": 1, "id": 1}
+  ]
+}
