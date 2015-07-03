@@ -1,30 +1,34 @@
 describe("profile services", function () {
-  var sut,
-    mockLocalStorageService,
-    user = [{
+  var sut, mockLocalStorageService;
+  var user;
+  beforeEach(function () {
+    user = {
       name: 'test',
       password: 'test',
       email: 'test@test.com'
-    }];
+    };
 
-  beforeEach(function () {
     module("myApp");
 
-    module(function($provide){
-      $provide.service('LocalStorageService', function(){
-        this.get = jasmine.createSpy();
-        this.set = jasmine.createSpy();
-        this.cookie = jasmine.createSpy();
-        this.cookie.set = jasmine.createSpy();
-        this.cookie.get = jasmine.createSpy();
-      });
+    mockLocalStorageService = {
+      get: jasmine.createSpy().and.returnValue(user),
+      set: jasmine.createSpy(),
+      cookie: {
+        get: jasmine.createSpy().and.returnValue(user),
+        set: jasmine.createSpy(),
+        remove: jasmine.createSpy().and.returnValue(true)
+      }
+    };
+
+    module(function ($provide) {
+      $provide.value('localStorageService', mockLocalStorageService);
     });
 
     module("myApp.profileServices");
   });
 
-  beforeEach(inject(function(LocalStorageService, profileService){
-    mockLocalStorageService = LocalStorageService;
+  beforeEach(inject(function(profileService){
+
     sut = profileService;
   }));
 
@@ -40,9 +44,6 @@ describe("profile services", function () {
   });
 
   it("will check logout process", function () {
-    sut.registerUser(user);
-    sut.loginUser(user.name, user.password);
-    sut.logoutUser();
-    expect(sut.getLoggedUser()).toBeFalsy();
+    expect(sut.logoutUser()).toBeTruthy();
   });
 });
