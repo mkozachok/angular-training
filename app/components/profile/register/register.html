@@ -1,0 +1,26 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Register</h2>
+    <div ng-show="register.error" class="alert alert-danger">{{register.error}}</div>
+    <form name="form" ng-submit="register.register()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Username</label>
+            <input focus-on type="text" name="username" id="username" class="form-control" ng-model="register.user.username" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="register.user.password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.confPassword.$dirty && form.confPassword.$error.required || form.confPassword.$error.pattern}">
+            <label for="confPassword">Confirm password</label>
+            <input type="password" name="confPassword" id="confPassword" class="form-control" ng-model="register.confPassword" pattern="{{register.user.password}}" required />
+            <span ng-show="form.confPassword.$dirty && form.confPassword.$error.required" class="help-block">Confirm Password is required</span>
+            <span ng-show="form.confPassword.$dirty && form.confPassword.$error.pattern" class="help-block">Confirm Password must equal to password</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
+            <a href="#/login" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>
