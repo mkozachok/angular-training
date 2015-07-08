@@ -1,4 +1,4 @@
-<div>
+<div ng-show="spinner.loggedUsername">
 	<button class="btn btn-primary" ng-click="spinner.vote(spinner.element)">&#x2191;</button>
 	<button class="btn btn-danger" ng-click="spinner.unvote(spinner.element)">&#x2193;</button>
 	<span>{{element.voteCount}}</span>

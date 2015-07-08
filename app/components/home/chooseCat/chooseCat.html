@@ -1,5 +1,5 @@
-<div ng-show="choose.selected" ng-cloak>
-	<img class="img-thumbnail"  src="{{choose.selected.path}}" ng-click="choose.increment(choose.selected)"  width="300px"/>
+<div class="choose" ng-show="choose.selected" ng-cloak>
+	<img class="img-thumbnail"  src="{{choose.selected.path}}" ng-click="choose.increment(choose.selected)"/>
 	<p>{{choose.selected.name}} ({{ choose.selected.count }})</p>
 	<vote-spinner element="choose.selected"></vote-spinner>
 </div>

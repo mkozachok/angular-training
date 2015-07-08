@@ -1,6 +1,5 @@
 angular.module("app").controller("chooseCatController", function (notifyService) {
     var vm = this;
-    // vm.selected = null;
     notifyService.listen('chooseCat', function(cat){
             vm.selected = cat;
             vm.selected.viewed = true;

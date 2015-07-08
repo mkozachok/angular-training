@@ -1,8 +1,21 @@
 angular.module("app")
-.controller("registerController", function ($scope, notifyService, localStorageService) {
+.controller("loginController", function (profileService, $location) {
 	var vm = this;
-	vm.register = function(){
 
+	var loggedUsername = profileService.getLoggedUsername();
+
+	vm.loggedUser = profileService.getUser(loggedUsername);
+
+	vm.login = function(){
+		if(profileService.login(vm.user.username, vm.user.password)){
+			$location.path('/cats-list');
+		}
+		else{
+			vm.user = undefined;
+			vm.error = "Login or password is incorrect. Try again.";
+		}
 	};
+
+
 
 });

@@ -1,26 +1,40 @@
 <div class="col-md-6 col-md-offset-3">
-    <h2>Register</h2>
-    <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
-    <form name="form" ng-submit="vm.register()" role="form">
-        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-            <label for="username">Username</label>
-            <input focus-on type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" required />
-            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
-        </div>
-        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />
-            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
-        </div>
-        <div class="form-group" ng-class="{ 'has-error': form.confPassword.$dirty && form.confPassword.$error.required }">
-            <label for="confPassword">Confirm password</label>
-            <input type="password" name="confPassword" id="confPassword" class="form-control" ng-model="vm.user.confPassword" pattern="{{vm.user.password}}" required />
-            <span ng-show="form.confPassword.$dirty && form.confPassword.$error.required" class="help-block">Confirm Password is required</span>
-            <span ng-show="form.confPassword.$dirty && form.confPassword.$error.pattern" class="help-block">Confirm Password must equal to password</span>
-        </div>
-        <div class="form-actions">
-            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
-            <a href="#/login" class="btn btn-link">Cancel</a>
-        </div>
-    </form>
+    <div ng-if="!login.loggedUser" class="login-form">
+        <h2>Log in</h2>
+        <div ng-show="login.error" class="alert alert-danger">{{login.error}}</div>
+        <form name="form" ng-submit="login.login()" role="form">
+            <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+                <label for="username">Username</label>
+                <input focus-on type="text" name="username" id="username" class="form-control" ng-model="login.user.username" required />
+                <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" ng-model="login.user.password" required />
+                <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>
+    <div ng-if="login.loggedUser" class="user-info">
+        <h2>User info:</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{login.loggedUser.username}}</td>
+                <td>{{login.loggedUser.password}}</td>
+                <td>email</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

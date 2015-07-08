@@ -3,37 +3,43 @@
 			"id": "1",
 			"name": "cat8",
 			"path": "assets/pic/cat1.jpg",
-			"count": 0
+			"count": 0,
+			"votedUsernames": []
 		},
 		{
 			"id": "2",
 			"name": "cat2",
 			"path": "assets/pic/cat2.jpg",
-			"count": 0
+			"count": 0,
+			"votedUsernames": []
 		},
 		{
 			"id": "3",
 			"name": "cat3",
 			"path": "assets/pic/cat3.jpg",
-			"count": 0
+			"count": 0,
+			"votedUsernames": []
 		},
 		{
 			"id": "4",
 			"name": "cat4",
 			"path": "assets/pic/cat4.jpg",
-			"count": 0
+			"count": 0,
+			"votedUsernames": []
 		},
 		{
 			"id": "5",
 			"name": "cat5",
 			"path": "assets/pic/cat5.jpg",
-			"count": 0
+			"count": 0,
+			"votedUsernames": []
 		},
 		{
 			"id": "6",
 			"name": "cat6",
 			"path": "assets/pic/cat6.jpg",
-			"count": 0
+			"count": 0,
+			"votedUsernames": []
 		}
 	],
 	"lastId": "6"

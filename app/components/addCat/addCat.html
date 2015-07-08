@@ -1,16 +1,16 @@
 <div class="container col-md-4">
   <form name="addForm" enter-submit="submit()" novalidate>
-    <div class="form-group">
-        <label for="email">Cat name:</label>
+    <div class="form-group" ng-class="{ 'has-error': addForm.name.$dirty && addForm.name.$error.required}">
+        <label for="name">Cat name:</label>
         <input focus-on type="text" name="name" ng-model="cat.name" class="form-control" required>
         <div ng-messages="addForm.name.$dirty && addForm.name.$error">
           <div ng-messages-include="shared/formValidation/messages.html"></div>
         </div>
     </div>
-    <div class="form-group">
-        <label for="email">Path:</label>
+    <div class="form-group" ng-class="{ 'has-error': addForm.path.$dirty && addForm.path.$error.required || addForm.path.$error.url}">
+        <label for="path">Path(example: http://www.cats.com/cat.jpg):</label>
         <div>
-          <input image-path-validator  type="text" name="path" ng-model="cat.path" class="form-control" pattern="https?://[a-z0-9_-]+\.[\S]+"/> <img ng-if="addForm.path.$valid" ng-src="{{cat.path}}" width="200px"/>
+          <input image-path-validator  type="url" name="path" ng-model="cat.path" class="form-control"/> <img ng-if="addForm.path.$valid" ng-src="{{cat.path}}" width="200px"/>
           <div class="form-group" ng-show="addForm.path.$dirty && addForm.path.$pending">
               <h5><span class="glyphicon glyphicon-search"></span>  Checking image path...</h5>
           </div>

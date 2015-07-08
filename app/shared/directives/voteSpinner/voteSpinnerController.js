@@ -1,9 +1,16 @@
-angular.module("app").controller("voteSpinnerController", function () {
+angular.module("app").controller("voteSpinnerController", function (profileService) {
 	var vm = this;
+	vm.loggedUsername = profileService.getLoggedUsername();
 	vm.vote = function(cat){
-        cat.voteCount++;
+		if(cat.votedUsernames.indexOf(vm.loggedUsername) === -1){
+        	cat.voteCount++;
+        	cat.votedUsernames.push(vm.loggedUsername);
+    	}
     };
     vm.unvote = function(cat){
-        cat.voteCount--;
+    	if(cat.votedUsernames.indexOf(vm.loggedUsername) === -1){
+        	cat.voteCount--;
+        	cat.votedUsernames.push(vm.loggedUsername);
+    	}
     };
 });

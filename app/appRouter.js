@@ -8,8 +8,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
 		$stateProvider
 		.state('home', {
 			abstract: true,
-		  url: '/',
-		  templateUrl: 'components/home/home.html',
+			url: '/',
+			templateUrl: 'components/home/home.html',
 		})
 		.state('home.catsList', {
 			url: 'cats-list',

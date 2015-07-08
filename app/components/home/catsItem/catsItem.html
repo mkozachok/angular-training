@@ -1,3 +1,6 @@
-<div style="cursor:pointer" ng-click="list.select(cat)" max-width="400px">
-	<span>{{cat.name}}</span> <img class="img-thumbnail" ng-src="{{cat.path}}" width="50px"> <span ng-show="cat.viewed" <span class="badge">&#10004;</span>
+<div class="row cat-item" ng-click="list.select(cat)">
+	<div class="col-xs-3 vcenter"><h4>{{cat.name}}</h4></div>
+	<div class="col-xs-3 vcenter"><img class="img-thumbnail" ng-src="{{cat.path}}"></div>
+	<div class="col-xs-2 vcenter"><span ng-show="cat.viewed" <span class="badge">&#10004;</span></div>
+	<div class="col-xs-3 vcenter"><button ng-if="list.loggedUsername && cat.username == list.loggedUsername" class="btn btn-danger" ng-click="list.delete(cat.id); $event.stopPropagation();">Delete</button></div>
 </div>
