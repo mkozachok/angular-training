@@ -27,6 +27,7 @@
     "grunt-contrib-watch": ">=0.5.3",
     "grunt-express": "1.2.1",
     "grunt-karma": "~0.9.0",
+    "grunt-localtunnel-me": "^0.1.6",
     "grunt-newer": ">=0.6.0",
     "grunt-ng-annotate": ">=0.4.0",
     "karma": "~0.12.x",

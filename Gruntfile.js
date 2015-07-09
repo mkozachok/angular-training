@@ -129,6 +129,17 @@ module.exports = function (grunt) {
                     logConcurrentOutput: true
                 }
             }
+        },
+        
+        localtunnel: {
+          open: {
+            options: {
+              port: 8000,
+              open: '/',
+              subdomain: 'whiskas',
+              keepalive: true
+            }
+          }
         }
     });
 
@@ -145,6 +156,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-localtunnel-me');
 
     grunt.registerTask('run', [ 'build', "express:app", "serverAndWatch"]);
     grunt.registerTask('serverAndWatch', [ 'concurrent:server', "concurrent:watch"]);
@@ -157,4 +169,5 @@ module.exports = function (grunt) {
 
     grunt.registerTask('release', ['build', 'uglify:release']);
     grunt.registerTask('server', ['watch:debug', 'express-keepalive:app']);
+    grunt.registerTask('tunnel', ['localtunnel:open']);
 };
