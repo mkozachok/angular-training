@@ -1,9 +1,1 @@
-{
-  "responses": [
-    {"id": "0", "name": "Alex", "image": "http://thecatapi.com/?id=9ht", "vote": 0},
-    {"id": "1", "name": "Liuba", "image": "http://thecatapi.com/?id=MTg2ODc5Mw", "vote": 2},
-    {"id": "2", "name": "Viktor", "image": "http://thecatapi.com/?id=953", "vote": 3},
-    {"id": "3", "name": "Albert", "image": "http://thecatapi.com/?id=efh", "vote": 0},
-    {"id": "4", "name": "Yaroslav", "image": "http://thecatapi.com/?id=MjAzNjQ3Mw", "vote": 5}
-  ]
-}
+[{"id":1,"name":"Cat Tommy","date":1444818444256,"source":"http://www.thetimes.co.uk/tto/multimedia/archive/00309/108787995_309592c.jpg","likes":0},{"id":2,"name":"Cat Bob","date":1444818472256,"source":"https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg","likes":0},{"id":3,"name":"Cat Rob","date":1444818470256,"source":"http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg","likes":0},{"id":4,"name":"Black Cat","date":1444818479256,"source":"http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg","likes":0},{"id":5,"name":"Crazy Cat","date":1444818400256,"source":"http://i.telegraph.co.uk/multimedia/archive/02127/cat1_2127010i.jpg","likes":0},{"source":"http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg","name":"Bobby","id":6,"likes":0},{"source":"http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg","name":"Dilan","id":7,"likes":0},{"source":"http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg","name":"Dilan","id":8,"likes":0},{"source":"http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg","name":"vidi","id":9,"likes":0},{"name":"werwrwerfwerf","id":10,"likes":0,"source":""},{"id":11,"likes":0,"source":""},{"id":12,"likes":0,"source":""},{"name":"fasdf","source":"http://www.thetimes.co.uk/tto/multimedia/archive/00309/108787995_309592c.jpg","id":13,"likes":0}]
