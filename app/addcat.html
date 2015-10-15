@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Cats application</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <!-- build:css /build/app.css -->
+    <link rel="stylesheet" type="text/css" href="/app/app.css"/>
+    <!-- /build -->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <!-- build:js /build/angular-training.js -->
+    <script src="/app/app.js"></script>
+    <script src="/app/components/controllers/addCatController.js"></script>
+    <!-- /build -->
+</head>
+<body ng-app="app" ng-cloak>
+<h1>Add New Cat</h1>
+<div ng-controller="addCatController">
+    <form name="newForm" novalidate>
+        <div class="form-group">
+            <label>Cat Name</label>
+            <input name="name" class="form-control" id="exampleInputEmail1" ng-model="newCat.name" required>
+            <span class="error" ng-show="newForm.name.$error.required && newForm.name.$touched">Username is required.</span>
+        </div>
+        <div class="form-group">
+            <label>Image Source</label>
+            <input  name="src"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    ng-model="newCat.source"
+                    required
+                    ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"
+                    ng-model-options="{ updateOn: 'blur' }">
+            <span class="error" ng-show="newForm.src.$error.required && newForm.src.$touched">Image Source is required.</span>
+            <span class="error" ng-show="newForm.src.$error.pattern && newForm.src.$touched">Image Source is invalid.</span>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <button class="btn btn-default" ng-click="editFormCancel($event)">Cancel</button>
+    </form>
+
+    <div ng-if="newCat">
+        <h2>Preview</h2>
+        Name: {{newCat.name}}<br>
+        <img ng-src="{{newCat.source}}" />
+    </div>
+
+</div>
+</body>
+</html>

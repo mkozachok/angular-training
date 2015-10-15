@@ -11,13 +11,38 @@
     <script src="/bower_components/angular/angular.min.js"></script>
     <!-- build:js /build/angular-training.js -->
     <script src="/app/app.js"></script>
+    <script src="/app/components/services/cats.service.js"></script>
+    <script src="/app/components/filters/smileFilter.js"></script>
     <script src="/app/components/controllers/mainController.js"></script>
     <!-- /build -->
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-cloak>
 
     <div ng-controller="mainController" class="container">
-        <div ng-include="'templates/main.html'"></div>
+        <h1>List of Cats</h1>
+        <p ng-pluralize count="happyCats.length" offset="1"
+           when="{'0': 'Any happy cats',
+                     '1': '{{happyCats[0].name}} cat is happy.',
+                     '2': '{{happyCats[0].name}} and {} cats are happy',
+                     'other': '{{happyCats[0].name}} and {} cats are happy'}"></p>
+        <label>Search: </label>
+        <input name="search" ng-model="search">
+        <button ng-click="applySearch(search)">Apply</button>
+        <label>Sorting: </label>
+        <select ng-model="sort">
+            <option value="name">AtoY</option>
+            <option value="-name">YtoA</option>
+        </select>
+        <div class="cats">
+            <p ng-repeat="cat in cats | filter:searchSrt | orderBy:sort" ng-click="showCat(cat); catViewer(cat);">{{cat.name}} {{cat.viewed ? '^' : ''}}</p>
+        </div>
+        <div ng-if="showedCat">
+            <img ng-src="{{showedCat.source}}" />
+            <p>{{showedCat.date | date: 'd MMM yyyy - hh:m:s'}}</p>
+            <button ng-click="likesInc(showedCat)">Up</button>
+            <button ng-click="likesDec(showedCat)">Down</button>
+            <h3>Likes: {{showedCat.likes | smile}}</h3>
+        </div>
     </div>
 
 </body>
