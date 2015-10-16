@@ -12,39 +12,99 @@
     <!-- build:js /build/angular-training.js -->
     <script src="/app/app.js"></script>
     <script src="/app/components/services/cats.service.js"></script>
+    <script src="/app/components/services/profile.service.js"></script>
     <script src="/app/components/filters/smileFilter.js"></script>
     <script src="/app/components/controllers/mainController.js"></script>
     <!-- /build -->
 </head>
 <body ng-app="app" ng-cloak>
-
-    <div ng-controller="mainController" class="container">
-        <h1>List of Cats</h1>
-        <a href="addcat.html">Add</a>
-        <p ng-pluralize count="happyCats.length" offset="1"
-           when="{'0': 'Any happy cats',
-                     '1': '{{happyCats[0].name}} cat is happy.',
-                     '2': '{{happyCats[0].name}} and {} cats are happy',
-                     'other': '{{happyCats[0].name}} and {} cats are happy'}"></p>
-        <label>Search: </label>
-        <input name="search" ng-model="search">
-        <button ng-click="applySearch(search)">Apply</button>
-        <label>Sorting: </label>
-        <select ng-model="sort">
-            <option value="name">AtoY</option>
-            <option value="-name">YtoA</option>
-        </select>
-        <div class="cats">
-            <p ng-repeat="cat in cats | filter:searchSrt | orderBy:sort" ng-click="showCat(cat); catViewer(cat);">{{cat.name}} {{cat.viewed ? '^' : ''}}</p>
+<nav class="navbar navbar-inverse navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Cats Aplication</a>
         </div>
-        <div ng-if="showedCat">
-            <img ng-src="{{showedCat.source}}" />
-            <p>{{showedCat.date | date: 'd MMM yyyy - hh:m:s'}}</p>
-            <button ng-click="likesInc(showedCat)">Up</button>
-            <button ng-click="likesDec(showedCat)">Down</button>
-            <h3>Likes: {{showedCat.likes | smile}}</h3>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/">Home</a></li>
+                <li><a href="addcat.html">Add Cat</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container">
+    <div class="starter-template">
+        <div ng-controller="mainController" class="container">
+
+            <h1>List of Cats</h1>
+
+            <p ng-pluralize count="happyCats.length" offset="1"
+               when="{'0': 'Any happy cats',
+                         '1': '{{happyCats[0].name}} cat is happy.',
+                         '2': '{{happyCats[0].name}} and {} cats are happy',
+                         'other': '{{happyCats[0].name}} and {} cats are happy'}"></p>
+
+            <div class="form-inline">
+                <div class="form-group">
+                    <label>Search: </label>
+                    <input name="search" ng-model="search" class="form-control">
+                    <button ng-click="applySearch(search)" class="btn btn-primary">Apply</button>
+                </div>
+                <div class="form-group">
+                    <label>Sorting: </label>
+                    <select ng-model="sort" class="form-control">
+                        <option value="name">AtoY</option>
+                        <option value="-name">YtoA</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="cats row">
+                        <br>
+                        <ul>
+                            <li ng-repeat="cat in cats | filter:searchSrt | orderBy:sort"
+                                ng-click="showCat(cat); catViewer(cat);">
+                                {{cat.name}} {{cat.viewed ? '^' : ''}}
+                            </li>
+                        </ul>
+                    </div>
+                    <form name="loginForm">
+                        <div class="form-group">
+                            <label>Login</label>
+                            <input name="username" class="form-control" ng-model="user.name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input name="password" class="form-control" ng-model="user.password" required>
+                        </div>
+                        <button class="btn btn-primary" ng-click="login(user);" ng-disabled="loginForm.$invalid">Sign In</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div ng-if="showedCat">
+                        <img ng-src="{{showedCat.source}}"/>
+
+                        <p>{{showedCat.date | date: 'd MMM yyyy - hh:m:s'}}</p>
+                        <button ng-click="likesInc(showedCat)">Up</button>
+                        <button ng-click="likesDec(showedCat)">Down</button>
+                        <h3>Likes: {{showedCat.likes | smile}}</h3>
+                        <button class="btn btn-danger" ng-click="deleteCat(showedCat)">Delete</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
+</div>
+</div>
 </body>
 </html>

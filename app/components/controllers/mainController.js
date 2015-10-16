@@ -1,10 +1,16 @@
 ﻿(function(module) {
 
-    var mainController = function ($scope, cats) {
-        cats.getCats().then(function(data) {
-            $scope.cats = data;
-            $scope.showedCat = $scope.cats[0];
-        });
+    var mainController = function ($scope, cats, profile) {
+        var showListOfCats = function() {
+            cats.getCats().then(function (data) {
+                $scope.cats = data;
+                $scope.showedCat = $scope.cats[0];
+            }, function (error) {
+                console.log(error.statusText);
+            });
+        }
+        showListOfCats();
+
         $scope.likesInc = function(cat) {
             cat.likes++;
         };
@@ -25,6 +31,10 @@
         $scope.applySearch = function(data) {
             $scope.searchSrt = data;
         };
+        $scope.deleteCat = function(cat) {
+            cats.delete(cat);
+            showListOfCats();
+        }
         $scope.$watch('cats', function(newVal, oldVal) {
             var happyCats = [];
             if (newVal) {
@@ -36,6 +46,10 @@
                 $scope.happyCats = happyCats;
             }
         }, true);
+
+        $scope.login = function(user) {
+            console.log(profile.login(user));
+        };
     };
 
     module.controller("mainController", mainController);
