@@ -9,11 +9,16 @@
     <link rel="stylesheet" type="text/css" href="/app/app.css"/>
     <!-- /build -->
     <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
     <!-- build:js /build/angular-training.js -->
     <script src="/app/app.js"></script>
     <script src="/app/components/services/cats.service.js"></script>
     <script src="/app/components/services/profile.service.js"></script>
     <script src="/app/components/filters/smileFilter.js"></script>
+
+    <script src="/app/components/directives/focus.directive.js"></script>
+    <script src="/app/components/directives/voteSpinner.directive.js"></script>
+
     <script src="/app/components/controllers/mainController.js"></script>
     <!-- /build -->
 </head>
@@ -55,7 +60,7 @@
             <div class="form-inline">
                 <div class="form-group">
                     <label>Search: </label>
-                    <input name="search" ng-model="search" class="form-control">
+                    <input name="search" ng-model="search" class="form-control" focus>
                     <button ng-click="applySearch(search)" class="btn btn-primary">Apply</button>
                 </div>
                 <div class="form-group">
@@ -93,11 +98,8 @@
                 <div class="col-md-6">
                     <div ng-if="showedCat">
                         <img ng-src="{{showedCat.source}}"/>
-
+                        <vote-spinner obj="showedCat"></vote-spinner>
                         <p>{{showedCat.date | date: 'd MMM yyyy - hh:m:s'}}</p>
-                        <button ng-click="likesInc(showedCat)">Up</button>
-                        <button ng-click="likesDec(showedCat)">Down</button>
-                        <h3>Likes: {{showedCat.likes | smile}}</h3>
                         <button class="btn btn-danger" ng-click="deleteCat(showedCat)">Delete</button>
                     </div>
                 </div>

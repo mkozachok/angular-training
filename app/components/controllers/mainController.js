@@ -10,13 +10,6 @@
             });
         }
         showListOfCats();
-
-        $scope.likesInc = function(cat) {
-            cat.likes++;
-        };
-        $scope.likesDec = function(cat) {
-            cat.likes--;
-        };
         $scope.catViewer = function(cat) {
             cat.viewed = true;
         };
@@ -48,7 +41,9 @@
         }, true);
 
         $scope.login = function(user) {
-            console.log(profile.login(user));
+            if(profile.login(user)) {
+                $scope.user = null;
+            }
         };
     };
 

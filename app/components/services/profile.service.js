@@ -1,4 +1,4 @@
-angular.module('app').factory('profile', function($http, $q, $window) {
+angular.module('app').factory('profile', function($http, $q, $window, $cookies) {
     var saveProfile = function (profile) {
         var data = $window.localStorage.getItem('profiles');
         var profiles = data ? JSON.parse(data) : [];
@@ -18,7 +18,7 @@ angular.module('app').factory('profile', function($http, $q, $window) {
             });
         }
         if (status) {
-            $window.localStorage.setItem('loginedUser', JSON.stringify(status));
+            $cookies.put('user', status.name);
         }
         return status;
     };

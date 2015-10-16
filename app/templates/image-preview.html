@@ -1,0 +1,13 @@
+<div ng-form name="imagePreview">
+    <label>Image Source</label>
+    <input name="src"
+           class="form-control"
+           id="exampleInputPassword1"
+           ng-model="cat.source"
+           required
+           ng-pattern="/(jpg)/"
+           ng-model-options="{ updateOn: 'blur' }">
+    <span class="error" ng-show="imagePreview.src.$error.required && imagePreview.src.$touched">Image Source is required.</span>
+    <span class="error" ng-show="imagePreview.src.$error.pattern && imagePreview.src.$touched">Image Source is invalid.</span>
+</div>
+<img ng-src="{{cat.source}}"/>
