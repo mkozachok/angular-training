@@ -1,7 +1,8 @@
 (function(module) {
 
     var addCatController = function ($scope, cats) {
-        //$scope.newCat = {};
+        $scope.title = 'Add Cat'
+
         $scope.editFormCancel = function(event) {
             $scope.newCat = null;
         };

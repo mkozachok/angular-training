@@ -10,6 +10,7 @@
     <!-- /build -->
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
     <!-- build:js /build/angular-training.js -->
     <script src="/app/app.js"></script>
     <script src="/app/components/services/cats.service.js"></script>
@@ -18,8 +19,15 @@
 
     <script src="/app/components/directives/focus.directive.js"></script>
     <script src="/app/components/directives/voteSpinner.directive.js"></script>
+    <script src="/app/components/directives/previewImage.directive.js"></script>
+    <script src="/app/components/directives/enter.directive.js"></script>
+    <script src="/app/components/directives/loginPanel.directive.js"></script>
 
     <script src="/app/components/controllers/mainController.js"></script>
+    <script src="/app/components/controllers/addCatController.js"></script>
+    <script src="/app/components/controllers/updateCatController.js"></script>
+    <script src="/app/components/controllers/profileController.js"></script>
+    <script src="/app/components/controllers/loginContoller.js"></script>
     <!-- /build -->
 </head>
 <body ng-app="app" ng-cloak>
@@ -37,74 +45,19 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class=""><a href="/">Home</a></li>
-                <li><a href="addcat.html">Add Cat</a></li>
-                <li><a href="profile.html">Profile</a></li>
+                <li class=""><a href="#/">Home</a></li>
+                <li><a href="#cat/add">Add Cat</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
+            <div login-panel class="pull-right login-panel"></div>
         </div>
         <!--/.nav-collapse -->
     </div>
 </nav>
 <div class="container">
     <div class="starter-template">
-        <div ng-controller="mainController" class="container">
-
-            <h1>List of Cats</h1>
-
-            <p ng-pluralize count="happyCats.length" offset="1"
-               when="{'0': 'Any happy cats',
-                         '1': '{{happyCats[0].name}} cat is happy.',
-                         '2': '{{happyCats[0].name}} and {} cats are happy',
-                         'other': '{{happyCats[0].name}} and {} cats are happy'}"></p>
-
-            <div class="form-inline">
-                <div class="form-group">
-                    <label>Search: </label>
-                    <input name="search" ng-model="search" class="form-control" focus>
-                    <button ng-click="applySearch(search)" class="btn btn-primary">Apply</button>
-                </div>
-                <div class="form-group">
-                    <label>Sorting: </label>
-                    <select ng-model="sort" class="form-control">
-                        <option value="name">AtoY</option>
-                        <option value="-name">YtoA</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="cats row">
-                        <br>
-                        <ul>
-                            <li ng-repeat="cat in cats | filter:searchSrt | orderBy:sort"
-                                ng-click="showCat(cat); catViewer(cat);">
-                                {{cat.name}} {{cat.viewed ? '^' : ''}}
-                            </li>
-                        </ul>
-                    </div>
-                    <form name="loginForm">
-                        <div class="form-group">
-                            <label>Login</label>
-                            <input name="username" class="form-control" ng-model="user.name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input name="password" class="form-control" ng-model="user.password" required>
-                        </div>
-                        <button class="btn btn-primary" ng-click="login(user);" ng-disabled="loginForm.$invalid">Sign In</button>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <div ng-if="showedCat">
-                        <img ng-src="{{showedCat.source}}"/>
-                        <vote-spinner obj="showedCat"></vote-spinner>
-                        <p>{{showedCat.date | date: 'd MMM yyyy - hh:m:s'}}</p>
-                        <button class="btn btn-danger" ng-click="deleteCat(showedCat)">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div ng-view></div>
     </div>
 </div>
 </div>

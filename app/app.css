@@ -7,3 +7,10 @@ img {
 .error {
 	color: red;
 }
+.cats li {
+	cursor: pointer;
+}
+.login-panel {
+	color: #fff;
+	padding: 15px;
+}

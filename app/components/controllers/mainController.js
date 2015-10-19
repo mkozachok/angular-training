@@ -2,12 +2,7 @@
 
     var mainController = function ($scope, cats, profile) {
         var showListOfCats = function() {
-            cats.getCats().then(function (data) {
-                $scope.cats = data;
-                $scope.showedCat = $scope.cats[0];
-            }, function (error) {
-                console.log(error.statusText);
-            });
+            $scope.cats = cats;
         }
         showListOfCats();
         $scope.catViewer = function(cat) {
@@ -21,13 +16,15 @@
                 $scope.smile = ':(';
             }
         };
+        $scope.sort = 'name';
         $scope.applySearch = function(data) {
             $scope.searchSrt = data;
         };
-        $scope.deleteCat = function(cat) {
+        $scope.deleteCat = function(event, cat) {
+            event.preventDefault();
             cats.delete(cat);
             showListOfCats();
-        }
+        };
         $scope.$watch('cats', function(newVal, oldVal) {
             var happyCats = [];
             if (newVal) {
@@ -39,12 +36,7 @@
                 $scope.happyCats = happyCats;
             }
         }, true);
-
-        $scope.login = function(user) {
-            if(profile.login(user)) {
-                $scope.user = null;
-            }
-        };
+        $scope.user = profile.get();
     };
 
     module.controller("mainController", mainController);

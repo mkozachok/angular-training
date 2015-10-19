@@ -1,0 +1,27 @@
+<h1>Profile</h1>
+<form name="newForm" novalidate>
+    <div class="form-group">
+        <label>Name</label>
+        <input name="name" class="form-control" ng-model="profile.name" required>
+        <span class="error" ng-show="newForm.name.$error.required && newForm.name.$touched">Username is required.</span>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input name="password" ng-blur="checkPassword(profile)" class="form-control" ng-model="profile.password" required>
+        <span class="error" ng-show="newForm.password.$error.required && newForm.password.$touched">Password is required.</span>
+    </div>
+    <div class="form-group">
+        <label>Repeat Password</label>
+        <input name="repeatPassword" ng-blur="checkPassword(profile)" class="form-control" ng-model="profile.repeatPassword" required>
+        <span class="error" ng-show="newForm.repeatPassword.$error.required && newForm.repeatPassword.$touched">Password is required.</span>
+        <span class="error" ng-show="profile.password !== profile.repeatPassword">Passwords are not a same.</span>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input name="email" class="form-control" ng-model="profile.email" ng-pattern="/(@)/" required>
+        <span class="error" ng-show="newForm.email.$error.required && newForm.email.$touched">Email is required.</span>
+        <span class="error" ng-show="newForm.email.$error.pattern">Email is invalid.</span>
+    </div>
+    <input type="submit" ng-click="save(profile)" class="btn btn-default" ng-disabled="newForm.$invalid" value="Submit">
+    <button class="btn btn-default" ng-click="editFormCancel($event)">Cancel</button>
+</form>
