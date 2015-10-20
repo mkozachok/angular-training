@@ -18,14 +18,20 @@ angular.module('app').factory('profile', function($http, $q, $window, $cookies, 
             $cookies.put('user', JSON.stringify(user));
         }
         loginedUser = user;
+        $location.url('/');
         return user;
+    };
+    var logoutUser = function() {
+        $cookies.remove('user');
+        $location.url('/');
     };
     var getUser = function () {
         return loginedUser;
-    }
+    };
     return {
         'save' : saveProfile,
         'login' : loginUser,
+        'logout': logoutUser,
         'get' : getUser
     };
 });

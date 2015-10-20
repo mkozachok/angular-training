@@ -3,7 +3,8 @@
     var mainController = function ($scope, cats, profile) {
         var showListOfCats = function() {
             $scope.cats = cats;
-        }
+            $scope.showedCat = cats[0];
+        };
         showListOfCats();
         $scope.catViewer = function(cat) {
             cat.viewed = true;

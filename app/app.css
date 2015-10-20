@@ -11,6 +11,9 @@ img {
 	cursor: pointer;
 }
 .login-panel {
-	color: #fff;
 	padding: 15px;
+}
+.login-panel,
+.login-panel a {
+	color: #fff;
 }
