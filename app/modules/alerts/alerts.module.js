@@ -8,4 +8,6 @@ angular.module("alertsModule", []).config(function($provide, $httpProvider){
 			alertsService.addError(exception.message);
 		};
 	});
+}).run(function(alertsService){
+	alertsService.init();
 });

@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    angular.module("app", ['ngCookies', 'ngRoute']);
+    angular.module("app", ['ngCookies', 'ngRoute', 'alertsModule']);
 
     angular.module("app").config(function ($routeProvider) {
         $routeProvider
