@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-angular.module('alertsModule', []).config(function($provide, $httpProvider) {
-    $httpProvider.interceptors.push('alertsInterceptor');
-
-    $provide.decorator();
-=======
 angular.module("alertsModule", []).config(function($provide, $httpProvider){
 
 	$httpProvider.interceptors.push('alertsInterceptor');
@@ -14,5 +8,4 @@ angular.module("alertsModule", []).config(function($provide, $httpProvider){
 			alertsService.addError(exception.message);
 		};
 	});
->>>>>>> 9f00f4e... Added aler service
 });

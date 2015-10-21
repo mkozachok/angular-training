@@ -1,7 +1,7 @@
 angular.module('app').factory('authService', function($http, $window){
     var token = $window.localStorage.getItem('token'),
         userJson = $window.localStorage.getItem('user'),
-        user = JSON.parse(userJson) || {};
+        user = JSON.parse(userJson) || null;
 
     function register(data){
         $http.post('/register', data).then(function(resp){
@@ -20,7 +20,9 @@ angular.module('app').factory('authService', function($http, $window){
 
     function logout(){
         token = undefined;
+        user = null;
         $window.localStorage.removeItem('token');
+        $window.localStorage.removeItem('user');
     }
 
     function getToken(){
