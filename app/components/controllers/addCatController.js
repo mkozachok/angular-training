@@ -11,7 +11,7 @@
             $scope.newCat = null;
         };
         $scope.saveCat = function(cat) {
-            catsService.addCats(cat);
+            catsService.save(cat);
         }
     };
 

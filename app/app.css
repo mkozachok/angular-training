@@ -17,3 +17,13 @@ img {
 .login-panel a {
 	color: #fff;
 }
+ul {
+	margin: 0;
+	padding: 0;
+}
+ul li {
+	list-style: none;
+	list-style-image: none;
+	padding: 5px 10px;
+	border-bottom: 1px solid #c2ccd1;
+}

@@ -27,8 +27,9 @@
             <br>
             <ul>
                 <li ng-repeat="cat in cats | filter:searchSrt | orderBy:sort"
-                    ng-click="showCat(cat); catViewer(cat);">
-                    {{cat.name}} {{cat.viewed ? '^' : ''}}
+                    ng-click="showCat(cat); catViewer(cat);"
+                    class="{{cat.viewed ? 'bg-info' : ''}}">
+                    {{cat.name}}
                     <span ng-show="user.login && user.login == cat.owner">
                         <a href="#/cat/edit/{{cat.id}}" class="btn btn-link">Edit</a>
                         <a href="#" ng-click="deleteCat($event, cat)" class="btn btn-link">Delete</a>

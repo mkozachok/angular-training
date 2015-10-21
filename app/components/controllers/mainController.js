@@ -1,11 +1,11 @@
 ﻿(function(module) {
 
     var mainController = function ($scope, catsService, cats, authService) {
-        var showListOfCats = function() {
-            $scope.cats = cats;
-            $scope.showedCat = cats[0];
-        };
-        showListOfCats();
+        $scope.sort = 'name';
+        $scope.user = authService.getUser();
+        $scope.cats = cats;
+        $scope.showedCat = cats[0];
+
         $scope.catViewer = function(cat) {
             cat.viewed = true;
         };
@@ -17,14 +17,14 @@
                 $scope.smile = ':(';
             }
         };
-        $scope.sort = 'name';
         $scope.applySearch = function(data) {
             $scope.searchSrt = data;
         };
         $scope.deleteCat = function(event, cat) {
             event.preventDefault();
             catsService.delete(cat);
-            showListOfCats();
+            $scope.cats = catsService.getCats();
+            $scope.showedCat = cats[0];
         };
         $scope.$watch('cats', function(newVal, oldVal) {
             var happyCats = [];
@@ -37,7 +37,6 @@
                 $scope.happyCats = happyCats;
             }
         }, true);
-        $scope.user = authService.getUser();
     };
 
     module.controller("mainController", mainController);

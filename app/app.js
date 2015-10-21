@@ -1,8 +1,9 @@
 (function () {
     "use strict";
-    angular.module("app", ['ngCookies', 'ngRoute', 'alertsModule']);
+    angular.module("app", ['ngCookies', 'ngRoute', 'ngResource', 'alertsModule']);
 
-    angular.module("app").config(function ($routeProvider) {
+    angular.module("app").config(function ($routeProvider, $httpProvider) {
+        $httpProvider.interceptors.push('authInterceptor');
         $routeProvider
 
             .when('/', {
@@ -30,8 +31,8 @@
                 templateUrl: 'templates/cat-add.html',
                 controller: 'updateCatController',
                 resolve: {
-                    newCat: function (catsService) {
-                        return catsService.getCats();
+                    newCat: function ($route, catsService) {
+                        return catsService.getOne($route.current.params.id);
                     }
                 }
             })
