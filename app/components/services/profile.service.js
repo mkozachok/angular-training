@@ -22,6 +22,7 @@ angular.module('app').factory('profile', function($http, $q, $window, $cookies, 
         return user;
     };
     var logoutUser = function() {
+        loginedUser = null;
         $cookies.remove('user');
         $location.url('/');
     };

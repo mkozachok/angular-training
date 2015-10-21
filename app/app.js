@@ -9,8 +9,8 @@
                 templateUrl: 'templates/cats.html',
                 controller: 'mainController',
                 resolve: {
-                    cats: function (cats) {
-                        return cats.getCats();
+                    cats: function (catsService) {
+                        return catsService.getCats();
                     }
                 }
             })
@@ -30,8 +30,8 @@
                 templateUrl: 'templates/cat-add.html',
                 controller: 'updateCatController',
                 resolve: {
-                    newCat: function (cats) {
-                        return cats.getCats();
+                    newCat: function (catsService) {
+                        return catsService.getCats();
                     }
                 }
             })

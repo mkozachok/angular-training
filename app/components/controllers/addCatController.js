@@ -1,13 +1,17 @@
 (function(module) {
 
-    var addCatController = function ($scope, cats) {
+    var addCatController = function ($scope, $location, catsService, authService) {
+        if (!authService.getUser()) {
+            $location.url('/');
+        }
+
         $scope.title = 'Add Cat'
 
         $scope.editFormCancel = function(event) {
             $scope.newCat = null;
         };
         $scope.saveCat = function(cat) {
-            cats.addCats(cat);
+            catsService.addCats(cat);
         }
     };
 

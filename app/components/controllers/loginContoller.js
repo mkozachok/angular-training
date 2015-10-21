@@ -1,10 +1,9 @@
 (function(module) {
 
-    var loginController = function ($scope, profile) {
+    var loginController = function ($scope, $location, profile, authService) {
         $scope.login = function(user) {
-            if(profile.login(user)) {
-                $scope.user = null;
-            }
+            authService.login(user);
+            $location.url('/');
         };
     };
 

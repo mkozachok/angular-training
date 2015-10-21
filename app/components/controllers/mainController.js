@@ -1,6 +1,6 @@
 ﻿(function(module) {
 
-    var mainController = function ($scope, cats, profile) {
+    var mainController = function ($scope, catsService, cats, authService) {
         var showListOfCats = function() {
             $scope.cats = cats;
             $scope.showedCat = cats[0];
@@ -23,7 +23,7 @@
         };
         $scope.deleteCat = function(event, cat) {
             event.preventDefault();
-            cats.delete(cat);
+            catsService.delete(cat);
             showListOfCats();
         };
         $scope.$watch('cats', function(newVal, oldVal) {
@@ -37,7 +37,7 @@
                 $scope.happyCats = happyCats;
             }
         }, true);
-        $scope.user = profile.get();
+        $scope.user = authService.getUser();
     };
 
     module.controller("mainController", mainController);

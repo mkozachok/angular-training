@@ -1,4 +1,3 @@
-
 <h1>List of Cats</h1>
 
 <p ng-pluralize count="happyCats.length" offset="1"
@@ -30,8 +29,10 @@
                 <li ng-repeat="cat in cats | filter:searchSrt | orderBy:sort"
                     ng-click="showCat(cat); catViewer(cat);">
                     {{cat.name}} {{cat.viewed ? '^' : ''}}
-                    <a href="#/cat/edit/{{cat.id}}" class="btn btn-link">Edit</a>
-                    <a href="#" ng-click="deleteCat($event, cat)" class="btn btn-link">Delete</a>
+                    <span ng-show="user.login && user.login == cat.owner">
+                        <a href="#/cat/edit/{{cat.id}}" class="btn btn-link">Edit</a>
+                        <a href="#" ng-click="deleteCat($event, cat)" class="btn btn-link">Delete</a>
+                    </span>
                 </li>
             </ul>
         </div>
