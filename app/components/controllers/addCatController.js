@@ -12,6 +12,7 @@
         };
         $scope.saveCat = function(cat) {
             catsService.save(cat);
+            $location.url('/');
         }
     };
 

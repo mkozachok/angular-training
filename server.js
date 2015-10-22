@@ -6,6 +6,7 @@ var fileName = './json/cats.json',
         name: 'name',
         url: 'source',
         vote: 'likes',
+        lokers: 'likers',
         owner: 'owner',
         date: 'date'
     };
@@ -116,6 +117,7 @@ app.post(instanceName, checkAuth, function(req, res){
 
     data[fields.id] = lastId + 1;
     data[fields.vote] = 0;
+    data[fields.likers] = null;
     data[fields.src] = data[fields.src] || "";
     data[fields.owner] = req.user.login;
     //data.date = new Date();
@@ -126,7 +128,7 @@ app.post(instanceName, checkAuth, function(req, res){
         if (err){
             res.error(err);
         } else {
-            res.send(result);
+            res.send(data);
         }
     });
 });
@@ -143,7 +145,7 @@ app.put(instanceName + '/:id', checkAuth, function(req, res, user){
             if (err) {
                 res.error(err);
             } else {
-                res.send(result);
+                res.send(instance);
             }
         });
     } else  {
@@ -151,6 +153,23 @@ app.put(instanceName + '/:id', checkAuth, function(req, res, user){
             .status(405)
             .send({status: 'error', code: "NOPERMISSION", error: "No permission"});
     }
+
+});
+app.put(instanceName + '/:id/like', function(req, res, user){
+    var id = req.params.id,
+        result = require(fileName),
+        instance = result.filter(function(el){return el[fields.id] == id})[0],
+        data = req.body;
+
+    extend(instance, data);
+    fs.writeFile(fileName, JSON.stringify(result), function (err) {
+        console.log(err ? err : "JSON saved to " + fileName);
+        if (err) {
+            res.error(err);
+        } else {
+            res.send(instance);
+        }
+    });
 
 });
 app.delete(instanceName + '/:id', checkAuth, function(req, res, user){
@@ -167,7 +186,7 @@ app.delete(instanceName + '/:id', checkAuth, function(req, res, user){
             if (err){
                 res.error(err);
             } else {
-                res.send(result);
+                res.send(instance);
             }
         });
     } else {

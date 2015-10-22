@@ -32,7 +32,7 @@
                     {{cat.name}}
                     <span ng-show="user.login && user.login == cat.owner">
                         <a href="#/cat/edit/{{cat.id}}" class="btn btn-link">Edit</a>
-                        <a href="#" ng-click="deleteCat($event, cat)" class="btn btn-link">Delete</a>
+                        <span ng-click="deleteConfirm(cat);" class="btn btn-link">Delete</span>
                     </span>
                 </li>
             </ul>
@@ -41,7 +41,7 @@
     <div class="col-md-6">
         <div ng-if="showedCat">
             <img ng-src="{{showedCat.source}}"/>
-            <vote-spinner obj="showedCat"></vote-spinner>
+            <vote-spinner obj="showedCat" update="likeCat(cat)"></vote-spinner>
             <p>{{showedCat.date | date: 'd MMM yyyy - hh:m:s'}}</p>
         </div>
     </div>
