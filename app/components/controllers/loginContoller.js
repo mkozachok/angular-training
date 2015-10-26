@@ -4,7 +4,7 @@
         $scope.login = function(user) {
             var deferred = $q.defer();
 
-            authService.login(user, deferred).then(function(data) {
+            authService.login(user).then(function(data) {
                 $location.url('/');
             }, function() {
                 $scope.loginError = 'You enter wrong login or password.';

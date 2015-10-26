@@ -1,13 +1,18 @@
-﻿(function(module) {
+﻿//todo: implements perms service
 
-    var mainController = function ($scope, $uibModal, catsService, cats, authService) {
+(function(module) {
+
+    var mainController = function ($scope, $uibModal, catsService, cats, authService, permsService) {
         $scope.sort = 'name';
+
         $scope.user = authService.getUser();
+
         $scope.cats = cats.sort(function(a, b){
             if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
             if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
             return 0;
         });
+
         $scope.showedCat = cats[0];
 
         $scope.catViewer = function(cat) {
@@ -17,9 +22,11 @@
             $scope.searchSrt = data;
         };
         $scope.deleteCat = function(cat) {
-            catsService.delete(cat);
-            $scope.cats = catsService.getCats();
-            $scope.showedCat = cats[0];
+            if (permsService.isCatOwner(cat)) {
+                catsService.delete(cat);
+                $scope.cats = catsService.getCats();
+                $scope.showedCat = cats[0];
+            }
         };
         $scope.likeCat = function(cat) {
             catsService.like(cat);
@@ -38,6 +45,10 @@
                 $scope.happyCats = happyCats;
             }
         }, true);
+
+        $scope.isOwner = function(cat) {
+           return permsService.isCatOwner(cat);
+        };
 
 
         $scope.deleteConfirm = function (cat) {

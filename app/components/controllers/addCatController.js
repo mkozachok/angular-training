@@ -1,7 +1,7 @@
 (function(module) {
 
     var addCatController = function ($scope, $location, catsService, authService) {
-        if (!authService.getUser()) {
+        if (!authService.isLoggedIn()) {
             $location.url('/');
         }
 

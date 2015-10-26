@@ -1,13 +1,12 @@
 (function (module) {
 
-    var updateCatController = function ($scope, $location, catsService, newCat, authService) {
+    var updateCatController = function ($scope, $location, catsService, newCat, authService, permsService) {
+        if (!permsService.isCatOwner(newCat)) {
+            $location.url('/');
+        }
         $scope.title = 'Edit Cat';
         $scope.newCat = newCat;
         var user = authService.getUser();
-        if (newCat && newCat.owner != user.login) {
-            //$location.url('/');
-        }
-
 
         $scope.editFormCancel = function (event) {
             $scope.newCat = null;

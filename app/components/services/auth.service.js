@@ -27,7 +27,6 @@ angular.module('app').factory('authService', function ($http, $window, $q) {
                 logout();
             }
         });
-
     }
 
     function logout() {
@@ -45,11 +44,16 @@ angular.module('app').factory('authService', function ($http, $window, $q) {
         return user;
     }
 
+    function isLoggedIn() {
+        return user || token ? true : false;
+    }
+
     return {
         register: register,
         login: login,
         logout: logout,
         getToken: getToken,
+        isLoggedIn: isLoggedIn,
         getUser: getUser
     };
 });

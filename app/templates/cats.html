@@ -30,7 +30,7 @@
                     ng-click="showCat(cat); catViewer(cat);"
                     class="{{cat.viewed ? 'bg-info' : ''}}">
                     {{cat.name}}
-                    <span ng-show="user.login && user.login == cat.owner">
+                    <span ng-show="isOwner(cat)">
                         <a href="#/cat/edit/{{cat.id}}" class="btn btn-link">Edit</a>
                         <span ng-click="deleteConfirm(cat);" class="btn btn-link">Delete</span>
                     </span>
