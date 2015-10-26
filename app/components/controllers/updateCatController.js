@@ -1,7 +1,7 @@
 (function (module) {
 
     var updateCatController = function ($scope, $location, catsService, newCat, authService) {
-        $scope.title = 'Edit Cat'
+        $scope.title = 'Edit Cat';
         $scope.newCat = newCat;
         var user = authService.getUser();
         if (newCat && newCat.owner != user.login) {
@@ -20,7 +20,7 @@
             } else {
                 console.log('Add form invalid');
             }
-        }
+        };
     };
 
     module.controller("updateCatController", updateCatController);

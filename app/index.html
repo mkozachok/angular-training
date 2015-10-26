@@ -13,6 +13,7 @@
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
     <!-- build:js /build/angular-training.js -->
     <script src="/app/app.js"></script>
     <script src="/app/components/services/cats.service.js"></script>
@@ -23,16 +24,15 @@
     <script src="/app/components/filters/smileFilter.js"></script>
 
 
-    <script src="/app/components/directives/focus.directive.js"></script>
-    <script src="/app/components/directives/voteSpinner.directive.js"></script>
-    <script src="/app/components/directives/previewImage.directive.js"></script>
-    <script src="/app/components/directives/enter.directive.js"></script>
-    <script src="/app/components/directives/loginPanel.directive.js"></script>
+    <script src="/app/modules/directives/directives.module.js"></script>
+    <script src="/app/modules/directives/focus.directive.js"></script>
 
-    <script src="/app/modules/alerts/alerts.module.js"></script>
-    <script src="/app/modules/alerts/alerts.service.js"></script>
-    <script src="/app/modules/alerts/alerts.interceptor.js"></script>
-    <script src="/app/modules/alerts/alerts.directive.js"></script>
+    <script src="/app/modules/directives/voteSpinner.directive.js"></script>
+    <script src="/app/modules/directives/previewImage.directive.js"></script>
+    <script src="/app/modules/directives/enter.directive.js"></script>
+    <script src="/app/modules/directives/loginPanel.directive.js"></script>
+    <script src="/app/modules/directives/validPassword.directive.js"></script>
+    <script src="/app/modules/directives/validEmail.directive.js"></script>
     <!-- /build -->
     <script src="/app/components/controllers/mainController.js"></script>
     <script src="/app/components/controllers/addCatController.js"></script>

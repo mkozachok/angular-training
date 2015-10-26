@@ -1,4 +1,4 @@
-angular.module('app').directive('loginPanel', function() {
+angular.module('directives').directive('loginPanel', function() {
     return {
         templateUrl: '/templates/login-panel.html',
         controller: function($scope, $location, authService) {

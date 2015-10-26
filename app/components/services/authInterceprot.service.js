@@ -5,7 +5,7 @@ angular.module('app').factory('authInterceptor', function($injector, $location, 
             var token = authService.getToken();
 
             if (token){
-                config.headers['Authorization'] = 'Bearer ' + token;
+                config.headers.Authorization = 'Bearer ' + token;
             }
             return config;
         },
@@ -15,5 +15,5 @@ angular.module('app').factory('authInterceptor', function($injector, $location, 
             }
             return $q.reject(response);
         }
-    }
+    };
 });

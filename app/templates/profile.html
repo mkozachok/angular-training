@@ -1,4 +1,14 @@
 <h1>Profile</h1>
+<div ng-messages="newForm.password.$error" ng-show="newForm.password.$touched && newForm.password.$invalid">
+    <p ng-message="required" class="alert alert-danger">You did not enter a field</p>
+    <p ng-message="minlength" class="alert alert-danger">You should enter min 4 synbols.</p>
+    <p ng-message="validPassDigit" class="alert alert-danger">You password should contains digit.</p>
+    <p ng-message="validPassLowercase" class="alert alert-danger">You password should lowercase letters.</p>
+    <p ng-message="validPassUppercase" class="alert alert-danger">You password should uppercase letters.</p>
+</div>
+<div ng-messages="newForm.email.$error" ng-show="newForm.email.$touched && newForm.email.$invalid">
+    <p ng-message="validEmail" class="alert alert-danger">Email is invalid.</p>
+</div>
 <form name="newForm" novalidate>
     <div class="form-group">
         <label>Name</label>
@@ -7,20 +17,21 @@
     </div>
     <div class="form-group">
         <label>Password</label>
-        <input name="password" ng-blur="checkPassword(profile)" class="form-control" ng-model="profile.password" required>
+        <input name="password" ng-blur="checkPassword(profile)" class="form-control" ng-model="profile.password" ng-minlength="4"
+               required valid-password>
         <span class="error" ng-show="newForm.password.$error.required && newForm.password.$touched">Password is required.</span>
     </div>
     <div class="form-group">
         <label>Repeat Password</label>
-        <input name="password2" ng-blur="checkPassword(profile)" class="form-control" ng-model="profile.password2" required>
+        <input name="password2" ng-blur="checkPassword(profile)" class="form-control" ng-model="profile.password2"
+               required>
         <span class="error" ng-show="newForm.password2.$error.required && newForm.password2.$touched">Password is required.</span>
         <span class="error" ng-show="profile.password !== profile.password2">Passwords are not a same.</span>
     </div>
     <div class="form-group">
         <label>Email</label>
-        <input name="email" class="form-control" ng-model="profile.email" ng-pattern="/(@)/" required>
+        <input name="email" class="form-control" ng-model="profile.email" ng-pattern="/(@)/" required valid-email>
         <span class="error" ng-show="newForm.email.$error.required && newForm.email.$touched">Email is required.</span>
-        <span class="error" ng-show="newForm.email.$error.pattern">Email is invalid.</span>
     </div>
     <input type="submit" ng-click="save(profile)" class="btn btn-default" ng-disabled="newForm.$invalid" value="Submit">
     <button class="btn btn-default" ng-click="editFormCancel($event)">Cancel</button>

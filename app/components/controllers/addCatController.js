@@ -5,7 +5,7 @@
             $location.url('/');
         }
 
-        $scope.title = 'Add Cat'
+        $scope.title = 'Add Cat';
 
         $scope.editFormCancel = function(event) {
             $scope.newCat = null;
@@ -13,7 +13,7 @@
         $scope.saveCat = function(cat) {
             catsService.save(cat);
             $location.url('/');
-        }
+        };
     };
 
     module.controller("addCatController", addCatController);

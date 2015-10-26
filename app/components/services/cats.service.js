@@ -2,7 +2,7 @@ angular.module('app').factory('catsService', function ($http, $resource, $q, $ro
 
     var catResource = $resource('/cats/:id', {id: '@id'}, {
             update: {method: 'PUT'},
-            like: {method: 'PUT', url: '/cats/:id/like'}
+            like: {method: 'PUT', url: '/cats/:id/like'},
         }),
         get = function () {
             return catResource.query();

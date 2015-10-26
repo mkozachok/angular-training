@@ -1,4 +1,4 @@
-angular.module('app').directive('previewImage', function() {
+angular.module('directives').directive('previewImage', function() {
     return {
         scope: {
             cat: '='

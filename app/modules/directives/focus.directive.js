@@ -1,4 +1,4 @@
-angular.module('app')
+angular.module('directives')
     .directive('focus', function() {
         return {
             link: function(scope, elems, attr) {

@@ -15,8 +15,8 @@
     <div class="form-group">
         <label>Sorting: </label>
         <select ng-model="sort" class="form-control">
-            <option value="name">AtoY</option>
-            <option value="-name">YtoA</option>
+            <option value="name">AtoZ</option>
+            <option value="-name">ZtoA</option>
         </select>
     </div>
 </div>
@@ -40,6 +40,7 @@
     </div>
     <div class="col-md-6">
         <div ng-if="showedCat">
+            <h2>{{showedCat.name}}</h2>
             <img ng-src="{{showedCat.source}}"/>
             <vote-spinner obj="showedCat" update="likeCat(cat)"></vote-spinner>
             <p>{{showedCat.date | date: 'd MMM yyyy - hh:m:s'}}</p>

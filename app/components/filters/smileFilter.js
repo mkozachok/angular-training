@@ -7,5 +7,5 @@ angular.module("app").filter('smile', function() {
         }
 
         return val;
-    }
+    };
 });

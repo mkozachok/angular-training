@@ -3,19 +3,15 @@
     var mainController = function ($scope, $uibModal, catsService, cats, authService) {
         $scope.sort = 'name';
         $scope.user = authService.getUser();
-        $scope.cats = cats;
+        $scope.cats = cats.sort(function(a, b){
+            if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+            if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+            return 0;
+        });
         $scope.showedCat = cats[0];
 
         $scope.catViewer = function(cat) {
             cat.viewed = true;
-        };
-        $scope.showCat = function(cat) {
-            $scope.showedCat = cat;
-            if (cat.likes > 0) {
-                $scope.smile = ':)';
-            } else if (cat.likes < 0) {
-                $scope.smile = ':(';
-            }
         };
         $scope.applySearch = function(data) {
             $scope.searchSrt = data;
@@ -27,6 +23,9 @@
         };
         $scope.likeCat = function(cat) {
             catsService.like(cat);
+        };
+        $scope.showCat = function(cat) {
+            $scope.showedCat = cat;
         };
         $scope.$watch('cats', function(newVal, oldVal) {
             var happyCats = [];

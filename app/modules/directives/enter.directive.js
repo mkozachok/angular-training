@@ -1,4 +1,4 @@
-angular.module('app').directive('ngSubmit', function ($parse, $document) {
+angular.module('directives').directive('ngSubmit', function ($parse, $document) {
     return {
         link: function (scope, elem, attr) {
             var fn = $parse(attr.ngSubmit);

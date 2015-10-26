@@ -1,12 +1,19 @@
 <h1>Login into</h1>
+<p ng-show="loginError" class="alert alert-danger">{{loginError}}</p>
 <form name="loginForm">
     <div class="form-group">
         <label>Login</label>
-        <input name="username" class="form-control" ng-model="user.login" required>
+        <input name="username" class="form-control" ng-model="user.login" ng-required="true">
+        <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
+            <p ng-message="required" class="alert alert-danger">You did not enter a field</p>
+        </div>
     </div>
     <div class="form-group">
         <label>Password</label>
-        <input name="password" class="form-control" ng-model="user.password" required>
+        <input name="password" class="form-control" ng-model="user.password" ng-required="true">
+        <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$dirty">
+            <p ng-message="required" class="alert alert-danger">You did not enter a field</p>
+        </div>
     </div>
     <button class="btn btn-primary" ng-click="login(user);" ng-disabled="loginForm.$invalid">Sign In</button>
 </form>
