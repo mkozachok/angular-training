@@ -21,5 +21,9 @@
     "angular-resource": "latest",
     "angular-cookies": "latest",
     "angular-route": "latest"
+  },
+  "devDependencies": {
+    "angular-messages": "~1.4.7",
+    "angular-bootstrap": "~0.14.3"
   }
 }

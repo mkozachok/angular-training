@@ -2,13 +2,15 @@
 
     var loginController = function ($scope, $location, $q, profile, authService) {
         $scope.login = function(user) {
-            var deferred = $q.defer();
+			
+			var log = authService.login;
 
-            authService.login(user).then(function(data) {
+            log($scope.user).then(function(user) {
                 $location.url('/');
-            }, function() {
-                $scope.loginError = 'You enter wrong login or password.';
-            });
+            }).catch(function(error) {
+					$scope.loginError = 'You enter wrong login or password.';
+				}
+			);
 
         };
     };

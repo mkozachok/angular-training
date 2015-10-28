@@ -146,7 +146,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-angular-templates');
-    grunt.loadNpmTasks('grunt-contrib-concat-sourcemaps');
+    //grunt.loadNpmTasks('grunt-contrib-concat-sourcemaps');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-karma');

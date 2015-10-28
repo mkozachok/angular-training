@@ -10,7 +10,7 @@ angular.module('app').factory('authService', function ($http, $window, $q) {
     }
 
     function login(data) {
-        var defered = $q.defer();
+        var deferred = $q.defer();
         $http.post('/auth', data).then(function (resp) {
             if (resp.data.status === 'success') {
                 token = resp.data.token;
@@ -18,15 +18,17 @@ angular.module('app').factory('authService', function ($http, $window, $q) {
                     $window.localStorage.setItem('token', token);
                     $window.localStorage.setItem('user', JSON.stringify(resp.data.user));
                     user = resp.data.user;
-                    defered.resolve();
+					deferred.resolve(user);
                 } else {
-                    defered.reject();
+                    deferred.reject();
                 }
             } else {
-                defered.reject();
+                deferred.reject();
                 logout();
             }
         });
+	
+		return deferred.promise;
     }
 
     function logout() {
